@@ -9,7 +9,7 @@ outfile="example"   #name for the final HTML file (without extension)
 ## more parameters 
 infile="010_example"
 shfile="example"
-cssfile="../../../course_commons/css_template_for_examples.css"
+cssfile="../../../Commons/css_template_for_examples.css"
 
 ################################################################################
 
