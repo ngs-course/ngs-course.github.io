@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Visualization of mapped reads" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../course_commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Visualization of mapped reads</strong></h2>
+<h3 class="date"><em>(updated 26-02-2014)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://www.broadinstitute.org/igv/home" title="IGV">IGV</a> : The Integrative Genomics Viewer is a program for reading several types of indexed database information, including mapped reads and variant calls, and displaying them on a reference genome. It is invaluable as a tool for viewing and interpreting the “raw data” of many NGS data analysis pipelines.</li>
+<li><a href="http://samtools.sourceforge.net/" title="samtools">samtools</a> : SAM Tools provide various utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li><a href="http://samtools.sourceforge.net/SAMv1.pdf">SAM</a></li>
+<li><a href="http://www.broadinstitute.org/igv/bam">BAM</a></li>
+</ul>
+<h1 id="exercise-1-visualizing-sequencing-data">Exercise 1: Visualizing sequencing data</h1>
+<p>Go to your course directory:</p>
+<pre><code>cd &lt;my_course_directory&gt;</code></pre>
+<p>Copy the data for the tutorials:</p>
+<pre><code>cp -r /mounts/course_shares/Open_Share/visualization .
+ll</code></pre>
+<p>In the following <strong>folder</strong> you wil find mapped sequencing data from a CEU trio (father, mother and child) from the 1000 Genomes Project:</p>
+<pre><code>cd example_1
+ll</code></pre>
+<p>These datasets contain reads only for the <a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000204681;r=6:29523406-29601753">GABBR1</a> gene.</p>
+<h2 id="creating-indexed-files">Creating indexed files</h2>
+<p>Use <code>samtools</code> to index the bam files:</p>
+<pre><code>samtools index NA12878_child.bam
+samtools index NA12891_dad.bam
+samtools index NA12892_mom.bam</code></pre>
+<h2 id="run-igv">Run IGV</h2>
+<pre><code>igv</code></pre>
+<h2 id="downolad-a-referece-genome">Downolad a referece genome</h2>
+<p>By default, IGV loads Human hg18 assembly. However, we must work with the <strong>same assembly used to mapped our reads</strong>, in this case Human hg19.<br />Genome assemblies for several species can be dowloaded using IGV:</p>
+<ul>
+<li>Go to <code>Genomes</code> –&gt; <code>Load Genome From Server...</code><br />Select <strong>Human hg19</strong></li>
+</ul>
+<h2 id="loading-and-browsing-files">Loading and browsing files</h2>
+<ul>
+<li>Go to <code>File</code> –&gt; <code>Load from file...</code><br />Select NA12878_child.bam, NA12891_dad.bam and NA12892_mom.bam</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Enter the name of our gene (<em><strong>GABBR1</strong></em>) in the search box and hit <code>Go</code>.</li>
+<li>Zoom in until you find some SNPs - they might be in exons or introns.</li>
+<li>Identify at least one example of a short insertion variant and deletion arround exon 4.</li>
+<li>Load and look at the SNP track: <code>File</code> –&gt; <code>Load from server</code> –&gt; <code>Annotations</code> –&gt; <code>Variants and Repeats</code> –&gt; <code>dbSNP</code></li>
+</ol>
+</body>
+</html>

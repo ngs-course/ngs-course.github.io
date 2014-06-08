@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Visualization of mapped reads" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../course_commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Visualization of mapped reads</strong></h2>
+<h3 class="date"><em>(updated 26-02-2014)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://www.broadinstitute.org/igv/home" title="IGV">IGV</a> : The Integrative Genomics Viewer is a program for reading several types of indexed database information, including mapped reads and variant calls, and displaying them on a reference genome. It is invaluable as a tool for viewing and interpreting the “raw data” of many NGS data analysis pipelines.</li>
+<li><a href="http://samtools.sourceforge.net/" title="samtools">samtools</a> : SAM Tools provide various utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li><a href="http://samtools.sourceforge.net/SAMv1.pdf">SAM</a></li>
+<li><a href="http://www.broadinstitute.org/igv/bam">BAM</a></li>
+</ul>
+<h1 id="exercise-2-visualizing-rna-seq-data">Exercise 2: Visualizing RNA-Seq data</h1>
+<p>In the following <strong>folder</strong> you wil find mapped RNA-Seq data from Illumina’s Human BodyMap 2.0 project. This dataset in particular contains reads from heart tissue.</p>
+<pre><code>cd ~/ngscourse.github.io/COURSE_EXAMPLE_DATA/visualization/example_2
+
+ll</code></pre>
+<h2 id="steps">Steps</h2>
+<h5 id="use-samtools-to-index-the-bam-file">1. Use <code>samtools</code> to index the bam file:</h5>
+<input class="spoilerbutton" type="button" value="Show answer" onclick="this.value=this.value=='Show answer'?'Hide answer':'Show answer';">
+<div class="spoiler">
+<div>
+<pre><code>samtools index heart.bodyMap.bam</code></pre>
+</div>
+</div>
+<h5 id="open-igv-and-load-the-bam-file-heart.bodymap.bam.">2. Open IGV and load the bam file heart.bodyMap.bam.</h5>
+<input class="spoilerbutton" type="button" value="Show answer" onclick="this.value=this.value=='Show answer'?'Hide answer':'Show answer';">
+<div class="spoiler">
+<div>
+<pre><code>igv</code></pre>
+<ul>
+<li>Go to <code>File</code> –&gt; <code>Load from file...</code><br />Select heart.bodyMap.bam</li>
+</ul>
+</div>
+</div>
+<h5 id="navigate-a-little-and-get-familiar-with-the-software.">3. Navigate a little and get familiar with the software.</h5>
+<p>Reads are only on <strong>chromosome 12 from 98Mbp to 100Mbp</strong>.</p>
+<h5 id="look-for-ikbip-gene-and-try-to-answer-the-following-questions">4. Look for <strong><em>IKBIP</em></strong> gene and try to answer the following questions:</h5>
+<ul>
+<li>How many different isoforms does the gene have? Which exon combinations form every isoform?<br /> <strong>TIP:</strong> Right-click on the Features panel –&gt; Select <code>Expanded</code><br /><input class="spoilerbutton" type="button" value="Show answer" onclick="this.value=this.value=='Show answer'?'Hide answer':'Show answer';">
+<div class="spoiler"><div>
+The gene <strong>IKBIP</strong> contains 4 exons that generate <strong>3 different isoforms</strong>:<br>- Isoform 1: exon 1 + exon 4<br>- Isoform 2: exon 1 + exon 3 + exon 4<br>- Isoform 3: exon 2 + exon 3 + exon 4</li>
+</ul>
+</div></div>
+
+<ul>
+<li>Create a <strong>Sashimi plot</strong> of the gene.<br /> <strong>TIP:</strong> center the gene IKBIP on the Track panel, right-click on the Panel and select <code>Sashimi Plot</code>.<br /> What kind of information can you obtain from this plot? <input class="spoilerbutton" type="button" value="Show answer" onclick="this.value=this.value=='Show answer'?'Hide answer':'Show answer';">
+<div class="spoiler"><div>
+The Sashimi Plot shows raw RNA-Seq densities along exons and junctions. Lines indicate junctions and the number corresponds to the number of reads that support this junction.</li>
+</ul>
+</div></div>
+
+<ul>
+<li>Load SNP data from <strong>dbSNP 1.3.7</strong> and go to position <strong>chr12:99019058</strong>.<br /> Is this person homozygous or heterozygous for this position?<br /> Would you trust this variant?<br /> Is this variant a known SNP?<br /><input class="spoilerbutton" type="button" value="Show answer" onclick="this.value=this.value=='Show answer'?'Hide answer':'Show answer';">
+<div class="spoiler"><div>
+<code>-</code> Load and look at the SNP track:<br /> <code>File</code> –&gt; <code>Load from server</code> –&gt; <code>Annotations</code> –&gt; <code>Variants and Repeats</code> –&gt; <code>dbSNP 1.3.7</code><br>- This individual is heterozygous for this position with alleles A/G.<br> - Yes. There are 17 high quality reads (47%) supporting this variant and the base quality is, in general, high.<br> - Yes, rs7310804.</li>
+</ul>
+</div></div>
+
+<hr />
+</body>
+</html>
