@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Visualization of mapped reads" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../course_commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Visualization of mapped reads</strong></h2>
+<h3 class="date"><em>(updated 04-06-2014)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://www.broadinstitute.org/igv/home" title="IGV">IGV</a> : The Integrative Genomics Viewer is a program for reading several types of indexed database information, including mapped reads and variant calls, and displaying them on a reference genome. It is invaluable as a tool for viewing and interpreting the “raw data” of many NGS data analysis pipelines.</li>
+<li><a href="http://samtools.sourceforge.net/" title="samtools">samtools</a> : SAM Tools provide various utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li><a href="http://samtools.sourceforge.net/SAMv1.pdf">SAM</a></li>
+<li><a href="http://www.broadinstitute.org/igv/bam">BAM</a></li>
+</ul>
+<h1 id="guided-exercise-igv-introduction">Guided exercise: IGV introduction</h1>
+<p>Go to your course directory:</p>
+<pre><code>cd &lt;my_course_directory&gt;</code></pre>
+<p>Copy the data for the tutorials:</p>
+<pre><code>cp -r /mounts/course_shares/Open_Share/visualization .
+cd example_0
+ll</code></pre>
+<p>This BAM file contains reads only for chromosome 11.</p>
+<h2 id="creating-indexed-files">Creating indexed files</h2>
+<p>Use <code>samtools</code> to index the bam files:</p>
+<pre><code>samtools index igv1.bam</code></pre>
+<h2 id="run-igv">Run IGV</h2>
+<pre><code>igv</code></pre>
+<h2 id="downolad-a-referece-genome">Downolad a referece genome</h2>
+<p>By default, IGV loads Human hg18 assembly. However, we must work with the <strong>same assembly used to mapped our reads</strong>, in this case Human hg19.<br />Genome assemblies for several species can be dowloaded using IGV:</p>
+<ul>
+<li>Go to <code>Genomes</code> –&gt; <code>Load Genome From Server...</code><br />Select <strong>Human hg19</strong></li>
+</ul>
+<h2 id="loading-and-browsing-files">Loading and browsing files</h2>
+<ul>
+<li>Go to <code>File</code> –&gt; <code>Load from file...</code><br />Select <code>igv1.bam</code></li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Go to the location box and insert ‘’chr11:996096-1036047’’ in the search box and hit <code>Go</code>.</li>
+<li>Move acroos the alignment</li>
+<li>Zoom in</li>
+<li>Grey boxes are reads:
+<ul>
+<li>point to the left –&gt; map reverse strand</li>
+<li>point to the right –&gt; map forward strand</li>
+</ul></li>
+<li>At the top –&gt; histogram of coverage</li>
+<li>Zoom further
+<ul>
+<li>Color representation of the sequence</li>
+<li>Zoom in –&gt; Bases are shown</li>
+<li>Amminoacids corresponding to each base</li>
+<li>See all possible translation reading frames</li>
+</ul></li>
+<li>Change read information panels</li>
+</ol>
+<h2 id="what-we-want-to-do-with-igv">What we want to do with IGV?</h2>
+<ol style="list-style-type: decimal">
+<li>Examine coverage
+<ul>
+<li>High/low coverage</li>
+<li>No coverage</li>
+</ul></li>
+<li>Visualize alternative splicing
+<ul>
+<li>RNA alignment against DNA, not cDNA</li>
+</ul></li>
+<li>Look for base changes – &gt; SNPs
+<ul>
+<li>Complete grey reads –&gt; no mismatches</li>
+<li>Coloured bases –&gt; Change
+<ul>
+<li>Coverage track os only coloured if &gt;20% of the reads support the variant</li>
+</ul></li>
+<li>Reads are shadowed acording to quality
+<ul>
+<li>Darker –&gt; good quality</li>
+<li>Ligther –&gt; bad quality</li>
+</ul></li>
+<li>Bases are also shadowed acording to quality
+<ul>
+<li>Darker –&gt; good quality</li>
+<li>Ligther –&gt; bad quality</li>
+</ul></li>
+<li>Inspecting a SNP (chr11:1,018,335-1,018,412)
+<ul>
+<li>Look at the coverage bar –&gt; percentage and counts</li>
+<li>Sort alignment by base</li>
+</ul></li>
+<li>Inspecting a homozigous variant (chr11:1,019,336-1,019,413) - All reads support the variant but 1 - The reference read quality is 0</li>
+</ul></li>
+<li>Load SNP data
+<ul>
+<li>File &gt; Load from server &gt; Annotations &gt; Variantion and repeats &gt; dbSNP 1.3.7</li>
+</ul></li>
+</ol>
+</body>
+</html>
