@@ -216,9 +216,9 @@ cd tophat-2.0.10.Linux_x86_64</code></pre>
 cp bowtie* ~/bin</code></pre>
 <h5 id="aligning-in-se-and-pe-modes-1">Aligning in SE and PE modes</h5>
 <p>To align in SE mode:</p>
-<pre><code>tophat2 -o alignments/tophat/rna_chr21_100_hq_se aligners/bowtie2/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq</code></pre>
+<pre><code>tophat2 -o alignments/tophat/rna_chr21_100_hq_se aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq</code></pre>
 <p>And for PE:</p>
-<pre><code>tophat2 -o alignments/tophat/rna_chr21_100_hq_pe/ aligners/bowtie2/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq data/rna_chr21_100_hq_read2.fastq</code></pre>
+<pre><code>tophat2 -o alignments/tophat/rna_chr21_100_hq_pe/ aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq data/rna_chr21_100_hq_read2.fastq</code></pre>
 <p>Now align the rna dataset of 150bp with low quality and compare stats.</p>
 <h3 id="star-and-mapsplice2">STAR and MapSplice2</h3>
 <p><a href="https://code.google.com/p/rna-star/" title="STAR">STAR</a> and <a href="http://www.netlab.uky.edu/p/bioinfo/MapSplice2" title="MapSplice2">MapSplice2</a> are two others interesting RNA-seq aligners. <a href="https://code.google.com/p/rna-star/" title="STAR">STAR</a> offer a great performance while still have good sensitivity. <a href="http://www.netlab.uky.edu/p/bioinfo/MapSplice2" title="MapSplice2">MapSplice2</a> shows usually a better sensitivity but is several times slower.</p>
