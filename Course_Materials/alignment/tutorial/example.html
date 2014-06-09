@@ -11,14 +11,14 @@
 </head>
 <body>
 <div id="header">
-<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h1 class="title"><a href="http://ngs-course.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>DNA and RNA-seq NGS alignment</strong></h2>
-<h3 class="date"><em>(updated 28-02-2014)</em></h3>
+<h3 class="date"><em>(updated 28-05-2014)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
 
 <h1 id="preliminaries">Preliminaries</h1>
-<p>In this hands-on will learn how to align DNA and RNA-seq data with most widely used software today. Building a whole genome index requires a lot of RAM memory and almost one hour in a typical workstation, for this reason in this tutorial we will work with chromosome 21 to speed up the exercises. The same steps will be done for a whole genome alignment. Two different datasets, high and low quality have been simulated created, high contains 0.1% of mutations and low contains 1%.</p>
+<p>In this hands-on will learn how to align DNA and RNA-seq data with most widely used software today. Building a whole genome index requires a lot of RAM memory and almost one hour in a typical workstation, for this reason <strong>in this tutorial we will work with chromosome 21</strong> to speed up the exercises. The same steps would be done for a whole genome alignment. Two different datasets, high and low quality have been simulated created, high contains 0.1% of mutations and low contains 1%.</p>
 <h3 id="ngs-aligners-used">NGS aligners used:</h3>
 <ul>
 <li><a href="http://bio-bwa.sourceforge.net/" title="BWA">BWA</a> : BWA is a software package for mapping <strong>DNA</strong> low-divergent sequences against a large reference genome, such as the human genome.</li>
@@ -38,8 +38,9 @@
 <li><a href="http://www.broadinstitute.org/igv/bam">BAM</a>: Binary and compressed version of SAM</li>
 </ul>
 <h3 id="data-used-in-this-practical">Data used in this practical</h3>
-<p>Create a <code>data</code> folder in your <em>working directory</em> to store both the <em>reference genome</em> to be used (human chromosome 21) and <em>simulated datasets</em>:</p>
-<pre><code>mkdir data</code></pre>
+<p>Create a <code>data</code> folder in your <strong>working directory</strong> and download the <strong>reference genome sequence</strong> to be used (human chromosome 21) and <em>simulated datasets</em> from Dropbox <a href="https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a">data</a>:</p>
+<pre><code>cd **working_directory**
+mkdir data</code></pre>
 <h5 id="download-reference-genome-from-ensembl">Download reference genome from <a href="http://www.ensembl.org/index.html" title="Ensembl">Ensembl</a></h5>
 <p>Working with NGS data requires a high-end workstations and time for building the reference genome indexes and alignment. During this tutorial we will work only with chromosome 21 to speed up the runtimes. Go to the <em>Download</em> link at the top of <a href="http://www.ensembl.org/index.html" title="Ensembl">Ensembl</a> website and then to <em>Download data via FTP</em>, you go in only one step by going to:</p>
 <p><a href="http://www.ensembl.org/info/data/ftp/index.html">http://www.ensembl.org/info/data/ftp/index.html</a></p>

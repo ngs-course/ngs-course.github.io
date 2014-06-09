@@ -1,3 +1,5 @@
+    
+    cd **working_directory**
     mkdir data
     mv Homo_sapiens.GRCh37.75.dna.chromosome.21.fa.gz path_to_local_data
     cp path_to_shared_data/* your_local_data/

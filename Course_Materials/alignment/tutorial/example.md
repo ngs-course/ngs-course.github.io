@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngs-course.github.io/)
 % __DNA and RNA-seq NGS alignment__
-% _(updated 28-02-2014)_
+% _(updated 28-05-2014)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -16,7 +16,7 @@
 
 # Preliminaries
 
-In this hands-on will learn how to align DNA and RNA-seq data with most widely used software today. Building a whole genome index requires a lot of RAM memory and almost one hour in a typical workstation, for this reason in this tutorial we will work with chromosome 21 to speed up the exercises. The same steps will be done for a whole genome alignment. Two different datasets, high and low quality have been simulated created, high contains 0.1% of mutations and low contains 1%.
+In this hands-on will learn how to align DNA and RNA-seq data with most widely used software today. Building a whole genome index requires a lot of RAM memory and almost one hour in a typical workstation, for this reason **in this tutorial we will work with chromosome 21** to speed up the exercises. The same steps would be done for a whole genome alignment. Two different datasets, high and low quality have been simulated created, high contains 0.1% of mutations and low contains 1%.
 
 ### NGS aligners used:
 
@@ -38,8 +38,9 @@ In this hands-on will learn how to align DNA and RNA-seq data with most widely u
 
 ### Data used in this practical
 
-Create a ```data``` folder in your *working directory* to store both the *reference genome* to be used (human chromosome 21) and *simulated datasets*:
-
+Create a ```data``` folder in your **working directory** and download the **reference genome sequence** to be used (human chromosome 21) and *simulated datasets* from Dropbox [data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a):
+    
+    cd **working_directory**
     mkdir data
 
 ##### Download reference genome from [Ensembl]
@@ -85,7 +86,7 @@ Download [SAMtools] from *SF Download Page* link and move to the working directo
 
 Check that is correct by executing it with no arguments, the different commands available should be printed. You can also copy it to your ```bin``` folder in your home directory, if bin folder exist, to make it available to the PATH:
 
-    ./samtools
+    samtools
     cp samtools ~/bin
 
 
@@ -154,7 +155,7 @@ Click in the last version of BWA and wait for a few seconds, as the time of this
 
 You can check that everything is allright by executing:
 
-    ./bwa
+    bwa
 
 Some information about the software and commands should be listed.
 
@@ -169,7 +170,7 @@ Create a folder inside BWA program called ```index``` to store the BWA index and
     
 Now you can create the index by executing:
 
-    ./bwa index index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa
+    bwa index index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa
 
 Some files will be created in the ```index``` folder, those files constitute the index that BWA uses.
 
@@ -180,15 +181,15 @@ Some files will be created in the ```index``` folder, those files constitute the
 
 Now we are going to align SE and PE the **high** quality dataset. Single-end alignment with BWA requires 2 executions. The first uses ```aln``` command and takes the ```fastq``` file and creates a ```sai``` file; the second execution uses ```samse``` and the ```sai``` file and create the ```sam``` file. Results are stored in ```alignments``` folder:
 
-    ./bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_high_se.sai
-    ./bwa samse index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ../../alignments/bwa/dna_chr21_100_high_se.sai ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_high_se.sam
+    bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_high_se.sai
+    bwa samse index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ../../alignments/bwa/dna_chr21_100_high_se.sai ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_high_se.sam
 
 
 For paired-end alignments with BWA 3 executions are needed: 2 for ```aln``` command and 1 for ```sampe``` command:
 
-    ./bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_high_pe1.sai
-    ./bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read2.fastq -f ../../alignments/bwa/dna_chr21_100_high_pe2.sai
-    ./bwa sampe index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ../../alignments/bwa/dna_chr21_100_high_pe1.sai ../../alignments/bwa/dna_chr21_100_high_pe2.sai ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read2.fastq -f ../../alignments/bwa/dna_chr21_100_high_pe.sam
+    bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_high_pe1.sai
+    bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read2.fastq -f ../../alignments/bwa/dna_chr21_100_high_pe2.sai
+    bwa sampe index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ../../alignments/bwa/dna_chr21_100_high_pe1.sai ../../alignments/bwa/dna_chr21_100_high_pe2.sai ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read2.fastq -f ../../alignments/bwa/dna_chr21_100_high_pe.sam
 
 Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
 
@@ -198,12 +199,12 @@ Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
 
 Now you can do the same for the **low** quality datasets:
 
-    ./bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_low_se.sai
-    ./bwa samse index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ../../alignments/bwa/dna_chr21_100_low_se.sai ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_low_se.sam
+    bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_low_se.sai
+    bwa samse index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ../../alignments/bwa/dna_chr21_100_low_se.sai ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_low_se.sam
 
-    ./bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_low_pe1.sai
-    ./bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read2.fastq -f ../../alignments/bwa/dna_chr21_100_low_pe2.sai
-    ./bwa sampe index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ../../alignments/bwa/dna_chr21_100_low_pe1.sai ../../alignments/bwa/dna_chr21_100_low_pe2.sai ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read1.fastq ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read2.fastq -f ../../alignments/bwa/dna_chr21_100_low_pe.sam
+    bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read1.fastq -f ../../alignments/bwa/dna_chr21_100_low_pe1.sai
+    bwa aln index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read2.fastq -f ../../alignments/bwa/dna_chr21_100_low_pe2.sai
+    bwa sampe index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ../../alignments/bwa/dna_chr21_100_low_pe1.sai ../../alignments/bwa/dna_chr21_100_low_pe2.sai ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read1.fastq ../../data/dna_chr21_100_low/dna_chr21_100_low.bwa.read2.fastq -f ../../alignments/bwa/dna_chr21_100_low_pe.sam
 
     cd alignments/bwa
     samtools view -S -b dna_chr21_100_low_se.sam -o dna_chr21_100_low_se.bam
@@ -227,7 +228,7 @@ Click in the Linux version of Bowtie2 and wait for a few seconds, as the time of
 
 You can check that everything is allright by executing:
 
-    ./bowtie2
+    bowtie2
 
 Big information about the software and commands should be listed.
 
@@ -242,7 +243,7 @@ Create a folder inside Bowtie2 program called ```index``` to store the Bowtie2 i
     
 Now you can create the index by executing:
 
-    ./bowtie2-build index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa
+    bowtie2-build index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa
 
 Some files will be created in the ```index``` folder, those files constitute the index that Bowtie2 uses.
 
@@ -252,7 +253,7 @@ Some files will be created in the ```index``` folder, those files constitute the
 
 Mapping SE with Bowtie2 requires only 1 execution, for aligning the **high** in SE mode execute:
 
-    ./bowtie2 -q -p 4 -x index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -U ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -S ../../alignments/bowtie/dna_chr21_100_high_se.sam
+    bowtie2 -q -p 4 -x index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -U ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -S ../../alignments/bowtie/dna_chr21_100_high_se.sam
 
 And create the BAM file using SAMtools;
 
@@ -261,7 +262,7 @@ And create the BAM file using SAMtools;
 
 Mapping in PE also requires only one execution:
 
-    ./bowtie2 -q -p 4 -x index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -1 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -2 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read2.fastq -S ../../alignments/bowtie/dna_chr21_100_high_pe.sam
+    bowtie2 -q -p 4 -x index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -1 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read1.fastq -2 ../../data/dna_chr21_100_high/dna_chr21_100_high.bwa.read2.fastq -S ../../alignments/bowtie/dna_chr21_100_high_pe.sam
 
 And create the BAM file using SAMtools;
 
@@ -305,7 +306,7 @@ As the time of this tutorial last version is **tophat-2.0.10.Linux_x86_64.tar.gz
 
 You can check that everything is allright by executing:
 
-    ./tophat2
+    tophat2
 
 Big information about the software and commands should be listed.
 
@@ -319,11 +320,11 @@ Big information about the software and commands should be listed.
 
 To align in SE mode:
 
-    ./tophat2 -o ~/courses/cambridge_mda14/alignments/tophat/rna_chr21_100_high_se ~/courses/cambridge_mda14/aligners/bowtie2-2.2.1/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ~/courses/cambridge_mda14/data/rna_chr21_100_high/rna_chr21_100_high.bwa.read1.fastq
+    tophat2 -o ~/courses/cambridge_mda14/alignments/tophat/rna_chr21_100_high_se ~/courses/cambridge_mda14/aligners/bowtie2-2.2.1/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ~/courses/cambridge_mda14/data/rna_chr21_100_high/rna_chr21_100_high.bwa.read1.fastq
 
 And for PE:
 
-    ./tophat2 -o ~/courses/cambridge_mda14/alignments/tophat/rna_chr21_100_high_pe/ ~/courses/cambridge_mda14/aligners/bowtie2-2.2.1/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ~/courses/cambridge_mda14/data/rna_chr21_100_high/rna_chr21_100_high.bwa.read1.fastq ~/courses/cambridge_mda14/data/rna_chr21_100_high/rna_chr21_100_high.bwa.read2.fastq
+    tophat2 -o ~/courses/cambridge_mda14/alignments/tophat/rna_chr21_100_high_pe/ ~/courses/cambridge_mda14/aligners/bowtie2-2.2.1/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa ~/courses/cambridge_mda14/data/rna_chr21_100_high/rna_chr21_100_high.bwa.read1.fastq ~/courses/cambridge_mda14/data/rna_chr21_100_high/rna_chr21_100_high.bwa.read2.fastq
 
 Align the rna dataset of 150bp with low quality.
 
