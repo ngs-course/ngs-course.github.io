@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Quality control &amp; Adapter trimming" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngs-course.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Quality control &amp; Adapter trimming</strong></h2>
+<h3 class="date"><em>(updated 08-06-2014)</em></h3>
+</div>
+<!-- Common URLs: Tools -->
+
+<!-- Common URLs: File Formats -->
+
+<!-- External URLs -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc" title="FastQC home page">FastQC</a> : A quality control tool for high-throughput sequence data.</li>
+<li><a href="http://code.google.com/p/cutadapt" title="cutadapt home page">cutadapt</a> : A tool to remove adapter sequences from high-throughput sequencing data.</li>
+</ul>
+<h2 id="file-formats-explored-in-this-practical">File formats explored in this practical:</h2>
+<p><strong>FastQ</strong>. See:</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/FASTQ_format" title="FastQC in Wikipedia">Wikipedia</a>.</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2847217" title="FastQC original NAR publication">NAR 2010</a>.</li>
+</ul>
+<h2 id="data-used-in-this-practical">Data used in this practical:</h2>
+<ul>
+<li><strong>f010_raw_mirna.fastq</strong>: RNA-Seq of a <a href="http://en.wikipedia.org/wiki/MicroRNA">microRNA</a> sample.</li>
+</ul>
+<h1 id="overview">Overview</h1>
+<ol style="list-style-type: decimal">
+<li>Use <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc" title="FastQC home page">FastQC</a> to explore the raw data.</li>
+<li>Use <a href="http://code.google.com/p/cutadapt" title="cutadapt home page">cutadapt</a> to remove adapters.</li>
+<li>Use <a href="http://code.google.com/p/cutadapt" title="cutadapt home page">cutadapt</a> to filter reads based on quality.</li>
+<li>Use <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc" title="FastQC home page">FastQC</a> to explore the filtered data.</li>
+</ol>
+<h1 id="exercise">Exercise</h1>
+<p>Create a new directory for the exercise and copy the raw data to it:</p>
+<pre><code># mkdir quality_control_data_directory
+# cd quality_control_data_directory
+# cp ...
+# wget</code></pre>
+<!-- new and clean data directory in the sandbox
+    rm -r                                                   ../../../../sandbox/quality_control/
+    cp -r ../../../../ngs_course_materials/quality_control/ ../../../../sandbox/quality_control/
+    cd    ../../../../sandbox/quality_control/
+-->
+
+
+<h2 id="explore-the-raw-data-using-some-linux-shell-commands">Explore the raw data using some Linux shell commands</h2>
+<p>The file <strong>f010_raw_mirna.fastq</strong> contains reads form a microRNA sequencing experiment. Use the command <code>head</code> to have a view of the first lines of the file:</p>
+<pre><code>head f010_raw_mirna.fastq</code></pre>
+<p>Use the command <code>wc</code> to count how many reads are there in the file (remember you have to divide by 4)</p>
+<pre><code>wc -l f010_raw_mirna.fastq</code></pre>
+<h2 id="explore-the-raw-data-quality-using-fastqc">Explore the raw data quality using FastQC</h2>
+<p>First create a directory to store the results of the fastqc analysis:</p>
+<pre><code>mkdir f020_res_fastqc</code></pre>
+<p>Then execute <code>fastqc</code> storing the results in the created directory (option <code>-o</code>):</p>
+<pre><code>fastqc -o f020_res_fastqc f010_raw_mirna.fastq</code></pre>
+<p>Find the results in the <strong>fastqc_report.html</strong> file and discus them.</p>
+<p>There are many <em>Overrepresented sequences</em>. Explore whether some of them correspond to miRNAs using <a href="http://www.mirbase.org/" title="miRBase: a searchable database of published miRNA">miRBase</a> search utilities (Search -&gt; By sequence).</p>
+<h2 id="handling-adapters">Handling adapters</h2>
+<p>There are 2 known adapters used in this experiment:</p>
+<pre><code>CTGGGAAATCACCATAAACGTGAAATGTCTTTGGATTTGGGAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA
+CTTTTTTTCGTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGC</code></pre>
+<p>Use the command grep to see whether they are still present in your data:</p>
+<pre><code>grep &quot;CTGGGAAATCACCATAAACGTGAAATGTCTTTGGATTTGGGAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA&quot; f010_raw_mirna.fastq 
+grep &quot;CTTTTTTTCGTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGC&quot; f010_raw_mirna.fastq </code></pre>
+<p>Do the sequences appear systematically at the beginning or at the end of the reads?</p>
+<p>But the adapters could also appear in the <em>reverse</em>, <em>complementary</em> or <em>reverse complementary</em> mode.</p>
+<p>Compute the <em>reverse</em>, <em>complementary</em> and the <em>reverse complementary</em> sequences of the two adapters, and find out which of them appear in your data.</p>
+<p>To compute those sequences you can use some online resources as the one in:<br /><a href="http://www.bioinformatics.org/sms/rev_comp.html">http://www.bioinformatics.org/sms/rev_comp.html</a></p>
+<!--
+Or to use R-Bioconductor to compute their reverse, complementary and reverse complementary.
+
+library (Biostrings)
+myseq <- DNAString ("CTTTTTTTCGTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGC")
+reverse (myseq)
+complement (myseq)
+reverseComplement (myseq)
+
+-->
+
+<p>Use grep form Linux shell to find out which of the versions of the adapter is in your data.</p>
+<h3 id="adapter-1">Adapter 1</h3>
+<pre><code>grep CTGGGAAATCACCATAAACGTGAAATGTCTTTGGATTTGGGAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA f010_raw_mirna.fastq | wc -l  ## present in the sample (at the beginning of the reads)
+
+grep GACCCTTTAGTGGTATTTGCACTTTACAGAAACCTAAACCCTTAGAATATTCAAGACATACTCTGGTGAGATTTTT f010_raw_mirna.fastq | wc -l 
+
+grep TTTTTAGAGTGGTCTCATACAGAACTTATAAGATTCCCAAATCCAAAGACATTTCACGTTTATGGTGATTTCCCAG f010_raw_mirna.fastq | wc -l  ## present in the sample (at the end of the read) ... but not so numerous
+
+grep AAAAATCTCACCAGAGTATGTCTTGAATATTCTAAGGGTTTAGGTTTCTGTAAAGTGCAAATACCACTAAAGGGTC f010_raw_mirna.fastq | wc -l </code></pre>
+<p>But sometimes the adapter does not appear complete. It may be there just the first part:</p>
+<pre><code>grep CTGGGAAATCACCATAAACGTGAAATGTCTTTGGA f010_raw_mirna.fastq | wc -l 
+
+grep GACCCTTTAGTGGTATTTGCACTTTACAGAAACCT f010_raw_mirna.fastq | wc -l 
+
+grep TTTTTAGAGTGGTCTCATACAGAACTTATAAGATT f010_raw_mirna.fastq | wc -l 
+
+grep AAAAATCTCACCAGAGTATGTCTTGAATATTCTAA f010_raw_mirna.fastq | wc -l </code></pre>
+<p>or the end part of it:</p>
+<pre><code>grep GAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA f010_raw_mirna.fastq | wc -l 
+
+grep CTTAGAATATTCAAGACATACTCTGGTGAGATTTTT f010_raw_mirna.fastq | wc -l 
+
+grep ATCCAAAGACATTTCACGTTTATGGTGATTTCCCAG f010_raw_mirna.fastq | wc -l 
+
+grep TAGGTTTCTGTAAAGTGCAAATACCACTAAAGGGTC f010_raw_mirna.fastq | wc -l </code></pre>
+<h3 id="adapter-2">Adapter 2</h3>
+<pre><code>grep CTTTTTTTCGTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGC f010_raw_mirna.fastq | wc -l   ## present in the sample (at the end of the read) ... but not so numerous
+
+grep GAAAAAAAGCAGGAAAGGTGTTCTATATATTTCGGTTCTTTAGCTTTATGAAAGTTCAATGCCATTCG f010_raw_mirna.fastq | wc -l 
+
+grep GCTTACCGTAACTTGAAAGTATTTCGATTTCTTGGCTTTATATATCTTGTGGAAAGGACGAAAAAAAG f010_raw_mirna.fastq | wc -l   ## present in the sample (at the beginning of the reads)
+
+grep CGAATGGCATTGAACTTTCATAAAGCTAAAGAACCGAAATATATAGAACACCTTTCCTGCTTTTTTTC f010_raw_mirna.fastq | wc -l </code></pre>
+<p>As before, sometimes the adapter does not appear complete. It may be there just the first part:</p>
+<pre><code>grep CTTTTTTTCGTCCTTTCCACAAGATATATA f010_raw_mirna.fastq | wc -l 
+
+grep GAAAAAAAGCAGGAAAGGTGTTCTATATAT f010_raw_mirna.fastq | wc -l 
+
+grep GCTTACCGTAACTTGAAAGTATTTCGATTT f010_raw_mirna.fastq | wc -l 
+
+grep CGAATGGCATTGAACTTTCATAAAGCTAAA f010_raw_mirna.fastq | wc -l </code></pre>
+<p>or the end part of it:</p>
+<pre><code>grep AAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGC f010_raw_mirna.fastq | wc -l 
+
+grep TTCGGTTCTTTAGCTTTATGAAAGTTCAATGCCATTCG f010_raw_mirna.fastq | wc -l 
+
+grep CTTGGCTTTATATATCTTGTGGAAAGGACGAAAAAAAG f010_raw_mirna.fastq | wc -l 
+
+grep GAACCGAAATATATAGAACACCTTTCCTGCTTTTTTTC f010_raw_mirna.fastq | wc -l </code></pre>
+<h2 id="use-cutadapt-to-make-an-adapter-trimming-of-the-reads.">Use cutadapt to make an adapter trimming of the reads.</h2>
+<p>Check the options:</p>
+<ul>
+<li><strong>-a</strong> for adapter to the 3’ end.</li>
+<li><strong>-g</strong> for adapter to the 5’ end.</li>
+</ul>
+<p>you can find the help of the program typing <code>cutadapt -h</code> in the shell.</p>
+<p>To get read of the the adapters found in our data we run <a href="http://code.google.com/p/cutadapt" title="cutadapt home page">cutadapt</a> several times:</p>
+<pre><code>cutadapt -g CTGGGAAATCACCATAAACGTGAAATGTCTTTGGATTTGGGAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA -o f030_mirna_trim1.fastq f010_raw_mirna.fastq
+
+cutadapt -a TTTTTAGAGTGGTCTCATACAGAACTTATAAGATTCCCAAATCCAAAGACATTTCACGTTTATGGTGATTTCCCAG -o f030_mirna_trim2.fastq f030_mirna_trim1.fastq
+
+cutadapt -g GCTTACCGTAACTTGAAAGTATTTCGATTTCTTGGCTTTATATATCTTGTGGAAAGGACGAAAAAAAG         -o f030_mirna_trim3.fastq f030_mirna_trim2.fastq
+
+cutadapt -a CTTTTTTTCGTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGC         -o f030_mirna_trim4.fastq f030_mirna_trim3.fastq</code></pre>
+<p>Now you can <code>grep</code> again searching for the adapters</p>
+<h3 id="adapter-1-1">Adapter 1</h3>
+<pre><code>grep CTGGGAAATCACCATAAACGTGAAATGTCTTTGGATTTGGGAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA f030_mirna_trim4.fastq | wc -l
+
+#grep GACCCTTTAGTGGTATTTGCACTTTACAGAAACCTAAACCCTTAGAATATTCAAGACATACTCTGGTGAGATTTTT f030_mirna_trim4.fastq | wc -l 
+
+grep TTTTTAGAGTGGTCTCATACAGAACTTATAAGATTCCCAAATCCAAAGACATTTCACGTTTATGGTGATTTCCCAG f030_mirna_trim4.fastq | wc -l
+
+#grep AAAAATCTCACCAGAGTATGTCTTGAATATTCTAAGGGTTTAGGTTTCTGTAAAGTGCAAATACCACTAAAGGGTC f030_mirna_trim4.fastq | wc -l </code></pre>
+<h3 id="adapter-2-1">Adapter 2</h3>
+<pre><code>grep CTTTTTTTCGTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGC f030_mirna_trim4.fastq | wc -l
+
+#grep GAAAAAAAGCAGGAAAGGTGTTCTATATATTTCGGTTCTTTAGCTTTATGAAAGTTCAATGCCATTCG f030_mirna_trim4.fastq | wc -l 
+
+grep GCTTACCGTAACTTGAAAGTATTTCGATTTCTTGGCTTTATATATCTTGTGGAAAGGACGAAAAAAAG f030_mirna_trim4.fastq | wc -l
+
+#grep CGAATGGCATTGAACTTTCATAAAGCTAAAGAACCGAAATATATAGAACACCTTTCCTGCTTTTTTTC f030_mirna_trim4.fastq | wc -l </code></pre>
+<h2 id="explore-the-quality-of-the-trimmed-file-using-fastqc">Explore the quality of the trimmed file using FastQC</h2>
+<p>Check the data quality again using fastqc:</p>
+<pre><code>mkdir f040_res_fastqc_trimmed
+fastqc -o f040_res_fastqc_trimmed f030_mirna_trim4.fastq</code></pre>
+<p>Some of the reads seems to be too short and some others may not have enough quality.</p>
+<h2 id="use-cutadapt-to-filter-reads-by-quality-and-length.">Use cutadapt to filter reads by quality and length.</h2>
+<p>Check the options:</p>
+<ul>
+<li><strong>-q</strong> quality cutoff.</li>
+<li><strong>-m</strong> minimum length.</li>
+<li><strong>-M</strong> maximum length.</li>
+</ul>
+<p>you can find the help of the program typing <code>cutadapt -h</code> in the shell.</p>
+<p>Run cutadapt for length and quality purge of the reads.</p>
+<pre><code>cutadapt -m 17 -M 30 -q 10 -o f040_mirna_cut.fastq f030_mirna_trim4.fastq</code></pre>
+<p>Check the data quality again using fastqc:</p>
+<pre><code>mkdir f050_res_fastqc_trimmed_purged
+
+fastqc -o f050_res_fastqc_trimmed_purged f040_mirna_cut.fastq</code></pre>
+<p>Explore again the <em>Overrepresented sequences</em> in <a href="http://www.mirbase.org/" title="miRBase: a searchable database of published miRNA">mirbase</a> (Search -&gt; By sequence).</p>
+<p>Count how many reads are left for the analysis (divide by 4)</p>
+<pre><code>wc -l f010_raw_mirna.fastq
+
+wc -l f040_mirna_cut.fastq</code></pre>
+</body>
+</html>
