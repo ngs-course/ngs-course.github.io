@@ -45,11 +45,8 @@
 <li>Use <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc" title="FastQC home page">FastQC</a> to explore the filtered data.</li>
 </ol>
 <h1 id="exercise">Exercise</h1>
-<p>Create a new directory for the exercise and copy the raw data to it:</p>
-<pre><code># mkdir quality_control_data_directory
-# cd quality_control_data_directory
-# cp ...
-# wget</code></pre>
+<p>Create an empty directory to work in the exercise and copy or download the raw data to it:</p>
+<pre><code>cd quality_control_data</code></pre>
 <!-- new and clean data directory in the sandbox
     rm -r                                                   ../../../../sandbox/quality_control/
     cp -r ../../../../ngs_course_materials/quality_control/ ../../../../sandbox/quality_control/
@@ -68,7 +65,7 @@
 <p>Then execute <code>fastqc</code> storing the results in the created directory (option <code>-o</code>):</p>
 <pre><code>fastqc -o f020_res_fastqc f010_raw_mirna.fastq</code></pre>
 <p>Find the results in the <strong>fastqc_report.html</strong> file and discus them.</p>
-<p>There are many <em>Overrepresented sequences</em>. Explore whether some of them correspond to miRNAs using <a href="http://www.mirbase.org/" title="miRBase: a searchable database of published miRNA">miRBase</a> search utilities (Search -&gt; By sequence).</p>
+<p>There are many <em>Overrepresented sequences</em>. Explore whether some of them correspond to miRNAs using the <a href="http://www.mirbase.org/search.shtml">miRBase search</a> <strong>By sequence</strong> utility.</p>
 <h2 id="handling-adapters">Handling adapters</h2>
 <p>There are 2 known adapters used in this experiment:</p>
 <pre><code>CTGGGAAATCACCATAAACGTGAAATGTCTTTGGATTTGGGAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA
@@ -109,13 +106,14 @@ grep TTTTTAGAGTGGTCTCATACAGAACTTATAAGATT f010_raw_mirna.fastq | wc -l
 
 grep AAAAATCTCACCAGAGTATGTCTTGAATATTCTAA f010_raw_mirna.fastq | wc -l </code></pre>
 <p>or the end part of it:</p>
-<pre><code>grep GAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA f010_raw_mirna.fastq | wc -l 
+<pre><code>grep AATCTTATAAGTTCTGTATGAGACCACTCTAAAAA f010_raw_mirna.fastq | wc -l 
 
-grep CTTAGAATATTCAAGACATACTCTGGTGAGATTTTT f010_raw_mirna.fastq | wc -l 
+grep TTAGAATATTCAAGACATACTCTGGTGAGATTTTT f010_raw_mirna.fastq | wc -l 
 
-grep ATCCAAAGACATTTCACGTTTATGGTGATTTCCCAG f010_raw_mirna.fastq | wc -l 
+grep TCCAAAGACATTTCACGTTTATGGTGATTTCCCAG f010_raw_mirna.fastq | wc -l 
 
-grep TAGGTTTCTGTAAAGTGCAAATACCACTAAAGGGTC f010_raw_mirna.fastq | wc -l </code></pre>
+grep AGGTTTCTGTAAAGTGCAAATACCACTAAAGGGTC f010_raw_mirna.fastq | wc -l </code></pre>
+<p>NOTE: in the code above I did cut just the 35 first or last nucleotides of the primer in its different arrangements, but this is an arbitrary length. We are just trying to discover which of the arrangements are present in our sample and whether there are allocated in the 5’ or in the 6’ end.</p>
 <h3 id="adapter-2">Adapter 2</h3>
 <pre><code>grep CTTTTTTTCGTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGC f010_raw_mirna.fastq | wc -l   ## present in the sample (at the end of the read) ... but not so numerous
 

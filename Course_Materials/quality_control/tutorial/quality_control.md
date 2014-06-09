@@ -54,12 +54,9 @@ Overview
 Exercise
 ================================================================================
 
-Create a new directory for the exercise and copy the raw data to it: 
+Create an empty directory to work in the exercise and copy or download the raw data to it: 
 
-    # mkdir quality_control_data_directory
-    # cd quality_control_data_directory
-    # cp ...
-    # wget
+    cd quality_control_data
 
 <!-- new and clean data directory in the sandbox
     rm -r                                                   ../../../../sandbox/quality_control/
@@ -74,7 +71,7 @@ Explore the raw data using some Linux shell commands
 The file __f010_raw_mirna.fastq__ contains reads form a microRNA sequencing experiment.
 Use the command `head` to have a view of the first lines of the file:
 
-	head f010_raw_mirna.fastq
+    head f010_raw_mirna.fastq
 
 Use the command `wc` to count how many reads are there in the file (remember you have to divide by 4)
 
@@ -86,17 +83,16 @@ Explore the raw data quality using FastQC
 
 First create a directory to store the results of the fastqc analysis:
 
-	mkdir f020_res_fastqc
+    mkdir f020_res_fastqc
 
 Then execute `fastqc` storing the results in the created directory (option `-o`):
 
-	fastqc -o f020_res_fastqc f010_raw_mirna.fastq
+    fastqc -o f020_res_fastqc f010_raw_mirna.fastq
 
 Find the results in the __fastqc_report.html__ file and discus them.
 
 There are many _Overrepresented sequences_. 
-Explore whether some of them correspond to miRNAs using [miRBase] search utilities (Search -> By sequence).
-
+Explore whether some of them correspond to miRNAs using the [miRBase search](http://www.mirbase.org/search.shtml) __By sequence__ utility.
 
 
 Handling adapters
@@ -162,13 +158,18 @@ It may be there just the first part:
 
 or the end part of it:
 
-    grep GAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA f010_raw_mirna.fastq | wc -l 
+    grep AATCTTATAAGTTCTGTATGAGACCACTCTAAAAA f010_raw_mirna.fastq | wc -l 
 	
-    grep CTTAGAATATTCAAGACATACTCTGGTGAGATTTTT f010_raw_mirna.fastq | wc -l 
+    grep TTAGAATATTCAAGACATACTCTGGTGAGATTTTT f010_raw_mirna.fastq | wc -l 
 	
-    grep ATCCAAAGACATTTCACGTTTATGGTGATTTCCCAG f010_raw_mirna.fastq | wc -l 
+    grep TCCAAAGACATTTCACGTTTATGGTGATTTCCCAG f010_raw_mirna.fastq | wc -l 
 	
-    grep TAGGTTTCTGTAAAGTGCAAATACCACTAAAGGGTC f010_raw_mirna.fastq | wc -l 
+    grep AGGTTTCTGTAAAGTGCAAATACCACTAAAGGGTC f010_raw_mirna.fastq | wc -l 
+
+NOTE: in the code above I did cut just the 35 first or last nucleotides of the primer in its different arrangements, 
+but this is an arbitrary length. 
+We are just trying to discover which of the arrangements are present in our sample
+and whether there are allocated in the 5' or in the 6' end.
 
 
 ### Adapter 2
