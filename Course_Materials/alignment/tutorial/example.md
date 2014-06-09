@@ -355,11 +355,11 @@ Big information about the software and commands should be listed.
 
 To align in SE mode:
 
-    tophat2 -o alignments/tophat/rna_chr21_100_hq_se aligners/bowtie2/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq
+    tophat2 -o alignments/tophat/rna_chr21_100_hq_se aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq
 
 And for PE:
 
-    tophat2 -o alignments/tophat/rna_chr21_100_hq_pe/ aligners/bowtie2/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq data/rna_chr21_100_hq_read2.fastq
+    tophat2 -o alignments/tophat/rna_chr21_100_hq_pe/ aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq data/rna_chr21_100_hq_read2.fastq
 
 Now align the rna dataset of 150bp with low quality and compare stats.
 
