@@ -31,7 +31,7 @@ Guided exercise: IGV introduction
 Copy the data for the tutorials:
 
     mkdir -p /home/participant/cambridge_mda14/
-    cp -r /home/participant/Course_Materials/visualization /home/participant/cambridge_mda14/
+    cp -r /home/participant/Desktop/Open_Share/visualization /home/participant/cambridge_mda14/
     cd /home/participant/cambridge_mda14/visualization
 
 Enter in the example folder:

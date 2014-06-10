@@ -22,20 +22,14 @@ File formats explored:
 
 - VCF Variant Call Format
 
-
-Some previous configurations
+Variant annotation with HPG-Variant
 ================================================================================
 
-Download [HPG-Variant] software from [http://wiki.opencb.org/projects/hpg/doku.php?id=variant:downloads]
+Copy the necessary data in your working directory:
 
-Extract the file in your desktop.
-
-
-Just to run HPG-Variant easier:
-
-    echo "export PATH=$PATH:~/Desktop/hpg-variant-1.0" >> ~/.bashrc
-    source ~/.bashrc
-
+    mkdir -p /home/participant/cambridge_mda14/
+    cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda14/
+    cd /home/participant/cambridge_mda14/annotation/hpg-variant
 
 Exercise 1: Working with HPG-Variant
 ================================================================================
