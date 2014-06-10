@@ -54,6 +54,9 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 
 ### Association studies
 
+- [Presentation](Course_Materials/association_studies/presentation/association_studies_presentation.pdf) - [Tutorial](Course_Materials/association_studies/tutorial/association_studies.html)
+
+
 ### RNA-Seq data processing
 
 ### RNA-Seq data analysis
