@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Variant calling" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Variant calling</strong></h2>
+<h3 class="date"><em>(updated 08-06-2014)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://samtools.sourceforge.net/" title="samtools">SAMTools</a> : SAM Tools provide various utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format.</li>
+<li><a href="http://picard.sourceforge.net/" title="Picard">Picard</a> : Picard comprises Java-based command-line utilities that manipulate SAM files, and a Java API (SAM-JDK) for creating new programs that read and write SAM files.</li>
+<li><a href="http://www.broadinstitute.org/cancer/cga/mutect_download" title="MuTect">MuTect</a> : method developed at the Broad Institute for the reliable and accurate identification of somatic point mutations in next generation sequencing data of cancer genomes.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li><a href="http://samtools.sourceforge.net/SAMv1.pdf">SAM</a></li>
+<li><a href="http://www.broadinstitute.org/igv/bam">BAM</a></li>
+<li>VCF Variant Call Format: see [1000 Genomes][vcf-format-1000ge] and [Wikipedia][vcf-format-wikipedia] specifications.</li>
+</ul>
+<h1 id="exercise-3-somatic-calling">Exercise 3: Somatic calling</h1>
+<h2 id="prepare-bam-file">1. Prepare BAM file</h2>
+<p>Go to the example3 folder:</p>
+<pre><code>cd /home/participant/cambridge_mda14/calling/example3</code></pre>
+<p>Sort:</p>
+<pre><code>samtools sort 000-normal.bam 001-normal_sorted
+samtools sort 000-tumor.bam 001-tumor_sorted</code></pre>
+<p>Index the BAM file:</p>
+<pre><code>samtools index 001-normal_sorted.bam
+samtools index 001-tumor_sorted.bam</code></pre>
+<h2 id="somatic-calling">2. Somatic calling</h2>
+<p>For brevity, we are not including BAM preprocessing steps. However, in real analysis it is recommended to include them.</p>
+<pre><code>java -jar ../mutect/muTect-1.1.4.jar --analysis_type MuTect --reference_sequence chr11.fa --dbsnp 000-dbsnp_132_b37.leftAligned.vcf.gz --cosmic 000-b37_cosmic_v54_120711.vcf.gz --input_file:normal 001-normal_sorted.bam --input_file:tumor 001-tumor_sorted.bam --out 002-call_stats.out --coverage_file 002-coverage.wig --vcf 003-somatic_variants.vcf</code></pre>
+</body>
+</html>

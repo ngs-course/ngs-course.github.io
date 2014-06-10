@@ -29,19 +29,9 @@ File formats explored:
 Exercise 1: Visualizing sequencing data
 ================================================================================
 
-Go to your course directory:
-
-    cd <my_course_directory>
-
-Copy the data for the tutorials:
-
-    cp -r /mounts/course_shares/Open_Share/visualization .
-    ll
-
 In the following **folder** you wil find mapped sequencing data from a CEU trio (father, mother and child) from the 1000 Genomes Project:
 
-    cd example_1
-    ll
+    cd /home/participant/cambridge_mda14/visualization/example_1
 
 These datasets contain reads only for the [GABBR1](http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000204681;r=6:29523406-29601753) gene.
 
@@ -58,22 +48,25 @@ Use ``samtools`` to index the bam files:
 Run IGV
 --------------------------------------------------------------------------------
 
+You can run this command from the terminal:
     igv
+
+or you can also use the link in your Desktop.
+
 
 Downolad a referece genome
 --------------------------------------------------------------------------------
 
-By default, IGV loads Human hg18 assembly. However, we must work with the **same assembly used to mapped our reads**, in this case Human hg19.  
-Genome assemblies for several species can be dowloaded using IGV:
+Run just in the case you do not have downloaded Human hg19 genome before:
 
-- Go to ``Genomes`` --> ``Load Genome From Server...``  
+- Go to ``Genomes`` --> ``Load Genome From Server...``
 Select **Human hg19**
 
     
 Loading and browsing files
 --------------------------------------------------------------------------------
 
-- Go to ``File`` --> ``Load from file...``  
+- Go to ``File`` --> ``Load from file...``
 Select NA12878_child.bam, NA12891_dad.bam and NA12892_mom.bam
 
 **Steps:**

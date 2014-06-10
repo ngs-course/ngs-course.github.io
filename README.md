@@ -11,12 +11,15 @@ This is course is scheduled for a 3 days and assumes a very basic knowledge of N
 
 During this first day we will focus in a NGS data introduction and preparing the data for their analysis. The course starts with a short presentation and a NGS data and GNU/Linux shell introduction. Then we will start working and preparing the data: _Quality Control_ (QC) and _NGS data alignment_.
 
+### Presentation
+- Presentation [[PDF](Course_Materials/presentation/presentation_mda14.pdf) | [OpenOffice](Course_Materials/presentation/presentation_mda14.odp)]
+
 ### Introduction to NGS technologies
 Very brief overview about NGS technologies and some concepts.
-- [Presentation](Course_Materials/alignment/presentation/ngs_introduction_mda14.pdf)
+- [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda14.pdf)
 
 ### Introduction to GNU/Linux shell
-- [Presentation](Course_Materials/alignment/presentation/presentation_mda14.pdf)
+- Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda14.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda14.odp)]
 
 ### Quality control for NGS raw data (FASTQ)
 - [Presentation](Course_Materials/quality_control/presentation/quality_control_presentation.pdf) - [Tutorial](Course_Materials/quality_control/tutorial/quality_control.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/quality_control)
@@ -32,7 +35,7 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 
 ###  NGS data Visualization
 
-- [Presentation](Course_Materials/visualization/presentation/2014-Cambridge_visualisation.pdf) || [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) || [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
+- [Presentation](Course_Materials/visualization/presentation/2014-Cambridge_visualisation.pdf) || [Guided example](Course_Materials/visualization/tutorial/000_example.html) || [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) || [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
 
 ### Variant calling analysis
 
@@ -40,7 +43,11 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 
 ### Variant annotation
 
-- [Presentation](Course_Materials/variant_annotation/presentation/2014-Cambridge_variant_annotation.pdf) || [Tutorial 1](Course_Materials/variant_annotation/tutorial/010_example.html)
+- [Presentation](Course_Materials/variant_annotation/presentation/2014-Cambridge_variant_annotation.pdf) || [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) || [HPG-Variant](Course_Materials/variant_annotation/tutorial/hpg-variant.html)
+
+### Variant prioritization
+
+- [Presentation](Course_Materials/variant_prioritization/presentation/2014-Cambridge_variant_prioritization.pdf)
 
 
 ## Day 3

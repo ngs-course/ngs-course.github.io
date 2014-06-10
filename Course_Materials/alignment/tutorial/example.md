@@ -195,11 +195,11 @@ BWA-MEM is the recommended algorithm to use now. You can check the options by ex
 
 To align SE with BWA-MEM execute:
 
-    bwa mem -t 4 -R "@RG\tID:foo\tSM:bar" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq > alignments/bwa/dna_chr21_100_hq_se.sam
+    bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq > alignments/bwa/dna_chr21_100_hq_se.sam
 
 To align PE with BWA-MEM just execute the same command line with the two FASTQ files:
 
-    bwa mem -t 4 -R "@RG\tID:foo\tSM:bar" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq > alignments/bwa/dna_chr21_100_hq_pe.sam
+    bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq > alignments/bwa/dna_chr21_100_hq_pe.sam
     
 Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
 
@@ -355,11 +355,11 @@ Big information about the software and commands should be listed.
 
 To align in SE mode:
 
-    tophat2 -o alignments/tophat/rna_chr21_100_hq_se aligners/bowtie2/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq
+    tophat2 -o alignments/tophat/rna_chr21_100_hq_se aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq
 
 And for PE:
 
-    tophat2 -o alignments/tophat/rna_chr21_100_hq_pe/ aligners/bowtie2/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq data/rna_chr21_100_hq_read2.fastq
+    tophat2 -o alignments/tophat/rna_chr21_100_hq_pe/ aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq data/rna_chr21_100_hq_read2.fastq
 
 Now align the rna dataset of 150bp with low quality and compare stats.
 

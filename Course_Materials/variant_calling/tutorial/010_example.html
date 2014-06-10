@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Variant calling" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Variant calling</strong></h2>
+<h3 class="date"><em>(updated 08-06-2014)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://samtools.sourceforge.net/" title="samtools">SAMTools</a> : SAM Tools provide various utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format.</li>
+<li><a href="http://picard.sourceforge.net/" title="Picard">Picard</a> : Picard comprises Java-based command-line utilities that manipulate SAM files, and a Java API (SAM-JDK) for creating new programs that read and write SAM files.</li>
+<li>[GATK] : (Genome Analysis Toolkit): A package to analyze next-generation re-sequencing data, primary focused on variant discovery and genotyping.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li><a href="http://samtools.sourceforge.net/SAMv1.pdf">SAM</a></li>
+<li><a href="http://www.broadinstitute.org/igv/bam">BAM</a></li>
+<li>VCF Variant Call Format: see [1000 Genomes][vcf-format-1000ge] and [Wikipedia][vcf-format-wikipedia] specifications.</li>
+</ul>
+<h1 id="exercise-1-variant-calling-with-paired-end-data">Exercise 1: Variant calling with paired-end data</h1>
+<p>Copy the necessary data in your working directory:</p>
+<pre><code>mkdir -p /home/participant/cambridge_mda14/
+cp -r /home/participant/Desktop/Open_Share/calling /home/participant/cambridge_mda14/
+cd /home/participant/cambridge_mda14/calling</code></pre>
+<p>These datasets contain reads only for the chromosome 21.</p>
+<h2 id="prepare-reference-genome-generate-the-fasta-file-index">1. Prepare reference genome: generate the fasta file index</h2>
+<p>Use <code>SAMTools</code> to generate the fasta file index:</p>
+<pre><code>samtools faidx f000_chr21_ref_genome_sequence.fa</code></pre>
+<p>This creates a file called samtools faidx f000_chr21_ref_genome_sequence.fa.fai, with one record per line for each of the contigs in the FASTA reference file.</p>
+<p>Generate the sequence dictionary using <code>Picard</code>:</p>
+<pre><code>java -jar ../picard/CreateSequenceDictionary.jar REFERENCE=f000_chr21_ref_genome_sequence.fa OUTPUT=f000_chr21_ref_genome_sequence.dict</code></pre>
+<h2 id="prepare-bam-file">2. Prepare BAM file</h2>
+<p>Go to the example1 folder:</p>
+<pre><code>cd /home/participant/cambridge_mda14/calling/example1</code></pre>
+<!-- The **read group** information is key for downstream GATK functionality. The GATK will not work without a read group tag. Make sure to enter as much metadata as you know about your data in the read group fields provided. For more information about all the possible fields in the @RG tag, take a look at the SAM specification.
+
+    AddOrReplaceReadGroups.jar I=f000-dna_100_high_pe.bam O=f010-dna_100_high_pe_fixRG.bam RGID=group1 RGLB=lib1 RGPL=illumina RGSM=sample1 RGPU=unit1
+
+-->
+
+<p>We must sort and index the BAM file before processing it with Picard and GATK. To sort the bam file we use <code>samtools</code></p>
+<pre><code>samtools sort 000-dna_chr21_100_hq_pe.bam 001-dna_chr21_100_hq_pe_sorted</code></pre>
+<p>Index the BAM file:</p>
+<pre><code>samtools index 001-dna_chr21_100_hq_pe_sorted.bam</code></pre>
+<h2 id="mark-duplicates-using-picard">3. Mark duplicates (using Picard)</h2>
+<p>Run the following <strong>Picard</strong> command to mark duplicates:</p>
+<pre><code>java -jar ../picard/MarkDuplicates.jar INPUT=001-dna_chr21_100_hq_pe_sorted.bam OUTPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam METRICS_FILE=002-metrics.txt</code></pre>
+<p>This creates a sorted BAM file called <code>002-dna_chr21_100_hq_pe_sorted_noDup.bam</code> with the same content as the input file, except that any duplicate reads are marked as such. It also produces a metrics file called <code>metrics.txt</code> containing (can you guess?) metrics.</p>
+<p><strong>QUESTION:</strong> How many reads are removed as duplicates from the files (hint view the on-screen output from the two commands)?</p>
+<p>Run the following <strong>Picard</strong> command to index the new BAM file:</p>
+<pre><code>java -jar ../picard/BuildBamIndex.jar INPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam</code></pre>
+<h2 id="local-realignment-around-indels-using-gatk">4. Local realignment around INDELS (using GATK)</h2>
+<p>There are 2 steps to the realignment process:</p>
+<p><strong>First</strong>, create a target list of intervals which need to be realigned</p>
+<pre><code>java -jar ../gatk/GenomeAnalysisTK.jar -T RealignerTargetCreator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_pe_sorted_noDup.bam -o 003-indelRealigner.intervals</code></pre>
+<p><strong>Second</strong>, perform realignment of the target intervals</p>
+<pre><code>java -jar ../gatk/GenomeAnalysisTK.jar -T IndelRealigner -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_pe_sorted_noDup.bam -targetIntervals 003-indelRealigner.intervals -o 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam</code></pre>
+<p>This creates a file called <code>003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam</code> containing all the original reads, but with better local alignments in the regions that were realigned.</p>
+<h2 id="base-quality-score-recalibration-using-gatk">5. Base quality score recalibration (using GATK)</h2>
+<p>Two steps:</p>
+<p><strong>First</strong>, analyze patterns of covariation in the sequence dataset</p>
+<pre><code>java -jar ../gatk/GenomeAnalysisTK.jar -T BaseRecalibrator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam -knownSites ../000-dbSNP_chr21.vcf -o 004-recalibration_data.table</code></pre>
+<p>This creates a GATKReport file called <code>004-recalibration_data.table</code> containing several tables. These tables contain the covariation data that will be used in a later step to recalibrate the base qualities of your sequence data.</p>
+<p>It is imperative that you provide the program with a set of <strong>known sites</strong>, otherwise it will refuse to run. The known sites are used to build the covariation model and estimate empirical base qualities. For details on what to do if there are no known sites available for your organism of study, please see the online GATK documentation.</p>
+<p><strong>Second</strong>, apply the recalibration to your sequence data</p>
+<pre><code>java -jar ../gatk/GenomeAnalysisTK.jar -T PrintReads -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam -BQSR 004-recalibration_data.table -o 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam</code></pre>
+<p>This creates a file called <code>004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam</code> containing all the original reads, but now with exquisitely accurate base substitution, insertion and deletion quality scores. By default, the original quality scores are discarded in order to keep the file size down. However, you have the option to retain them by adding the flag <code>–emit_original_quals</code> to the <code>PrintReads</code> command, in which case the original qualities will also be written in the file, tagged OQ.</p>
+<h2 id="variant-calling-using-gatk---unifiedgenotyper">6. Variant calling (using GATK - <strong>UnifiedGenotyper</strong>)</h2>
+<p>SNPs and INDELS are called using separate instructions.</p>
+<p><strong>SNP calling</strong></p>
+<pre><code>java -jar ../gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ../genome/f000_chr21_ref_genome_sequence.fa -I 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam -glm SNP -o 005-dna_chr21_100_he_pe_snps.vcf</code></pre>
+<p><strong>INDEL calling</strong></p>
+<pre><code>java -jar ../gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ../genome/f000_chr21_ref_genome_sequence.fa -I 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam -glm INDEL -o 005-dna_chr21_100_hq_pe_indel.vcf</code></pre>
+<h2 id="introduce-filters-in-the-vcf-file">7. Introduce filters in the VCF file</h2>
+<p>Example: filter SNPs with low confidence calling (QD &lt; 12.0) and flag them as “LowConf”.</p>
+<pre><code>java -jar ../gatk/GenomeAnalysisTK.jar -T VariantFiltration -R ../genome/f000_chr21_ref_genome_sequence.fa -V 005-dna_chr21_100_he_pe_snps.vcf --filterExpression &quot;QD &lt; 12.0&quot; --filterName &quot;LowConf&quot; -o 006-dna_chr21_100_he_pe_snps_filtered.vcf</code></pre>
+<p>The command <code>--filterExpression</code> will read the INFO field and check whether variants satisfy the requirement. If a variant does not satisfy your filter expression, the field FILTER will be filled with the indicated <code>--filterName</code>. These commands can be called several times indicating different filtering expression (i.e: –filterName One –filterExpression “X &lt; 1” –filterName Two –filterExpression “X &gt; 2”).</p>
+<p><strong>QUESTION:</strong> How many “LowConf” variants have we obtained?</p>
+<pre><code>grep LowConf 006-dna_chr21_100_he_pe_snps_filtered.vcf | wc -l</code></pre>
+</body>
+</html>

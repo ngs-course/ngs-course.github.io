@@ -30,8 +30,8 @@ cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bwa/index/   (this 
 
 bwa index aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa
 bwa mem
-bwa mem -t 4 -R "@RG\tID:foo\tSM:bar" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq > alignments/bwa/dna_chr21_100_hq_se.sam
-bwa mem -t 4 -R "@RG\tID:foo\tSM:bar" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq > alignments/bwa/dna_chr21_100_hq_pe.sam
+bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq > alignments/bwa/dna_chr21_100_hq_se.sam
+bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq > alignments/bwa/dna_chr21_100_hq_pe.sam
 
 cd alignments/bwa
 samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
@@ -73,8 +73,8 @@ tophat2
 
 cd bowtie2-2.2.1   (bowtie 2.2 does not work)
 cp bowtie* ~/bin
-tophat2 -o alignments/tophat/rna_chr21_100_hq_se aligners/bowtie2/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq
-tophat2 -o alignments/tophat/rna_chr21_100_hq_pe/ aligners/bowtie2/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq data/rna_chr21_100_hq_read2.fastq
+tophat2 -o alignments/tophat/rna_chr21_100_hq_se aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq
+tophat2 -o alignments/tophat/rna_chr21_100_hq_pe/ aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq data/rna_chr21_100_hq_read2.fastq
 tar -zxvf STAR_2.3.0e.Linux_x86_64_static.tgz
 unzip MapSplice-v2.1.6.zip
 cd MapSplice-v2.1.6

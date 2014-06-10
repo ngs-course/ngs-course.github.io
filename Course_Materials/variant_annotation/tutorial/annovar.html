@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Variant annotation" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Variant annotation</strong></h2>
+<h3 class="date"><em>(updated 08-06-2014)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="variant-annotation-with-annovar">Variant annotation with Annovar</h1>
+<p>Copy the necessary data in your working directory:</p>
+<pre><code>mkdir -p /home/participant/cambridge_mda14/
+cp -r /home/participant/Course_Materials/annotation /home/participant/cambridge_mda14/
+cd /home/participant/cambridge_mda14/annotation/annovar</code></pre>
+<h2 id="download-gene-annotation-database-for-hg18-build-and-save-to-humandb-directory">1. Download gene annotation database (for hg18 build) and save to humandb/ directory</h2>
+<pre><code>./annotate_variation.pl -downdb refGene humandb/
+
+./annotate_variation.pl -downdb -webfrom annovar 1000g2012apr humandb/</code></pre>
+<p>Other possible downloads for hg19:</p>
+<pre><code>annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/
+annotate_variation.pl -buildver hg19 -downdb phastConsElements46way humandb/
+annotate_variation.pl -buildver hg19 -downdb genomicSuperDups humandb/
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar 1000g2012apr humandb/
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar snp135 humandb/ 
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar ljb2_all humandb/
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar esp6500si_all humandb/
+    </code></pre>
+<h2 id="gene-based-annotation-of-variants-in-the-varlist-file-by-default-geneanno-is-on">2. Gene-based annotation of variants in the varlist file (by default –geneanno is ON)</h2>
+<pre><code>./annotate_variation.pl --geneanno example/ex1.human humandb/ --outfile result
+      </code></pre>
+<h2 id="region-based-annotate-variants">3. Region-based annotate variants</h2>
+<pre><code>./annotate_variation.pl -regionanno -dbtype cytoBand example/ex1.human humandb/ --outfile result
+
+./annotate_variation.pl -regionanno -dbtype example_db_gff3 example/ex1.human humandb/ --outfile result</code></pre>
+<h2 id="filter-rare-or-unreported-variants-in-1000gdbsnp-or-predicted-deleterious-variants">4. Filter rare or unreported variants (in 1000G/dbSNP) or predicted deleterious variants</h2>
+<pre><code>./annotate_variation.pl -filter -dbtype 1000g2012apr -maf 0.01 example/ex1.human humandb/ --outfile result
+
+./annotate_variation.pl -filter -dbtype snp130 example/ex1.human humandb/ --outfile result</code></pre>
+</body>
+</html>
