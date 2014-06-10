@@ -12,7 +12,7 @@ Variant annotation with Annovar
 Copy the necessary data in your working directory:
 
     mkdir -p /home/participant/cambridge_mda14/
-    cp -r /home/participant/Course_Materials/annotation /home/participant/cambridge_mda14/
+    cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda14/
     cd /home/participant/cambridge_mda14/annotation/annovar
 
 1. Download gene annotation database (for hg18 build) and save to humandb/ directory

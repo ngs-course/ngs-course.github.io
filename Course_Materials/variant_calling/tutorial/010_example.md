@@ -33,7 +33,7 @@ Exercise 1: Variant calling with paired-end data
 Copy the necessary data in your working directory:
 
     mkdir -p /home/participant/cambridge_mda14/
-    cp -r /home/participant/Course_Materials/calling /home/participant/cambridge_mda14/
+    cp -r /home/participant/Desktop/Open_Share/calling /home/participant/cambridge_mda14/
     cd /home/participant/cambridge_mda14/calling
 
 These datasets contain reads only for the chromosome 21.
