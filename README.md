@@ -43,7 +43,11 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 
 ### Variant annotation
 
-- [Presentation](Course_Materials/variant_annotation/presentation/2014-Cambridge_variant_annotation.pdf) || [Tutorial 1](Course_Materials/variant_annotation/tutorial/010_example.html)
+- [Presentation](Course_Materials/variant_annotation/presentation/2014-Cambridge_variant_annotation.pdf) || [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) || [HPG-Variant](ourse_Materials/variant_annotation/tutorial/hpg-variant.html)
+
+### Variant prioritization
+
+- [Presentation](Course_Materials/variant_prioritization/presentation/2014-Cambridge_variant_prioritization.pdf)
 
 
 ## Day 3

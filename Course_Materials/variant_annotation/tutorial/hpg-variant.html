@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Variant annotation" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Variant annotation</strong></h2>
+<h3 class="date"><em>(updated 28-02-2014)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://wiki.opencb.org/projects/hpg/doku.php?id=variant:overview" title="HPG Variant">HPG-Variant</a> : a complete suite of tools to work with genomic variation data, from VCF tools to variant profiling or genomic statistics.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li>VCF Variant Call Format</li>
+</ul>
+<h1 id="some-previous-configurations">Some previous configurations</h1>
+<p>Download <a href="http://wiki.opencb.org/projects/hpg/doku.php?id=variant:overview" title="HPG Variant">HPG-Variant</a> software from [http://wiki.opencb.org/projects/hpg/doku.php?id=variant:downloads]</p>
+<p>Extract the file in your desktop.</p>
+<p>Just to run HPG-Variant easier:</p>
+<pre><code>echo &quot;export PATH=$PATH:~/Desktop/hpg-variant-1.0&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc</code></pre>
+<h1 id="exercise-1-working-with-hpg-variant">Exercise 1: Working with HPG-Variant</h1>
+<h2 id="getting-the-effect-of-variants">Getting the effect of variants</h2>
+<p>To run the variant effect annotation tool you need the hpg-var-effect binary file. You only have to execute this command line to fetch annotations:</p>
+<pre><code>hpg-var-effect -v CHB.exon.2010_03.sites.vcf --outdir hpg-variant_results --config /home/parallels/course/variant_annotation/hpg-variant-1.0/</code></pre>
+<p>If you don’t set the outdir option, the default output folder is /tmp/variant/ .</p>
+<p>Inside the output folder, you will get a collection of .txt files. Each of them contains a list of variation effects classified by type, such as non-synonymous codon, a DNAseI hypersensitive site, and so on.</p>
+<p>There is also an all_variants.txt file which stores all the effects of all types. The summary.txt file shows the number of times a specific effect has been retrieved.</p>
+<p>For more information about the contents of the output files, please read the Result report section.</p>
+<h2 id="vcf-tools">VCF tools</h2>
+<h4 id="splitting">Splitting</h4>
+<p>When analyzing a VCF file, you may be interested only in a part of it. If you want to split it, for example by chromosome, you must run:</p>
+<pre><code>hpg-var-vcf split -v CEU.exon.2010_03.genotypes.vcf --criterion chromosome --config /home/parallels/course/variant_annotation/hpg-variant-1.0/</code></pre>
+<p>As a result, the /tmp/variant/ folder will contain a list of files named chromosome_N_CEU.exon.2010_03.genotypes.vcf, each of them containing the variants in chromosome N.</p>
+<h4 id="filtering">Filtering</h4>
+<p>Maybe part of the variants in a dataset do not meet your requirements for a future analysis, so you want to remove them from the dataset. For example, if you want to filter by coverage (the sum in all samples), you should run:</p>
+<pre><code>hpg-var-vcf filter -v CEU.exon.2010_03.genotypes.vcf --coverage 9000 --save-rejected --config /home/parallels/course/variant_annotation/hpg-variant-1.0/</code></pre>
+<p>This way, the file /tmp/variant/CEU.exon.2010_03.genotypes.vcf.filtered will contain all variants with DP over 9000!! The save-rejected option saves the variants with less DP in the file /tmp/variant/CEU.exon.2010_03.genotypes.vcf.rejected. You can omit it if you prefer to save space.</p>
+<h4 id="statistics">Statistics</h4>
+<p>If you want to know more about the structure and fitness of your dataset, you can retrieve some statistics for variants, samples and the whole file.</p>
+<p>By default, variants and file statistics are retrieved. Just run:</p>
+<pre><code>hpg-var-vcf stats -v CEU.exon.2010_03.genotypes.vcf -config /home/parallels/course/variant_annotation/hpg-variant-1.0/</code></pre>
+<p>As a result, the /tmp/variant/ folder will contain a pair of files named summary-stats and stats-variants.</p>
+<p>If you prefer to retrieve statistics per sample, run:</p>
+<pre><code>hpg-var-vcf stats -v CEU.exon.2010_03.genotypes.vcf --samples -config /home/parallels/course/variant_annotation/hpg-variant-1.0/</code></pre>
+<p>In this case, the output file will be named stats-samples.</p>
+<h2 id="gwas">GWAS</h2>
+<p>To run genomic-wide association studies, you need a pair of VCF and PED related files. The former contains the list of variants and the genotypes of the samples, whereas the latter contains familial information, as well as the sex and phenotypes of those samples.</p>
+<p>You can run family-based tests using the TDT tool:</p>
+<pre><code>hpg-var-gwas tdt -v 4Kvariants_147samples.vcf -p 4Kvariants_147samples.ped -config /home/parallels/course/variant_annotation/hpg-variant-1.0/</code></pre>
+<p>As a result, you will find a /tmp/variant/hpg-variant.tdt file containing the number of times the reference allel is transmitted or not, as well as some statistical values.</p>
+<p>There is also the possibility of conducting population association studies using chi-square of Fisher’s exact test:</p>
+<pre><code>hpg-var-gwas assoc --chisq -v 4Kvariants_147samples.vcf -p 4Kvariants_147samples.ped -config /home/parallels/course/variant_annotation/hpg-variant-1.0/
+hpg-var-gwas assoc --fisher -v 4Kvariants_147samples.vcf -p 4Kvariants_147samples.ped -config /home/parallels/course/variant_annotation/hpg-variant-1.0/</code></pre>
+<p>The results of these tasks are a /tmp/variant/hpg-variant.chisq and a /tmp/variant/hpg-variant.fisher files, containing the number of times each allele appears in affected and unaffected groups, the related frequencies, and some more statistical values.</p>
+</body>
+</html>
