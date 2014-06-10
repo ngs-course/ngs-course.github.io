@@ -2,7 +2,7 @@
 
 Welcome to this introductory NGS data analysis course. During this course you will learn the basics of NGS data analysis in a Linux environment using most currently used software and best practices will be explained. This course is focused in NGS data alignment for both DNA and RNA (RNA-seq), variant calling, differential expression analysis and data visualization.
 
-This is course is scheduled for a 3 days and assumes a very basic knowledge of NGS data analysis and Linux. All the material in this is course is free and open, feel free to reuse it as you want. Data for the tutorials are available in DropBox at https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a
+This is course is scheduled for a 3 days and assumes a very basic knowledge of NGS data analysis and Linux. All materials in this is course are free and open, feel free to reuse them as you want. Data for the tutorials are available in our [DropBox folder](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a).
 
 
 # Schedule
@@ -11,15 +11,19 @@ This is course is scheduled for a 3 days and assumes a very basic knowledge of N
 
 During this first day we will focus in a NGS data introduction and preparing the data for their analysis. The course starts with a short presentation and a NGS data and GNU/Linux shell introduction. Then we will start working and preparing the data: _Quality Control_ (QC) and _NGS data alignment_.
 
+### Presentation
+- Presentation [[PDF](Course_Materials/presentation/presentation_mda14.pdf) | [OpenOffice](Course_Materials/presentation/presentation_mda14.odp)]
+
 ### Introduction to NGS technologies
 Very brief overview about NGS technologies and some concepts.
-- [Presentation](Course_Materials/alignment/presentation/ngs_introduction_mda14.pdf)
+- [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda14.pdf)
 
 ### Introduction to GNU/Linux shell
-- [Presentation](Course_Materials/alignment/presentation/presentation_mda14.pdf)
+- Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda14.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda14.odp)]
 
 ### Quality control for NGS raw data (FASTQ)
-- [Presentation](Course_Materials/quality_control/presentation/presentation.pdf) - [Tutorial](Course_Materials/quality_control/tutorial/example.html) - [Data](COURSE_EXAMPLE_DATA/f000_raw_mirna.fastq)
+- [Presentation](Course_Materials/quality_control/presentation/quality_control_presentation.pdf) - [Tutorial](Course_Materials/quality_control/tutorial/quality_control.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/quality_control)
+
 
 ### DNA and RNA-seq read alignment
 - Presentation [[PDF](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda14.pdf) | [OpenOffice](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda14.odp)] - [Tutorial](Course_Materials/alignment/tutorial/example.html)
