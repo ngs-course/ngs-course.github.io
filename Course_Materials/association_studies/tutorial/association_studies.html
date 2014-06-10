@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Association Analysis using PLINK" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Association Analysis using PLINK</strong></h2>
+<h3 class="date"><em>(updated 2014-06-10)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://pngu.mgh.harvard.edu/~purcell/plink/" title="PLINK: whole genome association analysis">PLINK</a> : whole genome association analysis.</li>
+<li><a href="http://vcftools.sourceforge.net/" title="VCFtools: A package for working with VCF files: merging, comparing, annotating ...">VCFtools</a> : A package for working with VCF files: merging, comparing, annotating …</li>
+<li><a href="http://samtools.sourceforge.net/tabix.shtml" title="tabix: compress and index TAB-delimited files. Useful for handling GFF, GTF, BED and VCF files">tabix</a> : compress and index TAB-delimited files. Useful for handling GFF, GTF, BED and VCF files.</li>
+<li><a href="http://www.r-project.org/" title="The Project for Statistical Computing">R</a> : a programming language devised for statistical data analysis.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li>VCF Variant Call Format: see <a href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">1000 Genomes</a> and <a href="http://en.wikipedia.org/wiki/Variant_Call_Format">Wikipedia</a> specifications.</li>
+</ul>
+<p>See PLINK file formats description <a href="http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml#tr">here</a>.</p>
+<h3 id="standard-plink-file-formats-are">Standard PLINK file formats are:</h3>
+<p><strong>PED file</strong> with fields (columns):</p>
+<ol style="list-style-type: decimal">
+<li>Family ID</li>
+<li>Individual ID</li>
+<li>Paternal ID</li>
+<li>Maternal ID</li>
+<li>Sex (1=male; 2=female; other=unknown)</li>
+<li>Phenotype (1=unaffected; 2=affected; 0 missing; -9=missing)</li>
+<li>… genotypes …</li>
+</ol>
+<p><strong>MAP file</strong> with fields (columns):</p>
+<ol style="list-style-type: decimal">
+<li>chromosome (1-22, X, Y or 0 if unplaced)</li>
+<li>rs… or SNP identifier</li>
+<li>Genetic distance (Morgans)</li>
+<li>Base-pair position (BP units)</li>
+</ol>
+<h3 id="transposed-formats-generally-more-suitable-for-genomic-data-are">Transposed formats, generally more suitable for genomic data are:</h3>
+<p><strong>TPED file with fields (columns):</strong></p>
+<ol style="list-style-type: decimal">
+<li>chromosome (1-22, X, Y or 0 if unplaced)</li>
+<li>SNP identifier (rs…)</li>
+<li>Genetic distance (Morgans)</li>
+<li>Base-pair position (BP units)</li>
+<li>… genotypes …</li>
+</ol>
+<p><strong>TFAM file with fields (columns):</strong></p>
+<ol style="list-style-type: decimal">
+<li>Family ID</li>
+<li>Individual ID</li>
+<li>Paternal ID</li>
+<li>Maternal ID</li>
+<li>Sex (1=male; 2=female; other=unknown)</li>
+<li>Phenotype (1=unaffected; 2=affected; 0 missing; -9=missing)</li>
+</ol>
+<h1 id="overview">Overview</h1>
+<ol style="list-style-type: decimal">
+<li>Use <a href="http://samtools.sourceforge.net/tabix.shtml" title="tabix: compress and index TAB-delimited files. Useful for handling GFF, GTF, BED and VCF files">tabix</a> to download data from <strong>remote</strong> VCF files.</li>
+<li>Use <a href="http://pngu.mgh.harvard.edu/~purcell/plink/" title="PLINK: whole genome association analysis">PLINK</a> for converting VCF files to PED and MAP format.</li>
+<li>Use <a href="http://pngu.mgh.harvard.edu/~purcell/plink/" title="PLINK: whole genome association analysis">PLINK</a> to perform association studies.</li>
+</ol>
+<p>Use <a href="http://www.r-project.org/" title="The Project for Statistical Computing">R</a> for data handling and transformation.</p>
+<h1 id="exercise">Exercise</h1>
+<!-- new and clean data directory in the sandbox
+    rm -r ../../../../sandbox/association_studies/
+    mkdir ../../../../sandbox/association_studies/
+    cd    ../../../../sandbox/association_studies/
+-->
+
+<p>For this practical we will download an example dataset from the <a href="http://www.1000genomes.org/" title="1000 Genomes Home Page">1000 Genomes</a> web page using <a href="http://samtools.sourceforge.net/tabix.shtml" title="tabix: compress and index TAB-delimited files. Useful for handling GFF, GTF, BED and VCF files">tabix</a>.</p>
+<p>Go to the 1000 Genomes FTP site:</p>
+<p><a href="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase1/analysis_results/integrated_call_sets">ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase1/analysis_results/integrated_call_sets</a></p>
+<p>The files in this directory represent the final variant call set associated with the phase1 analysis.</p>
+<p>Use <a href="http://samtools.sourceforge.net/tabix.shtml" title="tabix: compress and index TAB-delimited files. Useful for handling GFF, GTF, BED and VCF files">tabix</a> to download the first variants in chromosome 20:</p>
+<pre><code>tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase1/analysis_results/integrated_call_sets/ALL.chr20.integrated_phase1_v3.20101123.snps_indels_svs.genotypes.vcf.gz 20:1-1000000 &gt; f010_first_chr20.vcf</code></pre>
+<ul>
+<li>What does it mean the parameter <code>-h</code> in the command above? <!-- print / include also the header lines --><br /> (you can find the <code>tabix</code> help just by typing the command in in shell)</li>
+<li>What does it mean the parameter <code>20:1-1000000</code>? <!-- the range of positions to be downloaded --></li>
+<li>Why do not we use the option <code>-o</code> to create the output file? How do we do it instead? <!-- the option -o is not implemented; we use the redirection > instead --></li>
+</ul>
+<p>How many lines has it got the downloaded file:</p>
+<pre><code>wc -l f010_first_chr20.vcf </code></pre>
+<p>Convert VCF file to a TPED + TFAM files using <a href="http://vcftools.sourceforge.net/" title="VCFtools: A package for working with VCF files: merging, comparing, annotating ...">VCFtools</a>:</p>
+<pre><code>vcftools --vcf f010_first_chr20.vcf --out f020_plink_format --plink-tped </code></pre>
+<p>The above command will create the the <code>.tped</code> and <code>.tfam</code> files. Notice that it will also create an <em>index</em> for the vcf file.</p>
+<p>Explore the structure of the files created.</p>
+<pre><code>head f020_plink_format.tfam
+head f020_plink_format.tped</code></pre>
+<p>Apply <a href="http://pngu.mgh.harvard.edu/~purcell/plink/" title="PLINK: whole genome association analysis">PLINK</a> to get a description of the dataset:</p>
+<pre><code>plink --noweb --allow-no-sex --out f030_plink_description --tfile f020_plink_format</code></pre>
+<ul>
+<li>What happens if you do not include the <code>--allow-no-sex</code> flag?<br /> (See the indications in the output or in the <code>.log</code> file)</li>
+</ul>
+<!--
+Warning, found 1092 individuals with ambiguous sex codes
+These individuals will be set to missing ( or use --allow-no-sex )
+Writing list of these individuals to [ f030_plink_description2.nosex ]
+-->
+
+<!-- What information is in the file `.nosex`? -->
+
+<p>Edit the file <code>f020_plink_format.tfam</code> to include some Phenotype information. Remember this information is to be coded in <strong>column 6</strong> as: 1=unaffected; 2=affected; 0 missing.</p>
+<p>You could use any software, any spreadsheet for instance, to include this information. For this practical we will use <a href="http://www.r-project.org/" title="The Project for Statistical Computing">R</a></p>
+<p>(The file <strong><a href="edit_tfam_file.r">edit_tfam_file.r</a></strong> shows how to carry out the edition of the file using R)</p>
+<!--
+    R CMD BATCH --vanilla ../../ngs-course.github.io/Course_Materials/association_studies/tutorial/edit_tfam_file.r
+-->
+
+
+<p>Let’s carry out an <a href="http://pngu.mgh.harvard.edu/~purcell/plink/anal.shtml#cc">association test</a> now using PLINK.</p>
+<pre><code>plink --noweb --allow-no-sex --tped f020_plink_format.tped --tfam f040_plink_format.tfam --out f050_res_plink --assoc</code></pre>
+<ul>
+<li>Why do we use the parameters <code>--tped</code> and <code>--tfam</code> instead of the <code>--tfile</code> used before?.</li>
+<li>What happens if you do not include the <code>--allow-no-sex</code> flag?<br /> (Run the same command without this parameter and compare the output files) <!-- all statistics are returned as missing NA because all individuals are excluded from the analysis as they do not have the sex information --></li>
+</ul>
+<!-- without the --allow-no-sex
+    plink --noweb --tped f020_plink_format.tped --tfam f040_plink_format.tfam --out f050_res_plink_NO_NO-SEX --assoc
+-->
+
+<p>See PLINK documentation on some other options to <a href="http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml#pheno">handle Phenotype data</a></p>
+<p>Explore the results file:</p>
+<pre><code>head f050_res_plink.assoc</code></pre>
+<p>We can ask PLINK to perform a [p-value adjustment] using the option <code>--adjust</code></p>
+<pre><code>plink --noweb --allow-no-sex --tped f020_plink_format.tped --tfam f040_plink_format.tfam --out f060_res_plink --assoc --adjust</code></pre>
+<p>Explore the results file:</p>
+<pre><code>head f060_res_plink.assoc.adjusted</code></pre>
+<p>and compare with the previous file:</p>
+<pre><code>head f050_res_plink.assoc</code></pre>
+<p>You can use the <a href="http://www.r-project.org/" title="The Project for Statistical Computing">R</a> scripts:</p>
+<ul>
+<li><strong><a href="explore_plink_results.r">explore_plink_results.r</a></strong></li>
+<li><strong><a href="explore_plink_pvalues.r">explore_plink_pvalues.r</a></strong></li>
+</ul>
+<p>to do the exploration and the comparison.</p>
+<!--
+    R CMD BATCH --vanilla ../../ngs-course.github.io/Course_Materials/association_studies/tutorial/explore_plink_results.r
+    R CMD BATCH --vanilla ../../ngs-course.github.io/Course_Materials/association_studies/tutorial/explore_plink_pvalues.r
+-->
+</body>
+</html>
