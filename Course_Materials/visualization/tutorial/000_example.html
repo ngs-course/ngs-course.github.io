@@ -7,7 +7,7 @@
   <meta name="author" content="Visualization of mapped reads" />
   <title>NGS data analysis course</title>
   <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href="../../../course_commons/css_template_for_examples.css" type="text/css" />
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
 </head>
 <body>
 <div id="header">
@@ -29,18 +29,19 @@
 <li><a href="http://www.broadinstitute.org/igv/bam">BAM</a></li>
 </ul>
 <h1 id="guided-exercise-igv-introduction">Guided exercise: IGV introduction</h1>
-<p>Go to your course directory:</p>
-<pre><code>cd &lt;my_course_directory&gt;</code></pre>
 <p>Copy the data for the tutorials:</p>
-<pre><code>cp -r /mounts/course_shares/Open_Share/visualization .
-cd example_0
-ll</code></pre>
+<pre><code>mkdir -p /home/participant/cambridge_mda14/
+cp -r /home/participant/Course_Materials/visualization /home/participant/cambridge_mda14/
+cd /home/participant/cambridge_mda14/visualization</code></pre>
+<p>Enter in the example folder:</p>
+<pre><code>cd example_0</code></pre>
 <p>This BAM file contains reads only for chromosome 11.</p>
 <h2 id="creating-indexed-files">Creating indexed files</h2>
 <p>Use <code>samtools</code> to index the bam files:</p>
 <pre><code>samtools index igv1.bam</code></pre>
 <h2 id="run-igv">Run IGV</h2>
-<pre><code>igv</code></pre>
+<p>You can run this command from the terminal: igv</p>
+<p>or you can also use the link in your Desktop.</p>
 <h2 id="downolad-a-referece-genome">Downolad a referece genome</h2>
 <p>By default, IGV loads Human hg18 assembly. However, we must work with the <strong>same assembly used to mapped our reads</strong>, in this case Human hg19.<br />Genome assemblies for several species can be dowloaded using IGV:</p>
 <ul>

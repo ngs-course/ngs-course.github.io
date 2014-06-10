@@ -7,7 +7,7 @@
   <meta name="author" content="Visualization of mapped reads" />
   <title>NGS data analysis course</title>
   <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href="../../../course_commons/css_template_for_examples.css" type="text/css" />
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
 </head>
 <body>
 <div id="header">
@@ -29,14 +29,8 @@
 <li><a href="http://www.broadinstitute.org/igv/bam">BAM</a></li>
 </ul>
 <h1 id="exercise-1-visualizing-sequencing-data">Exercise 1: Visualizing sequencing data</h1>
-<p>Go to your course directory:</p>
-<pre><code>cd &lt;my_course_directory&gt;</code></pre>
-<p>Copy the data for the tutorials:</p>
-<pre><code>cp -r /mounts/course_shares/Open_Share/visualization .
-ll</code></pre>
 <p>In the following <strong>folder</strong> you wil find mapped sequencing data from a CEU trio (father, mother and child) from the 1000 Genomes Project:</p>
-<pre><code>cd example_1
-ll</code></pre>
+<pre><code>cd /home/participant/cambridge_mda14/visualization/example_1</code></pre>
 <p>These datasets contain reads only for the <a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000204681;r=6:29523406-29601753">GABBR1</a> gene.</p>
 <h2 id="creating-indexed-files">Creating indexed files</h2>
 <p>Use <code>samtools</code> to index the bam files:</p>
@@ -44,15 +38,16 @@ ll</code></pre>
 samtools index NA12891_dad.bam
 samtools index NA12892_mom.bam</code></pre>
 <h2 id="run-igv">Run IGV</h2>
-<pre><code>igv</code></pre>
+<p>You can run this command from the terminal: igv</p>
+<p>or you can also use the link in your Desktop.</p>
 <h2 id="downolad-a-referece-genome">Downolad a referece genome</h2>
-<p>By default, IGV loads Human hg18 assembly. However, we must work with the <strong>same assembly used to mapped our reads</strong>, in this case Human hg19.<br />Genome assemblies for several species can be dowloaded using IGV:</p>
+<p>Run just in the case you do not have downloaded Human hg19 genome before:</p>
 <ul>
-<li>Go to <code>Genomes</code> –&gt; <code>Load Genome From Server...</code><br />Select <strong>Human hg19</strong></li>
+<li>Go to <code>Genomes</code> –&gt; <code>Load Genome From Server...</code> Select <strong>Human hg19</strong></li>
 </ul>
 <h2 id="loading-and-browsing-files">Loading and browsing files</h2>
 <ul>
-<li>Go to <code>File</code> –&gt; <code>Load from file...</code><br />Select NA12878_child.bam, NA12891_dad.bam and NA12892_mom.bam</li>
+<li>Go to <code>File</code> –&gt; <code>Load from file...</code> Select NA12878_child.bam, NA12891_dad.bam and NA12892_mom.bam</li>
 </ul>
 <p><strong>Steps:</strong></p>
 <ol style="list-style-type: decimal">

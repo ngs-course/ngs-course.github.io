@@ -28,15 +28,15 @@ File formats explored:
 Guided exercise: IGV introduction
 ================================================================================
 
-Go to your course directory:
-
-    cd <my_course_directory>
-
 Copy the data for the tutorials:
 
-    cp -r /mounts/course_shares/Open_Share/visualization .
+    mkdir -p /home/participant/cambridge_mda14/
+    cp -r /home/participant/Course_Materials/visualization /home/participant/cambridge_mda14/
+    cd /home/participant/cambridge_mda14/visualization
+
+Enter in the example folder:
+
     cd example_0
-    ll
 
 This BAM file contains reads only for chromosome 11.
 
@@ -51,7 +51,11 @@ Use ``samtools`` to index the bam files:
 Run IGV
 --------------------------------------------------------------------------------
 
+You can run this command from the terminal:
     igv
+
+or you can also use the link in your Desktop.
+
 
 Downolad a referece genome
 --------------------------------------------------------------------------------
