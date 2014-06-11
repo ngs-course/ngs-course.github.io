@@ -56,15 +56,17 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 
 - [Presentation](Course_Materials/association_studies/presentation/association_studies_presentation.pdf) - [Tutorial](Course_Materials/association_studies/tutorial/association_studies.html)
 
-
 ### RNA-Seq data analysis
 
-- [Presentation](Course_Materials/rna_seq/presentation/rna_seq.pdf) - [Tutorial](Course_Materials/rna_seq/tutorial/rna_seq.html)
-
-
+- [Presentation](Course_Materials/rna_seq/presentation/rna_seq.pdf) - [Tutorial](Course_Materials/rna_seq/tutorial/rna_seq.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAB77HfUPkiXBj1MmshjyKtYa/rna_seq)
 
 ### Functional analysis
 
+- [Presentation](Course_Materials/functional/presentation/babelomics_data_analysis.pdf) - [Tutorial](http://bioinfo.cipf.es/babelomicstutorial/)
+
+
+
+----
 
 # About
 
