@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="RNA-Seq data analysis" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>RNA-Seq data analysis</strong></h2>
+<h3 class="date"><em>(updated 2014-06-10)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://cufflinks.cbcb.umd.edu/manual.html#cuffdiff">Cuffdiff</a> the module of <a href="http://cufflinks.cbcb.umd.edu/index.html">Cufflinks</a> that allows for the analysis of differential expression.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li><a href="http://www.ensembl.org/info/website/upload/gff.html">GTF</a>: General Feature Format.</li>
+</ul>
+<h1 id="overview">Overview</h1>
+<p>We use Cuffdiff (Cufflinks) to perform a differential expression analysis of RNA-Seq data.</p>
+<h1 id="exercise">Exercise</h1>
+<!-- new and clean data directory in the sandbox
+    rm -r                                           ../../../../sandbox/rna_seq/
+    cp -r ../../../../ngs_course_materials/rna_seq/ ../../../../sandbox/rna_seq/
+    cp    ../../../../ngs_course_materials/f000_chr21_ref_genome_sequence.fa ../../../../sandbox/rna_seq/
+    cp    ../../../../ngs_course_materials/f005_chr21_genome_annotation.gtf  ../../../../sandbox/rna_seq/
+    cd    ../../../../sandbox/rna_seq/
+-->
+
+
+<p>Create an empty directory to work in the exercise and copy or download the raw data to it. You will need to copy the <strong>reference genome</strong> the <strong>GTF annotation file</strong> and the paired en fastq files of the 3 samples (6 files in total).</p>
+<pre><code>cd rna_seq_data</code></pre>
+<h2 id="map-against-the-reference-genome-using-bowtie2">Map against the reference genome using bowtie2</h2>
+<p>Fist we need to <strong>build an index</strong> for bowtie:</p>
+<pre><code>bowtie2-build f000_chr21_ref_genome_sequence.fa f001_bowtie_index</code></pre>
+<p>And now we can run the <strong>alignments</strong> for the <strong>paired end</strong> files:</p>
+<pre><code>tophat2 -r 300 -o f021_case_tophat_out   f001_bowtie_index   f011_case_read1.fastq f011_case_read2.fastq
+tophat2 -r 300 -o f022_case_tophat_out   f001_bowtie_index   f012_case_read1.fastq f012_case_read2.fastq
+tophat2 -r 300 -o f023_case_tophat_out   f001_bowtie_index   f013_case_read1.fastq f013_case_read2.fastq
+
+tophat2 -r 300 -o f024_cont_tophat_out   f001_bowtie_index   f014_cont_read1.fastq f014_cont_read2.fastq
+tophat2 -r 300 -o f025_cont_tophat_out   f001_bowtie_index   f015_cont_read1.fastq f015_cont_read2.fastq
+tophat2 -r 300 -o f026_cont_tophat_out   f001_bowtie_index   f016_cont_read1.fastq f016_cont_read2.fastq</code></pre>
+<p><strong>REMARK:</strong> For <strong>paired end</strong> samples the left and the right files have to be separated using an <strong>space</strong>.<br />If separated by a <strong>coma</strong>, tophat understands the two files contain reads form the same sample sequenced in a <strong>single end</strong> protocol.</p>
+<h2 id="convert-bam-files-to-sam-format">Convert BAM files to SAM format</h2>
+<p>Use [samtools] to convert the BAM files to a SAM (text file) format:</p>
+<pre><code>samtools view f021_case_tophat_out/accepted_hits.bam &gt; f031_case.sam
+samtools view f022_case_tophat_out/accepted_hits.bam &gt; f032_case.sam
+samtools view f023_case_tophat_out/accepted_hits.bam &gt; f033_case.sam
+
+samtools view f024_cont_tophat_out/accepted_hits.bam &gt; f034_cont.sam
+samtools view f025_cont_tophat_out/accepted_hits.bam &gt; f035_cont.sam
+samtools view f026_cont_tophat_out/accepted_hits.bam &gt; f036_cont.sam</code></pre>
+<!--
+this step does not seem necessary any more
+-->
+
+<p>As the alignment files are now in text format, we can use the Linux shell command <code>wc</code> to estimate the number of aligned reads in each sample.</p>
+<pre><code>wc -l *.sam</code></pre>
+<ul>
+<li>Why does it seem that the control samples do have more aligned reads? Count also the number of reads in each sample (fastq files)</li>
+</ul>
+<!-- 
+    wc -l *.fastq
+-->
+
+
+<h2 id="differential-expression-using-cuffdiff">Differential expression using Cuffdiff</h2>
+<p>Now that the alignments are done we can use <code>cufdiff</code> to perform a differential expression analysis.</p>
+<p>In this step the software will make use of the <strong>GTF file</strong> <code>f005_chr21_genome_annotation.gtf</code>. This file contains the annotation of the features (genes, transcripts, …) of interest in our study.</p>
+<p>Compare 2 samples:</p>
+<pre><code>cuffdiff -o f040_dif_exp_two f005_chr21_genome_annotation.gtf   f031_case.sam   f034_cont.sam</code></pre>
+<p>Compare several samples:</p>
+<pre><code>cuffdiff -o f040_dif_exp_several f005_chr21_genome_annotation.gtf   f031_case.sam,f032_case.sam,f033_case.sam   f034_cont.sam,f035_cont.sam,f036_cont.sam</code></pre>
+<p>Explore the results.<br />You can find an explanation of the at <a href="http://cufflinks.cbcb.umd.edu/manual.html#cuffdiff_output">http://cufflinks.cbcb.umd.edu/manual.html#cuffdiff_output</a></p>
+<!-- 
+
+cufflinks -o g040_salida_cufflinks -G f005_chr21_genome_annotation.gtf f031_case.sam
+    
+cuffdiff -o f041_dif_exp_two f005_chr21_genome_annotation.gtf   f021_case_tophat_out/accepted_hits.bam   f024_cont_tophat_out/accepted_hits.bam
+
+
+Understanding the results
+--------------------------------------------------------------------------------
+
+-->
+</body>
+</html>
