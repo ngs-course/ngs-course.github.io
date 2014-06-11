@@ -31,6 +31,8 @@ If you read the screen message carefully, it tells that only 1 out of 3 samples 
 
     perl annotate_variation.pl -downdb refGene humandb/
 
+    perl annotate_variation.pl -downdb snp128 humandb/
+
     perl annotate_variation.pl -downdb 1000g2012apr humandb/
 
 Other possible downloads for hg19 (more can be found at http://www.openbioinformatics.org/annovar/annovar_download.html):
@@ -59,8 +61,8 @@ Other possible downloads for hg19 (more can be found at http://www.openbioinform
 4. Filter rare or unreported variants (in 1000G/dbSNP) or predicted deleterious variants
 --------------------------------------------------------------------------------
 
-    perl annotate_variation.pl -filter -dbtype 1000g2012apr -maf 0.01 example/ex1.human humandb/ --outfile results/1-filter
+    perl annotate_variation.pl -filter -dbtype 1000g2012apr_all -maf 0.01 example/ex1.human humandb/ --outfile results/2-filter
 
-    perl annotate_variation.pl -filter -dbtype snp130 example/ex1.human humandb/ --outfile results/1-filter
+    perl annotate_variation.pl -filter -dbtype snp128 example/ex1.human humandb/ --outfile results/2-filter
 
 
