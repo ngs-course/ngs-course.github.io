@@ -29,6 +29,8 @@ cd /home/participant/cambridge_mda14/annotation/annovar</code></pre>
 <h2 id="download-gene-annotation-database-for-hg18-build-and-save-to-humandb-directory">1. Download gene annotation database (for hg18 build) and save to humandb/ directory</h2>
 <pre><code>perl annotate_variation.pl -downdb refGene humandb/
 
+perl annotate_variation.pl -downdb snp128 humandb/
+
 perl annotate_variation.pl -downdb 1000g2012apr humandb/</code></pre>
 <p>Other possible downloads for hg19 (more can be found at http://www.openbioinformatics.org/annovar/annovar_download.html):</p>
 <pre><code>perl annotate_variation.pl -buildver hg19 -downdb refGene humandb/
@@ -45,8 +47,8 @@ perl annotate_variation.pl --geneanno example/ex1.human humandb/ --outfile resul
 <h2 id="region-based-annotate-variants">3. Region-based annotate variants</h2>
 <pre><code>perl annotate_variation.pl -regionanno -dbtype cytoBand example/ex1.human humandb/ --outfile results/1-regionanno</code></pre>
 <h2 id="filter-rare-or-unreported-variants-in-1000gdbsnp-or-predicted-deleterious-variants">4. Filter rare or unreported variants (in 1000G/dbSNP) or predicted deleterious variants</h2>
-<pre><code>perl annotate_variation.pl -filter -dbtype 1000g2012apr -maf 0.01 example/ex1.human humandb/ --outfile results/1-filter
+<pre><code>perl annotate_variation.pl -filter -dbtype 1000g2012apr_all -maf 0.01 example/ex1.human humandb/ --outfile results/2-filter
 
-perl annotate_variation.pl -filter -dbtype snp130 example/ex1.human humandb/ --outfile results/1-filter</code></pre>
+perl annotate_variation.pl -filter -dbtype snp128 example/ex1.human humandb/ --outfile results/2-filter</code></pre>
 </body>
 </html>
