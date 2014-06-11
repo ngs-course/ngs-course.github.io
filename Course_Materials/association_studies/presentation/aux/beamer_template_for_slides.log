@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.15)  9 JUN 2014 17:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.15)  11 JUN 2014 19:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -939,8 +939,7 @@ ty
 Package: beamercolorthemeseahorse 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 175.
-
-No file beamer_template_for_slides.aux.
+ (aux/beamer_template_for_slides.aux)
 \openout1 = `beamer_template_for_slides.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 192.
@@ -958,6 +957,7 @@ LaTeX Font Info:    ... okay on input line 192.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 192.
 LaTeX Font Info:    ... okay on input line 192.
 LaTeX Font Info:    Try loading font information for T1+lmss on input line 192.
+
 
 (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1039,6 +1039,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 192.
 LaTeX Info: Redefining \pageref on input line 192.
 LaTeX Info: Redefining \nameref on input line 192.
+
+(aux/beamer_template_for_slides.out) (aux/beamer_template_for_slides.out)
 \@outlinefile=\write5
 \openout5 = `beamer_template_for_slides.out'.
 
@@ -1111,8 +1113,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 LaTeX Info: Redefining \includegraphics on input line 192.
 
-No file beamer_template_for_slides.nav.
-(./010_title.tex)
+(aux/beamer_template_for_slides.nav) (./010_title.tex)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
 (hyperref)                setting the option has no effect on input line 203.
@@ -1128,7 +1129,7 @@ Package pdftex.def Info: ../../../Commons/logo_cipf.png used on input line 211.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../../../Commons/logo_cipf
 .png>] (./aux/slides.tex
-<images/vcf.png, id=30, 992.20688pt x 369.63094pt>
+<images/vcf.png, id=31, 992.20688pt x 369.63094pt>
 File: images/vcf.png Graphic file (type png)
  <use images/vcf.png>
 Package pdftex.def Info: images/vcf.png used on input line 12.
@@ -1148,15 +1149,19 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 (aux/beamer_template_for_slides.vrb) [4
 
 ]
-<images/ped-map.png, id=52, 1133.23375pt x 537.00626pt>
+<images/ped-map.png, id=53, 1133.23375pt x 537.00626pt>
 File: images/ped-map.png Graphic file (type png)
 
 <use images/ped-map.png>
-Package pdftex.def Info: images/ped-map.png used on input line 90.
+Package pdftex.def Info: images/ped-map.png used on input line 88.
 (pdftex.def)             Requested size: 339.97275pt x 161.10312pt.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 90.
- [5
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 88.
+
+Overfull \vbox (6.99284pt too high) detected at line 88
+ []
+
+[5
 
  <./images/ped-map.png>] [6
 
@@ -1172,8 +1177,7 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 217.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
-
-(aux/beamer_template_for_slides.aux)
+ (aux/beamer_template_for_slides.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
 Package rerunfilecheck Info: File `beamer_template_for_slides.out' has not chan
@@ -1182,18 +1186,18 @@ ged.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 217.
  ) 
 Here is how much of TeX's memory you used:
- 16106 strings out of 493307
- 296253 string characters out of 6139905
- 377531 words of memory out of 5000000
- 19150 multiletter control sequences out of 15000+600000
- 33067 words of font info for 28 fonts, out of 8000000 for 9000
+ 16130 strings out of 493307
+ 296644 string characters out of 6139905
+ 377635 words of memory out of 5000000
+ 19166 multiletter control sequences out of 15000+600000
+ 30297 words of font info for 27 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,16n,55p,459b,751s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/
 public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/pu
 blic/lm/lmtt10.pfb>
-Output written on aux/beamer_template_for_slides.pdf (6 pages, 299204 bytes).
+Output written on aux/beamer_template_for_slides.pdf (6 pages, 299189 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  62 compressed objects within 1 object stream

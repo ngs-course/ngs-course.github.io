@@ -14,9 +14,9 @@ May be compressed and indexed using ``tabix``
 
 
 File formats: VCF
-========================================
+================================================================================
 
-Each variant is described by **8 fields**
+Each variant is described by __8 fields__
 
 1. CHROM: chromosome
 2. POS: position
@@ -29,14 +29,14 @@ Each variant is described by **8 fields**
 8. INFO: additional information 
 
 
-**Genotype data** for several samples may be included in 
+__Genotype data__ for several samples may be included in 
 a batch of additional columns (one for each sample)
 preceded by a FORMAT column which describes their format.
 
 
 
 File formats: VCF INFO column
-========================================
+================================================================================
 
 May include several semicolon separated fields
 containing information about the variants coded in key value style:
@@ -69,8 +69,6 @@ Classic format to represent genomic variants for several individuals
 
 \centerline{\includegraphics[scale=0.3]{images/ped-map.png}}
 
-\small
-
 Some variants of the format are described depending on the software used to read or write them.
 Those variants may include _transposed_ versions of the format which is 
 closer to standard _genomic_ representation of this kind of information.
@@ -98,4 +96,3 @@ MAP file
 2. rs... or SNP identifier
 3. Genetic distance (Morgans)
 4. Base-pair position (bp units)
-
