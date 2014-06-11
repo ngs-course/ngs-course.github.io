@@ -59,7 +59,7 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 
 ### RNA-Seq data analysis
 
-- [Presentation](Course_Materials/rna_seq/presentation/rna_seq_presentation.pdf) - [Tutorial](Course_Materials/rna_seq/tutorial/rna_seq.html)
+- [Presentation](Course_Materials/rna_seq/presentation/rna_seq.pdf) - [Tutorial](Course_Materials/rna_seq/tutorial/rna_seq.html)
 
 
 
