@@ -20,31 +20,35 @@
 <h1 id="variant-annotation-with-annovar">Variant annotation with Annovar</h1>
 <p>Copy the necessary data in your working directory:</p>
 <pre><code>mkdir -p /home/participant/cambridge_mda14/
-cp -r /home/participant/Course_Materials/annotation /home/participant/cambridge_mda14/
+cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda14/
 cd /home/participant/cambridge_mda14/annotation/annovar</code></pre>
+<h2 id="vcf-to-annovar-format">1. VCF to Annovar format</h2>
+<pre><code>perl convert2annovar.pl -format vcf4 example/example1.vcf &gt; example/example1.annovar</code></pre>
+<p>The above command takes example1.vcf as input file, and generate the example1.annovar as output file. The 3 extra columns are zygosity status, genotype quality and read depth.</p>
+<p>If you read the screen message carefully, it tells that only 1 out of 3 samples have been processed in this VCF file. <strong>By default, only the first sample in VCF file will be written to output file</strong>. The input contains five loci, but two of them do not have variation for the first sample, and that is why the output contains only 3 variants.</p>
 <h2 id="download-gene-annotation-database-for-hg18-build-and-save-to-humandb-directory">1. Download gene annotation database (for hg18 build) and save to humandb/ directory</h2>
-<pre><code>./annotate_variation.pl -downdb refGene humandb/
+<pre><code>perl annotate_variation.pl -downdb refGene humandb/
 
-./annotate_variation.pl -downdb -webfrom annovar 1000g2012apr humandb/</code></pre>
-<p>Other possible downloads for hg19:</p>
-<pre><code>annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/
-annotate_variation.pl -buildver hg19 -downdb phastConsElements46way humandb/
-annotate_variation.pl -buildver hg19 -downdb genomicSuperDups humandb/
-annotate_variation.pl -buildver hg19 -downdb -webfrom annovar 1000g2012apr humandb/
-annotate_variation.pl -buildver hg19 -downdb -webfrom annovar snp135 humandb/ 
-annotate_variation.pl -buildver hg19 -downdb -webfrom annovar ljb2_all humandb/
-annotate_variation.pl -buildver hg19 -downdb -webfrom annovar esp6500si_all humandb/
-    </code></pre>
+perl annotate_variation.pl -downdb snp128 humandb/
+
+perl annotate_variation.pl -downdb 1000g2012apr humandb/</code></pre>
+<p>Other possible downloads for hg19 (more can be found at http://www.openbioinformatics.org/annovar/annovar_download.html):</p>
+<pre><code>perl annotate_variation.pl -buildver hg19 -downdb refGene humandb/
+perl annotate_variation.pl -buildver hg19 -downdb phastConsElements46way humandb/
+perl annotate_variation.pl -buildver hg19 -downdb genomicSuperDups humandb/
+perl annotate_variation.pl -buildver hg19 -downdb 1000g2012apr humandb/
+perl annotate_variation.pl -buildver hg19 -downdb snp135 humandb/ 
+perl annotate_variation.pl -buildver hg19 -downdb ljb2_all humandb/
+perl annotate_variation.pl -buildver hg19 -downdb esp6500si_all humandb/</code></pre>
 <h2 id="gene-based-annotation-of-variants-in-the-varlist-file-by-default-geneanno-is-on">2. Gene-based annotation of variants in the varlist file (by default –geneanno is ON)</h2>
-<pre><code>./annotate_variation.pl --geneanno example/ex1.human humandb/ --outfile result
+<pre><code>mkdir results
+perl annotate_variation.pl --geneanno example/ex1.human humandb/ --outfile results/0-geneanno
       </code></pre>
 <h2 id="region-based-annotate-variants">3. Region-based annotate variants</h2>
-<pre><code>./annotate_variation.pl -regionanno -dbtype cytoBand example/ex1.human humandb/ --outfile result
-
-./annotate_variation.pl -regionanno -dbtype example_db_gff3 example/ex1.human humandb/ --outfile result</code></pre>
+<pre><code>perl annotate_variation.pl -regionanno -dbtype cytoBand example/ex1.human humandb/ --outfile results/1-regionanno</code></pre>
 <h2 id="filter-rare-or-unreported-variants-in-1000gdbsnp-or-predicted-deleterious-variants">4. Filter rare or unreported variants (in 1000G/dbSNP) or predicted deleterious variants</h2>
-<pre><code>./annotate_variation.pl -filter -dbtype 1000g2012apr -maf 0.01 example/ex1.human humandb/ --outfile result
+<pre><code>perl annotate_variation.pl -filter -dbtype 1000g2012apr_all -maf 0.01 example/ex1.human humandb/ --outfile results/2-filter
 
-./annotate_variation.pl -filter -dbtype snp130 example/ex1.human humandb/ --outfile result</code></pre>
+perl annotate_variation.pl -filter -dbtype snp128 example/ex1.human humandb/ --outfile results/2-filter</code></pre>
 </body>
 </html>
