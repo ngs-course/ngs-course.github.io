@@ -6,9 +6,17 @@
 File formats: VCF
 ================================================================================
 
-Tab delimited text file with a **header section**
+Tab delimited text file with a __header section__
 
+\ 
+
+<!--
 ![](images/vcf.png)
+-->
+
+\centerline{\includegraphics[scale=0.35]{images/vcf.png}}
+
+\ 
 
 May be compressed and indexed using ``tabix``
 
@@ -69,10 +77,11 @@ Classic format to represent genomic variants for several individuals
 
 \centerline{\includegraphics[scale=0.3]{images/ped-map.png}}
 
+<!--
 Some variants of the format are described depending on the software used to read or write them.
 Those variants may include _transposed_ versions of the format which is 
 closer to standard _genomic_ representation of this kind of information.
-
+-->
 
 File formats: PED & MAP
 ================================================================================
