@@ -13,10 +13,9 @@
 <div id="header">
 <h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>Association Analysis using PLINK</strong></h2>
-<h3 class="date"><em>(updated 2014-06-10)</em></h3>
+<h3 class="date"><em>(updated 2014-09-17)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
-
 <h1 id="preliminaries">Preliminaries</h1>
 <h2 id="software-used-in-this-practical">Software used in this practical:</h2>
 <ul>
@@ -79,10 +78,9 @@
     mkdir ../../../../sandbox/association_studies/
     cd    ../../../../sandbox/association_studies/
 -->
-
 <p>For this practical we will download an example dataset from the <a href="http://www.1000genomes.org/" title="1000 Genomes Home Page">1000 Genomes</a> web page using <a href="http://samtools.sourceforge.net/tabix.shtml" title="tabix: compress and index TAB-delimited files. Useful for handling GFF, GTF, BED and VCF files">tabix</a>.</p>
 <p>Go to the 1000 Genomes FTP site:</p>
-<p><a href="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase1/analysis_results/integrated_call_sets">ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase1/analysis_results/integrated_call_sets</a></p>
+<p><a href="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase1/analysis_results/integrated_call_sets" class="uri">ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase1/analysis_results/integrated_call_sets</a></p>
 <p>The files in this directory represent the final variant call set associated with the phase1 analysis.</p>
 <p>Use <a href="http://samtools.sourceforge.net/tabix.shtml" title="tabix: compress and index TAB-delimited files. Useful for handling GFF, GTF, BED and VCF files">tabix</a> to download the first variants in chromosome 20:</p>
 <pre><code>tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase1/analysis_results/integrated_call_sets/ALL.chr20.integrated_phase1_v3.20101123.snps_indels_svs.genotypes.vcf.gz 20:1-1000000 &gt; f010_first_chr20.vcf</code></pre>
@@ -102,24 +100,15 @@ head f020_plink_format.tped</code></pre>
 <p>Apply <a href="http://pngu.mgh.harvard.edu/~purcell/plink/" title="PLINK: whole genome association analysis">PLINK</a> to get a description of the dataset:</p>
 <pre><code>plink --noweb --allow-no-sex --out f030_plink_description --tfile f020_plink_format</code></pre>
 <ul>
-<li>What happens if you do not include the <code>--allow-no-sex</code> flag?<br /> (See the indications in the output or in the <code>.log</code> file)</li>
+<li>What happens if you do not include the <code>--allow-no-sex</code> flag? <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a><br /> (See the indications in the output or in the <code>.log</code> file)</li>
 </ul>
-<!--
-Warning, found 1092 individuals with ambiguous sex codes
-These individuals will be set to missing ( or use --allow-no-sex )
-Writing list of these individuals to [ f030_plink_description2.nosex ]
--->
-
 <!-- What information is in the file `.nosex`? -->
-
 <p>Edit the file <code>f020_plink_format.tfam</code> to include some Phenotype information. Remember this information is to be coded in <strong>column 6</strong> as: 1=unaffected; 2=affected; 0 missing.</p>
 <p>You could use any software, any spreadsheet for instance, to include this information. For this practical we will use <a href="http://www.r-project.org/" title="The Project for Statistical Computing">R</a></p>
-<p>(The file <strong><a href="edit_tfam_file.r">edit_tfam_file.r</a></strong> shows how to carry out the edition of the file using R)</p>
+<p>(The file <strong><a href="edit_tfam_file.r" class="uri">edit_tfam_file.r</a></strong> shows how to carry out the edition of the file using R)</p>
 <!--
     R CMD BATCH --vanilla ../../ngs-course.github.io/Course_Materials/association_studies/tutorial/edit_tfam_file.r
 -->
-
-
 <p>Let’s carry out an <a href="http://pngu.mgh.harvard.edu/~purcell/plink/anal.shtml#cc">association test</a> now using PLINK.</p>
 <pre><code>plink --noweb --allow-no-sex --tped f020_plink_format.tped --tfam f040_plink_format.tfam --out f050_res_plink --assoc</code></pre>
 <ul>
@@ -129,7 +118,6 @@ Writing list of these individuals to [ f030_plink_description2.nosex ]
 <!-- without the --allow-no-sex
     plink --noweb --tped f020_plink_format.tped --tfam f040_plink_format.tfam --out f050_res_plink_NO_NO-SEX --assoc
 -->
-
 <p>See PLINK documentation on some other options to <a href="http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml#pheno">handle Phenotype data</a></p>
 <p>Explore the results file:</p>
 <pre><code>head f050_res_plink.assoc</code></pre>
@@ -141,13 +129,19 @@ Writing list of these individuals to [ f030_plink_description2.nosex ]
 <pre><code>head f050_res_plink.assoc</code></pre>
 <p>You can use the <a href="http://www.r-project.org/" title="The Project for Statistical Computing">R</a> scripts:</p>
 <ul>
-<li><strong><a href="explore_plink_results.r">explore_plink_results.r</a></strong></li>
-<li><strong><a href="explore_plink_pvalues.r">explore_plink_pvalues.r</a></strong></li>
+<li><strong><a href="explore_plink_results.r" class="uri">explore_plink_results.r</a></strong></li>
+<li><strong><a href="explore_plink_pvalues.r" class="uri">explore_plink_pvalues.r</a></strong></li>
 </ul>
 <p>to do the exploration and the comparison.</p>
 <!--
     R CMD BATCH --vanilla ../../ngs-course.github.io/Course_Materials/association_studies/tutorial/explore_plink_results.r
     R CMD BATCH --vanilla ../../ngs-course.github.io/Course_Materials/association_studies/tutorial/explore_plink_pvalues.r
 -->
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Warning, found 1092 individuals with ambiguous sex codes<br />These individuals will be set to missing ( or use –allow-no-sex )<br />Writing list of these individuals to [ f030_plink_description2.nosex ]<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
 </body>
 </html>

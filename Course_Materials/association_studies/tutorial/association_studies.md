@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Association Analysis using PLINK__
-% _(updated 2014-06-10)_
+% _(updated 2014-09-17)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -136,14 +136,14 @@ Apply [PLINK] to get a description of the dataset:
 
     plink --noweb --allow-no-sex --out f030_plink_description --tfile f020_plink_format
 
-- What happens if you do not include the `--allow-no-sex` flag?  
+- What happens if you do not include the `--allow-no-sex` flag? [^resp]  
   (See the indications in the output or in the `.log` file)
 
-<!--
-Warning, found 1092 individuals with ambiguous sex codes
-These individuals will be set to missing ( or use --allow-no-sex )
+
+[^resp]:Warning, found 1092 individuals with ambiguous sex codes  
+These individuals will be set to missing ( or use --allow-no-sex )  
 Writing list of these individuals to [ f030_plink_description2.nosex ]
--->
+
 
 <!-- What information is in the file `.nosex`? -->
 

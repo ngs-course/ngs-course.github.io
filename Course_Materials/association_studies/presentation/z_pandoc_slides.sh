@@ -24,3 +24,4 @@ sed -i 's/\includegraphics{/\includegraphics[width=\\textwidth,height=0.8\\texth
 pdflatex -output-directory=aux $beamer_template.tex
 
 mv aux/`basename $beamer_template`.pdf $outfile.pdf
+
