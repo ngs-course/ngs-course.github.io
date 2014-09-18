@@ -47,8 +47,7 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 
 ### Variant prioritization
 
-- [Presentation](Course_Materials/variant_prioritization/presentation/2014-Cambridge_variant_prioritization.pdf)
-
+- [Presentation](Course_Materials/variant_prioritization/presentation/2014-Cambridge_variant_prioritization.pdf) || [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/annotation/hpg-variant/examples)
 
 ## Day 3
 
