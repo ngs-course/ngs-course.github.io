@@ -13,14 +13,11 @@
 <div id="header">
 <h1 class="title"><a href="http://ngs-course.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>Quality control &amp; Adapter trimming</strong></h2>
-<h3 class="date"><em>(updated 08-06-2014)</em></h3>
+<h3 class="date"><em>(updated 2014-09-29)</em></h3>
 </div>
 <!-- Common URLs: Tools -->
-
 <!-- Common URLs: File Formats -->
-
 <!-- External URLs -->
-
 <h1 id="preliminaries">Preliminaries</h1>
 <h2 id="software-used-in-this-practical">Software used in this practical:</h2>
 <ul>
@@ -52,8 +49,6 @@
     cp -r ../../../../ngs_course_materials/quality_control/ ../../../../sandbox/quality_control/
     cd    ../../../../sandbox/quality_control/
 -->
-
-
 <h2 id="explore-the-raw-data-using-some-linux-shell-commands">Explore the raw data using some Linux shell commands</h2>
 <p>The file <strong>f010_raw_mirna.fastq</strong> contains reads form a microRNA sequencing experiment. Use the command <code>head</code> to have a view of the first lines of the file:</p>
 <pre><code>head f010_raw_mirna.fastq</code></pre>
@@ -76,7 +71,7 @@ grep &quot;CTTTTTTTCGTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGC&
 <p>Do the sequences appear systematically at the beginning or at the end of the reads?</p>
 <p>But the adapters could also appear in the <em>reverse</em>, <em>complementary</em> or <em>reverse complementary</em> mode.</p>
 <p>Compute the <em>reverse</em>, <em>complementary</em> and the <em>reverse complementary</em> sequences of the two adapters, and find out which of them appear in your data.</p>
-<p>To compute those sequences you can use some online resources as the one in:<br /><a href="http://www.bioinformatics.org/sms/rev_comp.html">http://www.bioinformatics.org/sms/rev_comp.html</a></p>
+<p>To compute those sequences you can use some online resources as the one in:<br /><a href="http://www.bioinformatics.org/sms/rev_comp.html" class="uri">http://www.bioinformatics.org/sms/rev_comp.html</a></p>
 <!--
 Or to use R-Bioconductor to compute their reverse, complementary and reverse complementary.
 
@@ -87,7 +82,6 @@ complement (myseq)
 reverseComplement (myseq)
 
 -->
-
 <p>Use grep form Linux shell to find out which of the versions of the adapter is in your data.</p>
 <h3 id="adapter-1">Adapter 1</h3>
 <pre><code>grep CTGGGAAATCACCATAAACGTGAAATGTCTTTGGATTTGGGAATCTTATAAGTTCTGTATGAGACCACTCTAAAAA f010_raw_mirna.fastq | wc -l  ## present in the sample (at the beginning of the reads)
