@@ -1,15 +1,15 @@
 # Overview
 
-Welcome to this introductory NGS data analysis course. During this course you will learn the basics of NGS data analysis in a Linux environment using most currently used software and best practices will be explained. This course is focused in NGS data alignment for both DNA and RNA (RNA-seq), variant calling, differential expression analysis and data visualization.
+Welcome to this introductory course about _NGS data analysis and visualization_. During this course you will learn the basics of NGS data analysis and visualization in a Linux environment, current used software and best practices will be explained. This course is focused in NGS data alignment for both DNA and RNA (RNA-seq), variant calling, differential expression analysis and data visualization.
 
-This is course is scheduled for a 3 days and assumes a very basic knowledge of NGS data analysis and Linux. All materials in this is course are free and open, feel free to reuse them as you want. Data for the tutorials are available in our [DropBox folder](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a).
+This is course is scheduled for a 3 days and assumes a very basic knowledge of NGS data analysis and Linux. All materials in this is course are free and open, feel free to reuse them as you want. All the data for the tutorials are available in our [DropBox folder](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a).
 
 
 # Schedule
 
 ## Day 1
 
-During this first day we will focus in a NGS data introduction and preparing the data for their analysis. The course starts with a short presentation and a NGS data and GNU/Linux shell introduction. Then we will start working and preparing the data: _Quality Control_ (QC) and _NGS data alignment_.
+During this first day we will start with an _introduction to NGS technology_ and in the data preparation for their analysis. You will also learn the basics of the _GNU/Linux shell introduction_. At this point we are ready to start preparing and working with the data: _Quality Control_ (QC) and _NGS data alignment_.
 
 ### Presentation
 - Presentation [[PDF](Course_Materials/presentation/presentation_mda14.pdf) | [OpenOffice](Course_Materials/presentation/presentation_mda14.odp)]
@@ -49,7 +49,13 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 
 - [Presentation](Course_Materials/variant_prioritization/presentation/2014-Cambridge_variant_prioritization.pdf) || [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/annotation/hpg-variant/examples)
 
+### Big Data analysis and visualization
+
+- [Presentation](Course_Materials/variant_prioritization/presentation/2014-Cambridge_variant_prioritization.pdf)
+
 ## Day 3
+
+In the last day we will work on RNA-seq data analysis
 
 ### Association studies
 
@@ -64,9 +70,8 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 - [Presentation](Course_Materials/functional/presentation/babelomics_data_analysis.pdf) - [Tutorial](http://bioinfo.cipf.es/babelomicstutorial/)
 
 
-
 ----
 
 # About
 
-This course is usually carried out by experienced researchers from CIPF and EMBL-EBI. You can ask any question to David Montaner (dmontaner@cipf.es), Marta Bleda (mbleda@cipf.es) and Ignacio Medina (imedina@ebi.ac.uk).
+This course is usually carried out by experienced researchers from CIPF, EMBL-EBI and University of Cambridge. You can ask any question to David Montaner (dmontaner@cipf.es), Marta Bleda (mb2033@cam.ac.uk) and Ignacio Medina (imedina@ebi.ac.uk).
