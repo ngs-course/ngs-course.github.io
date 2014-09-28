@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.15)  11 JUN 2014 19:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.3)  18 SEP 2014 00:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **../../../Commons/beamer_template_for_slides.tex
 (../../../Commons/beamer_template_for_slides.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 78 languages loaded.
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texmf/tex/latex/beamer/base/beamer.cls
 (/usr/share/texmf/tex/latex/beamer/base/beamerbasercs.sty
 Package: beamerbasercs 2012/11/13 (rcs-revision cb16a617839f)
@@ -398,7 +398,7 @@ Package hyperref Info: Bookmarks ON on input line 4688.
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
-Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen162
@@ -938,25 +938,25 @@ Package: beamerfontthemestructurebold 2010/06/17  (rcs-revision d02a7cf4d8ae)
 ty
 Package: beamercolorthemeseahorse 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 175.
+Package hyperref Info: Option `colorlinks' set `true' on input line 174.
  (aux/beamer_template_for_slides.aux)
 \openout1 = `beamer_template_for_slides.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 192.
-LaTeX Font Info:    ... okay on input line 192.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 192.
-LaTeX Font Info:    ... okay on input line 192.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 192.
-LaTeX Font Info:    ... okay on input line 192.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 192.
-LaTeX Font Info:    ... okay on input line 192.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 192.
-LaTeX Font Info:    ... okay on input line 192.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 192.
-LaTeX Font Info:    ... okay on input line 192.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 192.
-LaTeX Font Info:    ... okay on input line 192.
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 192.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 191.
 
 
 (/usr/share/texmf/tex/latex/lm/t1lmss.fd
@@ -1026,7 +1026,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box54
-Package hyperref Info: Link coloring ON on input line 192.
+Package hyperref Info: Link coloring ON on input line 191.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1036,56 +1036,56 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count159
 )
-LaTeX Info: Redefining \ref on input line 192.
-LaTeX Info: Redefining \pageref on input line 192.
-LaTeX Info: Redefining \nameref on input line 192.
+LaTeX Info: Redefining \ref on input line 191.
+LaTeX Info: Redefining \pageref on input line 191.
+LaTeX Info: Redefining \nameref on input line 191.
 
 (aux/beamer_template_for_slides.out) (aux/beamer_template_for_slides.out)
 \@outlinefile=\write5
 \openout5 = `beamer_template_for_slides.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 192.
+(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 191.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/bx/n on input line 192.
+(Font)                  OT1/lmr/bx/n --> OT1/cmss/bx/n on input line 191.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/lmr/m/n on input line 192.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 192.
+(Font)                  OT1/cmss/m/n --> T1/lmr/m/n on input line 191.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/bx/n on input line 192.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/bx/n on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/bx/n on input line 192.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 192.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/bx/n on input line 191.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 192.
+(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 192.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 192.
+(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 191.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 192.
+(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 192.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 192.
+(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 191.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 192.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 192.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 191.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/bx/n on input line 192.
+(Font)                  T1/lmss/m/n --> T1/lmss/bx/n on input line 191.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/bx/it on input line 192.
+(Font)                  T1/lmss/m/it --> T1/lmss/bx/it on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/lmr/bx/n on input line 192.
+(Font)                  OT1/cmss/bx/n --> T1/lmr/bx/n on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/lmss/bx/n --> T1/lmss/bx/n on input line 192.
+(Font)                  T1/lmss/bx/n --> T1/lmss/bx/n on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/bx/n on input line 192.
+(Font)                  T1/lmss/m/n --> T1/lmss/bx/n on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/bx/it on input line 192.
+(Font)                  T1/lmss/m/it --> T1/lmss/bx/it on input line 191.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/lmtt/m/n --> T1/lmtt/bx/n on input line 192.
+(Font)                  T1/lmtt/m/n --> T1/lmtt/bx/n on input line 191.
 
 (/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
 onary/translator-basic-dictionary-English.dict
@@ -1111,18 +1111,18 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 192.
+LaTeX Info: Redefining \includegraphics on input line 191.
 
 (aux/beamer_template_for_slides.nav) (./010_title.tex)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 203.
+(hyperref)                setting the option has no effect on input line 202.
 
 <../../../Commons/logo_cipf.png, id=18, 135.50626pt x 69.25874pt>
 File: ../../../Commons/logo_cipf.png Graphic file (type png)
 
 <use ../../../Commons/logo_cipf.png>
-Package pdftex.def Info: ../../../Commons/logo_cipf.png used on input line 211.
+Package pdftex.def Info: ../../../Commons/logo_cipf.png used on input line 210.
 
 (pdftex.def)             Requested size: 61.45703pt x 31.41132pt.
  [1
@@ -1132,9 +1132,9 @@ Package pdftex.def Info: ../../../Commons/logo_cipf.png used on input line 211.
 <images/vcf.png, id=31, 992.20688pt x 369.63094pt>
 File: images/vcf.png Graphic file (type png)
  <use images/vcf.png>
-Package pdftex.def Info: images/vcf.png used on input line 12.
-(pdftex.def)             Requested size: 307.2933pt x 114.47723pt.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 12.
+Package pdftex.def Info: images/vcf.png used on input line 13.
+(pdftex.def)             Requested size: 347.27762pt x 129.37276pt.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 13.
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1153,15 +1153,9 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 File: images/ped-map.png Graphic file (type png)
 
 <use images/ped-map.png>
-Package pdftex.def Info: images/ped-map.png used on input line 88.
+Package pdftex.def Info: images/ped-map.png used on input line 84.
 (pdftex.def)             Requested size: 339.97275pt x 161.10312pt.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 88.
-
-Overfull \vbox (6.99284pt too high) detected at line 88
- []
-
-[5
+ [5
 
  <./images/ped-map.png>] [6
 
@@ -1175,32 +1169,32 @@ Overfull \vbox (6.99284pt too high) detected at line 88
 \tf@snm=\write8
 \openout8 = `beamer_template_for_slides.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 217.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
- (aux/beamer_template_for_slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 216.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 216.
+
+(aux/beamer_template_for_slides.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 216.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 216.
 Package rerunfilecheck Info: File `beamer_template_for_slides.out' has not chan
 ged.
 (rerunfilecheck)             Checksum: <no file>.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 217.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 216.
  ) 
 Here is how much of TeX's memory you used:
- 16130 strings out of 493307
- 296644 string characters out of 6139905
- 377635 words of memory out of 5000000
+ 16126 strings out of 493304
+ 296588 string characters out of 6139872
+ 377891 words of memory out of 5000000
  19166 multiletter control sequences out of 15000+600000
- 30297 words of font info for 27 fonts, out of 8000000 for 9000
+ 27492 words of font info for 26 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,16n,55p,459b,751s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/
 public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmtt10.pfb>
-Output written on aux/beamer_template_for_slides.pdf (6 pages, 299189 bytes).
+/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+Output written on aux/beamer_template_for_slides.pdf (6 pages, 277813 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  13 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

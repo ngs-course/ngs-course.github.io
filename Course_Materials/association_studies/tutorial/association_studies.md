@@ -80,7 +80,7 @@ Overview
 ================================================================================
 
 1. Use [tabix] to download data from __remote__ VCF files.
-1. Use [PLINK] for converting VCF files to PED and MAP format.
+1. Use [VCFtools] for converting VCF files to PED and MAP format.
 1. Use [PLINK] to perform association studies.
 
 Use [R] for data handling and transformation.
