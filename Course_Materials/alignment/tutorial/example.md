@@ -5,6 +5,7 @@
 <!-- COMMON LINKS HERE -->
 
 [BWA]: http://bio-bwa.sourceforge.net/ "BWA"
+[HPG Aligner]: https://github.com/opencb/hpg-aligner/wiki/ "HPG Aligner"
 [Bowtie2]: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml "Bowtie2"
 [TopHat]: http://ccb.jhu.edu/software/tophat/index.shtml "TopHat2"
 [STAR]: https://code.google.com/p/rna-star/ "STAR"
@@ -22,6 +23,7 @@ In this hands-on will learn how to align DNA and RNA-seq data with most widely u
 ### NGS aligners used:
 
 - [BWA] : BWA is a software package for mapping **DNA** low-divergent sequences against a large reference genome, such as the human genome.
+- [HPG Aligner] : HPG Aligner is a new NGS aligner for mapping both **DNA Genomic** and **RNA-seq** data against a large reference genome. It's has been designed for having a high sensitivity and performance.
 - [Bowtie2] : *Bowtie 2* is an ultrafast and memory-efficient tool for aligning **DNA** sequencing reads to long reference sequences.
 - [TopHat2] : *TopHat* is a fast splice junction mapper for RNA-Seq reads. It aligns **RNA-Seq** reads to mammalian-sized genomes using the ultra high-throughput short read aligner Bowtie, and then analyzes the mapping results to identify splice junctions between exons.
 - [STAR] : *STAR* aligns **RNA-seq** reads to a reference genome using uncompressed suffix arrays.
