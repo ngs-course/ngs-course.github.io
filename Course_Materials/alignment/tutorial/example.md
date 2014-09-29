@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngs-course.github.io/)
 % __DNA and RNA-seq NGS alignment__
-% _(updated 28-05-2014)_
+% _(updated 28-09-2014)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -17,7 +17,7 @@
 
 # Preliminaries
 
-In this hands-on will learn how to align DNA and RNA-seq data with most widely used software today. Building a whole genome index requires a lot of RAM memory and almost one hour in a typical workstation, for this reason **in this tutorial we will work with chromosome 21** to speed up the exercises. The same steps would be done for a whole genome alignment. Two different datasets, high and low quality have been simulated for DNA, high contains 0.1% of mutations and low contains 1%. For RNA-seq a 100bp and 150bp datasets have been simulated.
+In this hands-on will learn how to align DNA and RNA-seq data with most widely used software today. Building a whole genome index requires a lot of RAM memory and almost one hour in a typical workstation, for this reason **in this tutorial we will work with chromosome 21** to speed up the exercises. The same steps would be done for a whole genome alignment. Two different datasets, high and low quality have been simulated for DNA, high quality contains 0.1% of mutations and low quality contains 1%. For RNA-seq a 100bp and 150bp datasets have been simulated.
 
 
 ### NGS aligners used:
@@ -41,7 +41,8 @@ In this hands-on will learn how to align DNA and RNA-seq data with most widely u
 
 ### Data used in this practical
 
-Create a ```data``` folder in your **working directory** and download the **reference genome sequence** to be used (human chromosome 21) and *simulated datasets* from **Dropbox** [data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a). For the rest of this tutorial the **working directory** will be **cambridge_mda14** and all the **paths** will be relative to that working directory:
+Create a ```data``` folder in your **working directory** and download the **reference genome sequence** to be used (human chromosome 21) and *simulated datasets* from **Dropbox** [data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a).
+For the rest of this tutorial the **working directory** will be **cambridge_mda14** and all the **paths** will be relative to that working directory:
     
     cd cambridge_mda14
     mkdir data
@@ -65,7 +66,7 @@ For this hands-on we are going to use small DNA and RNA-seq datasets simulated f
 
     cp path_to_course_materials/alignment/* your_local_data/
 
-The name of the folders and files describe the dataset, ie. ```dna_chr21_100_hq``` stands for: _DNA_ type of data from _chromosome 21_ with _100_nt read lengths of _high_ quality. Where _hq_ quality means 0.1% mutations and _lq_ quality 1% mutations. Take a few minutes to understand the different files.
+Notice that the name of the folders and files describe the dataset, ie. ```dna_chr21_100_hq``` stands for: _DNA_ type of data from _chromosome 21_ with _100_nt read lengths of _high_ quality. Where _hq_ quality means 0.1% mutations and _lq_ quality 1% mutations. Take a few minutes to understand the different files.
 
 **NOTE:** If you want to learn how to simulate DNA and RNA-seq for other conditions go down to the end of this tutorial.
 
@@ -77,7 +78,7 @@ For those with access to high-end nodes clusters you can index and simulated who
 - [Sequence Read Archive (SRA)](http://www.ncbi.nlm.nih.gov/sra)
 
 
-### Installing SAMtools
+### Installing SAMtools (Optional, already installed)
 
 Check that it is not installed by executing
 
@@ -103,17 +104,18 @@ Check that is correct by executing it with no arguments, the different commands 
 
 In this exercise we'll learn how to download, install, build the reference genome index and align in single-end and paired-end mode with the two most widely DNA aligners: *BWA* and *Bowtie2*. But first, create an ```aligners``` folder to store the software, and an ```alignments``` folder to store the results, create those folders in your *working directory* next to ```data```, you can create both folders by executing:
 
-    mkdir aligners alignments
+    mkdir aligners
+    mkdir alignments
 
 Now go to ```aligners``` and  ```alignments``` folders and create subfolders for *bwa* and *bowtie* to store the indexes and alignments results:
 
     cd aligners
-    mkdir bwa bowtie
+    mkdir bwa hpg-aligner bowtie
 
 and
 
     cd alignments
-    mkdir bwa bowtie
+    mkdir bwa hpg-aligner bowtie
     
 **NOTE:** Now your working directory must contain 3 folders: data (with the reference genome of chrom. 21 and simulated datasets), aligners and alignments. Your working directory should be similar to this (notice that aligners have not been downloaded):
 
@@ -122,9 +124,11 @@ and
 ├── aligners
 │   ├── bowtie
 │   ├── bwa
+│   ├── hpg-aligner
 ├── alignments
 │   ├── bowtie
 │   ├── bwa
+│   ├── hpg-aligner
 ├── data
 │   ├── dna_chr21_100_hq_read1.fastq
 │   ├── dna_chr21_100_hq_read2.fastq
@@ -146,7 +150,7 @@ and
 
 All these three algorithms come in the same binary so only one download and installation is needed.
 
-##### Download and install
+##### Download and install (Optional, already installed)
 
 First check that bwa is not currently installed by executing:
 
@@ -158,11 +162,11 @@ You can click on ```SF download page``` link in the [BWA] page or click directly
 
 [http://sourceforge.net/projects/bio-bwa/files](http://sourceforge.net/projects/bio-bwa/files)
 
-Click in the last version of BWA and wait for a few seconds, as the time of this tutorial last version is **bwa-0.7.7.tar.bz2**, the download will start. When downloaded go to your browser download folder and move it to aligners folder, uncompress it and compile it:
+Click in the last version of BWA and wait for a few seconds, as the time of this tutorial last version is **bwa-0.7.10.tar.bz2**, the download will start. When downloaded go to your browser download folder and move it to aligners folder, uncompress it and compile it:
 
-    mv bwa-0.7.7.tar.bz2 working_directory/aligners/bwa
-    tar -jxvf bwa-0.7.7.tar.bz2
-    cd bwa-0.7.7
+    mv bwa-0.7.10.tar.bz2 working_directory/aligners/bwa
+    tar -jxvf bwa-0.7.10.tar.bz2
+    cd bwa-0.7.10
     make
     cp bwa ~/bin
 
@@ -178,7 +182,7 @@ Some information about the software and commands should be listed.
 Create a folder inside ```aligners/bwa``` folder called ```index``` to store the BWA index and copy the reference genome into it:
     
     mkdir index
-    cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bwa/index/   (this path can be different!)
+    cp  data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa  aligners/bwa/index/   (this path can be different!)
     
 Now you can create the index by executing:
 
@@ -189,29 +193,35 @@ Some files will be created in the ```index``` folder, those files constitute the
 **NOTE:** The index must created only once, it will be used for all the different alignments with BWA.
 
 
-##### Aligning with BWA-MEM in SE and PE modes
+##### Aligning with new BWA-MEM in both single-end (SE) and paired-end (PE) modes
 
 BWA-MEM is the recommended algorithm to use now. You can check the options by executing:
 
     bwa mem
 
-To align SE with BWA-MEM execute:
+To align **SE** with BWA-MEM execute:
 
     bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq > alignments/bwa/dna_chr21_100_hq_se.sam
 
-To align PE with BWA-MEM just execute the same command line with the two FASTQ files:
+Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
+    cd alignments/bwa
+    samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
+
+
+To align **PE** with BWA-MEM just execute the same command line with the two FASTQ files:
 
     bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq > alignments/bwa/dna_chr21_100_hq_pe.sam
     
 Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
 
     cd alignments/bwa
-    samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
     samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
+
 
 Now you can do the same for the **low** quality datasets.
 
-##### Aligning with ALN and SAMSE/SAMPE (old algorithms) in SE and PE modes
+
+##### Aligning with old BWA algorithm, two command lines: ALN and SAMSE/SAMPE in SE and PE modes (Optional exercise)
 
 Now we are going to align SE and PE the **high** quality dataset. Single-end alignment with BWA requires 2 executions. The first uses ```aln``` command and takes the ```fastq``` file and creates a ```sai``` file; the second execution uses ```samse``` and the ```sai``` file and create the ```sam``` file. Results are stored in ```alignments``` folder:
 
@@ -237,7 +247,7 @@ Now you can do the same for the **low** quality datasets.
 ### Bowtie2
 [Bowtie2] as documentation states is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of about 50 up to few 100s. Bowtie 2 indexes the genome with an FM Index to keep its memory footprint small: for the human genome, its memory footprint is typically around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes.
 
-##### Download and install
+##### Download and install (Optional, already installed)
 
 First check that bwa is not currently installed by executing:
 
@@ -247,13 +257,13 @@ A list of commands will be printed if already installed. If not you can continue
 
 From [Bowtie2] go to ```Latest Release``` and download the program or go directly to:
 
-[http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.1/](http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.1/)
+[http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.3/](http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.3/)
 
-Click in the Linux version of Bowtie2 and wait for a few seconds, as the time of this tutorial last version is **bowtie2-2.2.1-linux-x86_64.zip**, the download will start. When downloaded go to your browser download folder and move it to aligners folder and uncompress it. No need to compile if you downloaded the Linux version:
+Click in the Linux version of Bowtie2 and wait for a few seconds, as the time of this tutorial last version is **bowtie2-2.2.3-linux-x86_64.zip**, the download will start. When downloaded go to your browser download folder and move it to aligners folder and uncompress it. No need to compile if you downloaded the Linux version:
 
-    mv bowtie2-2.2.1-linux-x86_64.zip working_directory/aligners/bowtie
-    unzip bowtie2-2.2.1-linux-x86_64.zip
-    cd bowtie2-2.2.1
+    mv bowtie2-2.2.3-linux-x86_64.zip working_directory/aligners/bowtie
+    unzip bowtie2-2.2.3-linux-x86_64.zip
+    cd bowtie2-2.2.3
 
 You can check that everything is allright by executing:
 
@@ -266,7 +276,7 @@ Big information about the software and commands should be listed.
 
 Create a folder inside Bowtie2 program called ```index``` to store the Bowtie2 index and copy the reference genome into it:
     
-    cd bowtie2-2.2.1   (if not in it)
+    cd bowtie   (_inside aligners folder_)
     mkdir index
     cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/
     
@@ -278,9 +288,10 @@ Some files will be created in the ```index``` folder, those files constitute the
 
 **NOTE:** The index must created only once, it will be used for all the different alignments with Bowtie2.
 
+
 ##### Aligning in SE and PE modes
 
-Mapping SE with Bowtie2 requires only 1 execution, for aligning the **high** in SE mode execute:
+Mapping **SE** with Bowtie2 requires only 1 execution, for aligning the **high** in SE mode execute:
 
     bowtie2 -q -p 4 -x aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -U data/dna_chr21_100_hq_read1.fastq -S alignments/bowtie/dna_chr21_100_hq_se.sam
 
@@ -289,7 +300,8 @@ And create the BAM file using SAMtools;
     cd alignments/bowtie
     samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 
-Mapping in PE also requires only one execution:
+
+Mapping in **PE** also requires only one execution:
 
     bowtie2 -q -p 4 -x aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -1 data/dna_chr21_100_hq_read1.fastq -2 data/dna_chr21_100_hq_read2.fastq -S alignments/bowtie/dna_chr21_100_hq_pe.sam
 
@@ -325,7 +337,7 @@ Go to ```alignments``` folder and create to folders for *bwa* and *bowtie* to st
 
 [TopHat2] states to be a *fast* splice junction mapper for RNA-Seq reads, which is not always completrly true. It aligns RNA-Seq reads to mammalian-sized genomes using the ultra high-throughput short read aligner Bowtie, and then analyzes the mapping results to identify splice junctions between exons.
 
-##### Download and install
+##### Download and install (Optional, already installed)
 
 First check that bwa is not currently installed by executing:
 
@@ -349,7 +361,7 @@ Big information about the software and commands should be listed.
 
 **NOTE:** TopHat uses Bowtie as the read aligner. You can use either Bowtie 2 (the default) or Bowtie (--bowtie1) and you will need the following Bowtie 2 (or Bowtie) programs in your PATH. Index must be created with Bowtie not TopHat. So, copy Bowtie2 into ~/bin:
     
-    cd bowtie2-2.2.1   (bowtie 2.2 does not work)
+    cd bowtie2   (bowtie 2.2 does not work)
     cp bowtie* ~/bin
 
 
@@ -369,7 +381,7 @@ Now align the rna dataset of 150bp with low quality and compare stats.
 ### STAR and MapSplice2
 [STAR] and [MapSplice2] are two others interesting RNA-seq aligners. [STAR] offer a great performance while still have good sensitivity. [MapSplice2] shows usually a better sensitivity but is several times slower.
 
-##### STAR installation
+##### STAR installation (Optional, already installed)
 STAR comes compiled for Linux, you only have to download the *tarball*:
 
     tar -zxvf STAR_2.3.0e.Linux_x86_64_static.tgz
@@ -377,7 +389,7 @@ STAR comes compiled for Linux, you only have to download the *tarball*:
 Read the documentation and try to align the simulated dataset.
 
 
-##### MapSplice2 installation
+##### MapSplice2 installation (Optional, already installed)
 MapSplice must be unizpped and compiled:
 
     unzip MapSplice-v2.1.6.zip
@@ -387,7 +399,7 @@ MapSplice must be unizpped and compiled:
 Read the documentation and try to align the simulated dataset.
 
 
-# Simulating NGS datasets
+# Exercise 3: Simulating NGS datasets (Optional)
 
 ### DNA
 Download [dwgsim] from http://sourceforge.net/projects/dnaa/files/ to the *working_directory* and uncompress it and compile it:
