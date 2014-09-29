@@ -34,9 +34,9 @@ $$Q = -10 log_{10} P$$
 
 $$P = 10^{\frac{-Q}{10}}$$
 
-\ 
+\  
 
-<http://en.wikipedia.org/wiki/Phred\_quality\_score#Definition>
+<http://en.wikipedia.org/wiki/Phred_quality_score#Definition>
 
 
 
