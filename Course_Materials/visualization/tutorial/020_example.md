@@ -31,7 +31,7 @@ Exercise 2: Visualising RNA-Seq data
 
 In the following **folder** you will find mapped RNA-Seq data from Illumina’s Human BodyMap 2.0 project. This two datasets in particular contain reads from brain and heart tissues.
 
-    cd /home/participant/cambridge_mda14/visualization/example_1
+    cd /home/participant/cambridge_mda14/visualization/example_2
 
 
 Steps
