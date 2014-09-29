@@ -13,7 +13,7 @@
 <div id="header">
 <h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>Visualization of mapped reads</strong></h2>
-<h3 class="date"><em>(updated 04-06-2014)</em></h3>
+<h3 class="date"><em>(updated 29-09-2014)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
 
@@ -35,18 +35,19 @@ cp -r /home/participant/Desktop/Open_Share/visualization /home/participant/cambr
 cd /home/participant/cambridge_mda14/visualization</code></pre>
 <p>Enter in the example folder:</p>
 <pre><code>cd example_0</code></pre>
-<p>This BAM file contains reads only for chromosome 11.</p>
+<p>This BAM file contains reads only for <strong>chromosome 11</strong>.</p>
 <h2 id="creating-indexed-files">Creating indexed files</h2>
 <p>Use <code>samtools</code> to index the bam files:</p>
 <pre><code>samtools index igv1.bam</code></pre>
 <h2 id="run-igv">Run IGV</h2>
 <p>You can run this command from the terminal: igv</p>
 <p>or you can also use the link in your Desktop.</p>
-<h2 id="downolad-a-referece-genome">Downolad a referece genome</h2>
-<p>By default, IGV loads Human hg18 assembly. However, we must work with the <strong>same assembly used to mapped our reads</strong>, in this case Human hg19.<br />Genome assemblies for several species can be dowloaded using IGV:</p>
+<h2 id="download-a-reference-genome">Download a reference genome</h2>
+<p>By default, IGV loads Human hg18 and hg19 assemblies. Bear in mind that we must work with the <strong>same assembly used to mapped our reads</strong>, in this case Human hg19.<br />Genome assemblies for several species can be downloaded using IGV. To explore the list of available genomes:</p>
 <ul>
-<li>Go to <code>Genomes</code> –&gt; <code>Load Genome From Server...</code><br />Select <strong>Human hg19</strong></li>
+<li>Go to <code>Genomes</code> –&gt; <code>Load Genome From Server...</code></li>
 </ul>
+<p>In this practical we are using <strong>Human hg19</strong></p>
 <h2 id="loading-and-browsing-files">Loading and browsing files</h2>
 <ul>
 <li>Go to <code>File</code> –&gt; <code>Load from file...</code><br />Select <code>igv1.bam</code></li>
@@ -54,7 +55,7 @@ cd /home/participant/cambridge_mda14/visualization</code></pre>
 <p><strong>Steps:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Go to the location box and insert ‘’chr11:996096-1036047’’ in the search box and hit <code>Go</code>.</li>
-<li>Move acroos the alignment</li>
+<li>Move across the alignment</li>
 <li>Zoom in</li>
 <li>Grey boxes are reads:
 <ul>
@@ -64,7 +65,7 @@ cd /home/participant/cambridge_mda14/visualization</code></pre>
 <li>At the top –&gt; histogram of coverage</li>
 <li>Zoom further
 <ul>
-<li>Color representation of the sequence</li>
+<li>Colour representation of the sequence</li>
 <li>Zoom in –&gt; Bases are shown</li>
 <li>Amminoacids corresponding to each base</li>
 <li>See all possible translation reading frames</li>
@@ -78,7 +79,7 @@ cd /home/participant/cambridge_mda14/visualization</code></pre>
 <li>High/low coverage</li>
 <li>No coverage</li>
 </ul></li>
-<li>Visualize alternative splicing
+<li>Visualise alternative splicing
 <ul>
 <li>RNA alignment against DNA, not cDNA</li>
 </ul></li>
@@ -89,26 +90,26 @@ cd /home/participant/cambridge_mda14/visualization</code></pre>
 <ul>
 <li>Coverage track os only coloured if &gt;20% of the reads support the variant</li>
 </ul></li>
-<li>Reads are shadowed acording to quality
+<li>Reads are shadowed according to quality
 <ul>
 <li>Darker –&gt; good quality</li>
-<li>Ligther –&gt; bad quality</li>
+<li>Lighter –&gt; bad quality</li>
 </ul></li>
-<li>Bases are also shadowed acording to quality
+<li>Bases are also shadowed according to quality
 <ul>
 <li>Darker –&gt; good quality</li>
-<li>Ligther –&gt; bad quality</li>
+<li>Lighter –&gt; bad quality</li>
 </ul></li>
-<li>Inspecting a SNP (chr11:1,018,335-1,018,412)
+<li>Inspecting a SNP (<code>chr11:1,018,335-1,018,412</code>)
 <ul>
 <li>Look at the coverage bar –&gt; percentage and counts</li>
 <li>Sort alignment by base</li>
 </ul></li>
-<li>Inspecting a homozigous variant (chr11:1,019,336-1,019,413) - All reads support the variant but 1 - The reference read quality is 0</li>
+<li>Inspecting a homozygous variant (<code>chr11:1,019,336-1,019,413</code>) - All reads support the variant but 1 - The reference read quality is 0</li>
 </ul></li>
 <li>Load SNP data
 <ul>
-<li>File &gt; Load from server &gt; Annotations &gt; Variantion and repeats &gt; dbSNP 1.3.7</li>
+<li>File &gt; Load from server &gt; Annotations &gt; Variation and repeats &gt; dbSNP 1.3.7</li>
 </ul></li>
 </ol>
 </body>

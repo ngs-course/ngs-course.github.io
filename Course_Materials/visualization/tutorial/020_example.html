@@ -13,7 +13,7 @@
 <div id="header">
 <h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>Visualization of mapped reads</strong></h2>
-<h3 class="date"><em>(updated 26-02-2014)</em></h3>
+<h3 class="date"><em>(updated 29-09-2014)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
 
@@ -28,8 +28,8 @@
 <li><a href="http://samtools.sourceforge.net/SAMv1.pdf">SAM</a></li>
 <li><a href="http://www.broadinstitute.org/igv/bam">BAM</a></li>
 </ul>
-<h1 id="exercise-2-visualizing-rna-seq-data">Exercise 2: Visualizing RNA-Seq data</h1>
-<p>In the following <strong>folder</strong> you wil find mapped RNA-Seq data from Illumina’s Human BodyMap 2.0 project. This two datasets in particular contain reads from brain and heart tissues.</p>
+<h1 id="exercise-2-visualising-rna-seq-data">Exercise 2: Visualising RNA-Seq data</h1>
+<p>In the following <strong>folder</strong> you will find mapped RNA-Seq data from Illumina’s Human BodyMap 2.0 project. This two datasets in particular contain reads from brain and heart tissues.</p>
 <pre><code>cd /home/participant/cambridge_mda14/visualization/example_1</code></pre>
 <h2 id="steps">Steps</h2>
 <h5 id="use-samtools-to-index-the-bam-file">1. Use <code>samtools</code> to index the bam file:</h5>
@@ -63,7 +63,7 @@ The gene <strong>IKBIP</strong> contains 4 exons that generate <strong>3 differe
 
 <ul>
 <li><p>Is <strong>IKBIP</strong> gene expressed in heart and brain tissues?</p></li>
-<li>Create a <strong>Sashimi plot</strong> of the gene. <strong>TIP:</strong> center the gene IKBIP on the Track panel, right-click on the Panel and select <code>Sashimi Plot</code>.<br /> What kind of information can you obtain from this plot? <input class="spoilerbutton" type="button" value="Show answer" onclick="this.value=this.value=='Show answer'?'Hide answer':'Show answer';">
+<li>Create a <strong>Sashimi plot</strong> of the gene. <strong>TIP:</strong> center the gene IKBIP on the Track panel, right-click on the Panel, select <code>Sashimi Plot</code> and tick both tissues.<br /> What kind of information can you obtain from this plot? <input class="spoilerbutton" type="button" value="Show answer" onclick="this.value=this.value=='Show answer'?'Hide answer':'Show answer';">
 <div class="spoiler"><div>
 The Sashimi Plot shows raw RNA-Seq densities along exons and junctions. Lines indicate junctions and the number corresponds to the number of reads that support this junction.</li>
 </ul>

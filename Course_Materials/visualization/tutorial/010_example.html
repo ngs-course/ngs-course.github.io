@@ -13,7 +13,7 @@
 <div id="header">
 <h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>Visualization of mapped reads</strong></h2>
-<h3 class="date"><em>(updated 26-02-2014)</em></h3>
+<h3 class="date"><em>(updated 29-09-2014)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
 
@@ -28,8 +28,8 @@
 <li><a href="http://samtools.sourceforge.net/SAMv1.pdf">SAM</a></li>
 <li><a href="http://www.broadinstitute.org/igv/bam">BAM</a></li>
 </ul>
-<h1 id="exercise-1-visualizing-sequencing-data">Exercise 1: Visualizing sequencing data</h1>
-<p>In the following <strong>folder</strong> you wil find mapped sequencing data from a CEU trio (father, mother and child) from the 1000 Genomes Project:</p>
+<h1 id="exercise-1-visualising-sequencing-data">Exercise 1: Visualising sequencing data</h1>
+<p>In the following <strong>folder</strong> you will find mapped sequencing data from a CEU trio (father, mother and child) from the 1000 Genomes Project:</p>
 <pre><code>cd /home/participant/cambridge_mda14/visualization/example_1</code></pre>
 <p>These datasets contain reads only for the <a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000204681;r=6:29523406-29601753">GABBR1</a> gene.</p>
 <h2 id="creating-indexed-files">Creating indexed files</h2>
@@ -40,7 +40,7 @@ samtools index NA12892_mom.bam</code></pre>
 <h2 id="run-igv">Run IGV</h2>
 <p>You can run this command from the terminal: igv</p>
 <p>or you can also use the link in your Desktop.</p>
-<h2 id="downolad-a-referece-genome">Downolad a referece genome</h2>
+<h2 id="download-a-reference-genome">Download a reference genome</h2>
 <p>Run just in the case you do not have downloaded Human hg19 genome before:</p>
 <ul>
 <li>Go to <code>Genomes</code> –&gt; <code>Load Genome From Server...</code> Select <strong>Human hg19</strong></li>
@@ -53,7 +53,7 @@ samtools index NA12892_mom.bam</code></pre>
 <ol style="list-style-type: decimal">
 <li>Enter the name of our gene (<em><strong>GABBR1</strong></em>) in the search box and hit <code>Go</code>.</li>
 <li>Zoom in until you find some SNPs - they might be in exons or introns.</li>
-<li>Identify at least one example of a short insertion variant and deletion arround exon 4.</li>
+<li>Identify at least one example of a short insertion variant and deletion around exon 4.</li>
 <li>Load and look at the SNP track: <code>File</code> –&gt; <code>Load from server</code> –&gt; <code>Annotations</code> –&gt; <code>Variants and Repeats</code> –&gt; <code>dbSNP</code></li>
 </ol>
 </body>

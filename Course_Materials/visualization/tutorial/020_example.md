@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Visualization of mapped reads__
-% _(updated 26-02-2014)_
+% _(updated 29-09-2014)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -26,14 +26,14 @@ File formats explored:
 - [BAM](http://www.broadinstitute.org/igv/bam)
 
 
-Exercise 2: Visualizing RNA-Seq data
+Exercise 2: Visualising RNA-Seq data
 ================================================================================
 
-In the following **folder** you wil find mapped RNA-Seq data from Illumina’s Human BodyMap 2.0 project. This two datasets in particular contain reads from brain and heart tissues.
+In the following **folder** you will find mapped RNA-Seq data from Illumina’s Human BodyMap 2.0 project. This two datasets in particular contain reads from brain and heart tissues.
 
     cd /home/participant/cambridge_mda14/visualization/example_1
-    
-    
+
+
 Steps
 --------------------------------------------------------------------------------
 
@@ -73,7 +73,7 @@ The gene __IKBIP__ contains 4 exons that generate **3 different isoforms**:<br>-
  - Is __IKBIP__ gene expressed in heart and brain tissues? 
 
  - Create a **Sashimi plot** of the gene.
- **TIP:** center the gene IKBIP on the Track panel, right-click on the Panel and select ``Sashimi Plot``.  
+ **TIP:** center the gene IKBIP on the Track panel, right-click on the Panel, select ``Sashimi Plot`` and tick both tissues.  
  What kind of information can you obtain from this plot?
  <input class="spoilerbutton" type="button" value="Show answer" onclick="this.value=this.value=='Show answer'?'Hide answer':'Show answer';">
 <div class="spoiler"><div>

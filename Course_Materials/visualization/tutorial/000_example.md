@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Visualization of mapped reads__
-% _(updated 04-06-2014)_
+% _(updated 29-09-2014)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -38,7 +38,7 @@ Enter in the example folder:
 
     cd example_0
 
-This BAM file contains reads only for chromosome 11.
+This BAM file contains reads only for **chromosome 11**.
 
 Creating indexed files
 --------------------------------------------------------------------------------
@@ -57,16 +57,17 @@ You can run this command from the terminal:
 or you can also use the link in your Desktop.
 
 
-Downolad a referece genome
+Download a reference genome
 --------------------------------------------------------------------------------
 
-By default, IGV loads Human hg18 assembly. However, we must work with the **same assembly used to mapped our reads**, in this case Human hg19.  
-Genome assemblies for several species can be dowloaded using IGV:
+By default, IGV loads Human hg18 and hg19 assemblies. Bear in mind that we must work with the **same assembly used to mapped our reads**, in this case Human hg19.  
+Genome assemblies for several species can be downloaded using IGV. To explore the list of available genomes:
 
 - Go to ``Genomes`` --> ``Load Genome From Server...``  
-Select **Human hg19**
 
-    
+In this practical we are using **Human hg19**
+
+
 Loading and browsing files
 --------------------------------------------------------------------------------
 
@@ -76,14 +77,14 @@ Select ``igv1.bam``
 **Steps:**
 
 1. Go to the location box and insert ''chr11:996096-1036047'' in the search box and hit ``Go``.
-2. Move acroos the alignment
+2. Move across the alignment
 3. Zoom in
 4. Grey boxes are reads:
       - point to the left --> map reverse strand
       - point to the right --> map forward strand
 5. At the top --> histogram of coverage
 6. Zoom further
-      - Color representation of the sequence
+      - Colour representation of the sequence
       - Zoom in --> Bases are shown
       - Amminoacids corresponding to each base
       - See all possible translation reading frames
@@ -94,26 +95,26 @@ What we want to do with IGV?
 1. Examine coverage
       - High/low coverage
       - No coverage
-2. Visualize alternative splicing
+2. Visualise alternative splicing
       - RNA alignment against DNA, not cDNA
 3. Look for base changes -- > SNPs
       - Complete grey reads --> no mismatches
       - Coloured bases --> Change
 	    - Coverage track os only coloured if >20% of the reads support the variant
-      - Reads are shadowed acording to quality
+      - Reads are shadowed according to quality
 	    - Darker --> good quality
-	    - Ligther --> bad quality
-      - Bases are also shadowed acording to quality
+	    - Lighter --> bad quality
+      - Bases are also shadowed according to quality
 	    - Darker --> good quality
-	    - Ligther --> bad quality
-      - Inspecting a SNP (chr11:1,018,335-1,018,412)
+	    - Lighter --> bad quality
+      - Inspecting a SNP (``chr11:1,018,335-1,018,412``)
 	    - Look at the coverage bar --> percentage and counts
 	    - Sort alignment by base
-      - Inspecting a homozigous variant (chr11:1,019,336-1,019,413)
+      - Inspecting a homozygous variant (``chr11:1,019,336-1,019,413``)
             - All reads support the variant but 1
             - The reference read quality is 0
 4. Load SNP data
-      - File > Load from server > Annotations > Variantion and repeats > dbSNP 1.3.7
+      - File > Load from server > Annotations > Variation and repeats > dbSNP 1.3.7
 
 
 

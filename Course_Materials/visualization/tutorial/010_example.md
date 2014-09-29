@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Visualization of mapped reads__
-% _(updated 26-02-2014)_
+% _(updated 29-09-2014)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -26,10 +26,10 @@ File formats explored:
 - [BAM](http://www.broadinstitute.org/igv/bam)
 
 
-Exercise 1: Visualizing sequencing data
+Exercise 1: Visualising sequencing data
 ================================================================================
 
-In the following **folder** you wil find mapped sequencing data from a CEU trio (father, mother and child) from the 1000 Genomes Project:
+In the following **folder** you will find mapped sequencing data from a CEU trio (father, mother and child) from the 1000 Genomes Project:
 
     cd /home/participant/cambridge_mda14/visualization/example_1
 
@@ -54,7 +54,7 @@ You can run this command from the terminal:
 or you can also use the link in your Desktop.
 
 
-Downolad a referece genome
+Download a reference genome
 --------------------------------------------------------------------------------
 
 Run just in the case you do not have downloaded Human hg19 genome before:
@@ -73,7 +73,7 @@ Select NA12878_child.bam, NA12891_dad.bam and NA12892_mom.bam
 
 1. Enter the name of our gene (_**GABBR1**_) in the search box and hit ``Go``.
 2. Zoom in until you find some SNPs - they might be in exons or introns.
-3. Identify at least one example of a short insertion variant and deletion arround exon 4.
+3. Identify at least one example of a short insertion variant and deletion around exon 4.
 4. Load and look at the SNP track: ``File`` --> ``Load from server`` --> ``Annotations`` --> ``Variants and Repeats`` --> ``dbSNP``
 
 
