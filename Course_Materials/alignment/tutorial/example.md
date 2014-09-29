@@ -253,7 +253,7 @@ Create a folder inside HPG Aligner program called ```index``` to store the HPG A
     
     cd hpg-aligner   (_inside aligners folder_)
     mkdir index
-    cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/
+    cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bwa/index/
     
 Now you can create the index by executing:
 
@@ -324,7 +324,7 @@ Create a folder inside Bowtie2 program called ```index``` to store the Bowtie2 i
     
     cd bowtie   (_inside aligners folder_)
     mkdir index
-    cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/
+    cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bowtie/index/
     
 Now you can create the index by executing:
 
