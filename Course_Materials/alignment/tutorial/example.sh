@@ -11,30 +11,32 @@ cd samtools-0.1.19
 make
 samtools
 cp samtools ~/bin
-mkdir aligners alignments
+mkdir aligners
+mkdir alignments
 cd aligners
-mkdir bwa bowtie
+mkdir bwa hpg-aligner bowtie
 cd alignments
-mkdir bwa bowtie
+mkdir bwa hpg-aligner bowtie
 
 bwa
-mv bwa-0.7.7.tar.bz2 working_directory/aligners/bwa
-tar -jxvf bwa-0.7.7.tar.bz2
-cd bwa-0.7.7
+mv bwa-0.7.10.tar.bz2 working_directory/aligners/bwa
+tar -jxvf bwa-0.7.10.tar.bz2
+cd bwa-0.7.10
 make
 cp bwa ~/bin
 bwa
 
 mkdir index
-cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bwa/index/   (this path can be different!)
+cp  data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa  aligners/bwa/index/   (this path can be different!)
 
 bwa index aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa
 bwa mem
 bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq > alignments/bwa/dna_chr21_100_hq_se.sam
+cd alignments/bwa
+samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq > alignments/bwa/dna_chr21_100_hq_pe.sam
 
 cd alignments/bwa
-samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
 bwa aln aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 data/dna_chr21_100_hq_read1.fastq -f alignments/bwa/dna_chr21_100_hq_se.sai
 bwa samse aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa alignments/bwa/dna_chr21_100_hq_se.sai data/dna_chr21_100_hq_read1.fastq -f alignments/bwa/dna_chr21_100_hq_se.sam
@@ -45,12 +47,12 @@ cd alignments/bwa
 samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
 bowtie2
-mv bowtie2-2.2.1-linux-x86_64.zip working_directory/aligners/bowtie
-unzip bowtie2-2.2.1-linux-x86_64.zip
-cd bowtie2-2.2.1
+mv bowtie2-2.2.3-linux-x86_64.zip working_directory/aligners/bowtie
+unzip bowtie2-2.2.3-linux-x86_64.zip
+cd bowtie2-2.2.3
 bowtie2
 
-cd bowtie2-2.2.1   (if not in it)
+cd bowtie   (_inside aligners folder_)
 mkdir index
 cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/
 
@@ -71,7 +73,7 @@ tar -zxvf tophat-2.0.10.Linux_x86_64.tar.gz
 cd tophat-2.0.10.Linux_x86_64
 tophat2
 
-cd bowtie2-2.2.1   (bowtie 2.2 does not work)
+cd bowtie2   (bowtie 2.2 does not work)
 cp bowtie* ~/bin
 tophat2 -o alignments/tophat/rna_chr21_100_hq_se aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq
 tophat2 -o alignments/tophat/rna_chr21_100_hq_pe/ aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/rna_chr21_100_hq_read1.fastq data/rna_chr21_100_hq_read2.fastq
