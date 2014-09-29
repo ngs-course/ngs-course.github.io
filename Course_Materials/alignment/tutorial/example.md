@@ -244,7 +244,53 @@ Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
 Now you can do the same for the **low** quality datasets.
 
 
+### HPG Aligner
+[HPG Aligner] is an ultrafast and high sensitivity tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of any size. HPG Aligner 2.0 indexes the genome using a Suffix Arrays. HPG Aligner 2 supports gapped, local, and paired-end alignment modes, together with INDEL realignment and recalibration.
+
+##### Build the index
+
+Create a folder inside HPG Aligner program called ```index``` to store the HPG Aligner index and copy the reference genome into it:
+    
+    cd hpg-aligner   (_inside aligners folder_)
+    mkdir index
+    cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/
+    
+Now you can create the index by executing:
+
+    hpg-aligner build-sa-index -g aligners/hpg-aligner/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -i aligners/hpg-aligner/index/
+
+Some files will be created in the ```index``` folder, those files constitute the index that HPG Aligner uses.
+
+**NOTE:** The index must created only once, it will be used for all the different alignments with HPG Aligner.
+
+
+##### Aligning in SE and PE modes
+
+
+Mapping **SE** with HPG Aligner requires only 1 execution, for aligning the **high** in SE mode execute:
+
+    hpg-aligner dna --cpu-threads 4 -i aligners/hpg-aligner/index/ -f data/dna_chr21_100_hq_read1.fastq -o alignments/hpg-aligner/ --prefix dna_chr21_100_hq_se
+
+And create the BAM file using SAMtools, you could create the BAM file adding _--bam-format_ to the previous command line:
+
+    cd alignments/hpg-aligner
+    samtools view -S -b dna_chr21_100_hq_se_out.sam -o dna_chr21_100_hq_se.bam
+
+
+Mapping in **PE** also requires only one execution:
+
+    hpg-aligner dna --cpu-threads 4 -i aligners/hpg-aligner/index/ -f data/dna_chr21_100_hq_read1.fastq -j data/dna_chr21_100_hq_read2.fastq -o alignments/hpg-aligner --prefix dna_chr21_100_hq_pe
+
+And create the BAM file using SAMtools:
+
+    cd alignments/hpg-aligner
+    samtools view -S -b dna_chr21_100_hq_pe_out.sam -o dna_chr21_100_hq_pe.bam
+    
+Repeat the same steps for the **low** quality dataset.
+
+
 ### Bowtie2
+
 [Bowtie2] as documentation states is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of about 50 up to few 100s. Bowtie 2 indexes the genome with an FM Index to keep its memory footprint small: for the human genome, its memory footprint is typically around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes.
 
 ##### Download and install (Optional, already installed)

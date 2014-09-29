@@ -46,6 +46,19 @@ bwa sampe aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa alignme
 cd alignments/bwa
 samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
+
+cd hpg-aligner   (_inside aligners folder_)
+mkdir index
+cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/
+
+hpg-aligner build-sa-index -g aligners/hpg-aligner/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -i aligners/hpg-aligner/index/
+hpg-aligner dna --cpu-threads 4 -i aligners/hpg-aligner/index/ -f data/dna_chr21_100_hq_read1.fastq -o alignments/hpg-aligner/ --prefix dna_chr21_100_hq_se
+cd alignments/hpg-aligner
+samtools view -S -b dna_chr21_100_hq_se_out.sam -o dna_chr21_100_hq_se.bam
+hpg-aligner dna --cpu-threads 4 -i aligners/hpg-aligner/index/ -f data/dna_chr21_100_hq_read1.fastq -j data/dna_chr21_100_hq_read2.fastq -o alignments/hpg-aligner --prefix dna_chr21_100_hq_pe
+cd alignments/hpg-aligner
+samtools view -S -b dna_chr21_100_hq_pe_out.sam -o dna_chr21_100_hq_pe.bam
+
 bowtie2
 mv bowtie2-2.2.3-linux-x86_64.zip working_directory/aligners/bowtie
 unzip bowtie2-2.2.3-linux-x86_64.zip
