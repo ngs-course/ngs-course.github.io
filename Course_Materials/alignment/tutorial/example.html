@@ -158,7 +158,7 @@ samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam</code></p
 <p>Create a folder inside HPG Aligner program called <code>index</code> to store the HPG Aligner index and copy the reference genome into it:</p>
 <pre><code>cd hpg-aligner   (_inside aligners folder_)
 mkdir index
-cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/</code></pre>
+cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bwa/index/</code></pre>
 <p>Now you can create the index by executing:</p>
 <pre><code>hpg-aligner build-sa-index -g aligners/hpg-aligner/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -i aligners/hpg-aligner/index/</code></pre>
 <p>Some files will be created in the <code>index</code> folder, those files constitute the index that HPG Aligner uses.</p>
@@ -194,7 +194,7 @@ cd bowtie2-2.2.3</code></pre>
 <p>Create a folder inside Bowtie2 program called <code>index</code> to store the Bowtie2 index and copy the reference genome into it:</p>
 <pre><code>cd bowtie   (_inside aligners folder_)
 mkdir index
-cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/</code></pre>
+cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bowtie/index/</code></pre>
 <p>Now you can create the index by executing:</p>
 <pre><code>bowtie2-build aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa</code></pre>
 <p>Some files will be created in the <code>index</code> folder, those files constitute the index that Bowtie2 uses.</p>

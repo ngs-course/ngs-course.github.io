@@ -49,7 +49,7 @@ samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
 
 cd hpg-aligner   (_inside aligners folder_)
 mkdir index
-cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/
+cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bwa/index/
 
 hpg-aligner build-sa-index -g aligners/hpg-aligner/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -i aligners/hpg-aligner/index/
 hpg-aligner dna --cpu-threads 4 -i aligners/hpg-aligner/index/ -f data/dna_chr21_100_hq_read1.fastq -o alignments/hpg-aligner/ --prefix dna_chr21_100_hq_se
@@ -67,7 +67,7 @@ bowtie2
 
 cd bowtie   (_inside aligners folder_)
 mkdir index
-cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa index/
+cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bowtie/index/
 
 bowtie2-build aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa
 bowtie2 -q -p 4 -x aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -U data/dna_chr21_100_hq_read1.fastq -S alignments/bowtie/dna_chr21_100_hq_se.sam
