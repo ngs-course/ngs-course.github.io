@@ -13,14 +13,13 @@
 <div id="header">
 <h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>RNA-Seq data analysis</strong></h2>
-<h3 class="date"><em>(updated 2014-06-10)</em></h3>
+<h3 class="date"><em>(updated 2014-09-29)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
-
-
 <h1 id="preliminaries">Preliminaries</h1>
 <h2 id="software-used-in-this-practical">Software used in this practical:</h2>
 <ul>
+<li><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">Bowtie 2</a> and <a href="http://ccb.jhu.edu/software/tophat/index.shtml">TopHat</a> alignment tools.</li>
 <li><a href="http://cufflinks.cbcb.umd.edu/manual.html#cuffdiff">Cuffdiff</a> the module of <a href="http://cufflinks.cbcb.umd.edu/index.html">Cufflinks</a> that allows for the analysis of differential expression.</li>
 </ul>
 <h2 id="file-formats-explored">File formats explored:</h2>
@@ -37,8 +36,6 @@
     cp    ../../../../ngs_course_materials/f005_chr21_genome_annotation.gtf  ../../../../sandbox/rna_seq/
     cd    ../../../../sandbox/rna_seq/
 -->
-
-
 <p>Create an empty directory to work in the exercise and copy or download the raw data to it. You will need to copy the <strong>reference genome</strong> the <strong>GTF annotation file</strong> and the paired en fastq files of the 3 samples (6 files in total).</p>
 <pre><code>cd rna_seq_data</code></pre>
 <h2 id="map-against-the-reference-genome-using-bowtie2">Map against the reference genome using bowtie2</h2>
@@ -65,7 +62,6 @@ samtools view f026_cont_tophat_out/accepted_hits.bam &gt; f036_cont.sam</code></
 <!--
 this step does not seem necessary any more
 -->
-
 <p>As the alignment files are now in text format, we can use the Linux shell command <code>wc</code> to estimate the number of aligned reads in each sample.</p>
 <pre><code>wc -l *.sam</code></pre>
 <ul>
@@ -74,8 +70,6 @@ this step does not seem necessary any more
 <!-- 
     wc -l *.fastq
 -->
-
-
 <h2 id="differential-expression-using-cuffdiff">Differential expression using Cuffdiff</h2>
 <p>Now that the alignments are done we can use <code>cufdiff</code> to perform a differential expression analysis.</p>
 <p>In this step the software will make use of the <strong>GTF file</strong> <code>f005_chr21_genome_annotation.gtf</code>. This file contains the annotation of the features (genes, transcripts, …) of interest in our study.</p>
@@ -83,7 +77,7 @@ this step does not seem necessary any more
 <pre><code>cuffdiff -o f040_dif_exp_two f005_chr21_genome_annotation.gtf   f031_case.sam   f034_cont.sam</code></pre>
 <p>Compare several samples:</p>
 <pre><code>cuffdiff -o f040_dif_exp_several f005_chr21_genome_annotation.gtf   f031_case.sam,f032_case.sam,f033_case.sam   f034_cont.sam,f035_cont.sam,f036_cont.sam</code></pre>
-<p>Explore the results.<br />You can find an explanation of the at <a href="http://cufflinks.cbcb.umd.edu/manual.html#cuffdiff_output">http://cufflinks.cbcb.umd.edu/manual.html#cuffdiff_output</a></p>
+<p>Explore the results.<br />You can find an explanation of the at <a href="http://cufflinks.cbcb.umd.edu/manual.html#cuffdiff_output" class="uri">http://cufflinks.cbcb.umd.edu/manual.html#cuffdiff_output</a></p>
 <!-- 
 
 cufflinks -o g040_salida_cufflinks -G f005_chr21_genome_annotation.gtf f031_case.sam

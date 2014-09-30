@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __RNA-Seq data analysis__
-% _(updated 2014-06-10)_
+% _(updated 2014-09-29)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -12,6 +12,7 @@ Preliminaries
 Software used in this practical:
 --------------------------------
 
+- [Bowtie 2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) and [TopHat](http://ccb.jhu.edu/software/tophat/index.shtml) alignment tools.
 - [Cuffdiff](http://cufflinks.cbcb.umd.edu/manual.html#cuffdiff) the module of [Cufflinks](http://cufflinks.cbcb.umd.edu/index.html) that allows for the analysis of differential expression.
 
 
