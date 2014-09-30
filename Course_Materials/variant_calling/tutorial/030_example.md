@@ -24,8 +24,7 @@ File formats explored:
 
 - [SAM](http://samtools.sourceforge.net/SAMv1.pdf)
 - [BAM](http://www.broadinstitute.org/igv/bam)
-- VCF Variant Call Format: see [1000 Genomes][vcf-format-1000ge] and [Wikipedia][vcf-format-wikipedia] specifications.
-
+- VCF Variant Call Format: see [1000 Genomes](http://www.1000genomes.org/wiki/analysis/variant-call-format/vcf-variant-call-format-version-42) and [Wikipedia](http://en.wikipedia.org/wiki/Variant_Call_Format) specifications.
 
 Exercise 3: Somatic calling
 ================================================================================
