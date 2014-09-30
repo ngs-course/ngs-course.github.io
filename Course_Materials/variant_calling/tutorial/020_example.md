@@ -1,12 +1,12 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Variant calling__
-% _(updated 08-06-2014)_
+% _(updated 29-09-2014)_
 
 <!-- COMMON LINKS HERE -->
 
 [SAMTools]: http://samtools.sourceforge.net/ "samtools"
 [Picard]: http://picard.sourceforge.net/ "Picard"
-[gatk-site]: http://www.broadinstitute.org/gatk/ "GATK"
+[GATK]: http://www.broadinstitute.org/gatk/ "GATK"
 
 Preliminaries
 ================================================================================
@@ -16,7 +16,7 @@ Software used in this practical:
 
 - [SAMTools] : SAM Tools provide various utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format.
 - [Picard] : Picard comprises Java-based command-line utilities that manipulate SAM files, and a Java API (SAM-JDK) for creating new programs that read and write SAM files.
-- [GATK] : (Genome Analysis Toolkit): A package to analyze next-generation re-sequencing data, primary focused on variant discovery and genotyping.
+- [GATK] : Genome Analysis Toolkit - A package to analyse next-generation re-sequencing data, primary focused on variant discovery and genotyping.
 
 
 File formats explored:
@@ -24,7 +24,8 @@ File formats explored:
 
 - [SAM](http://samtools.sourceforge.net/SAMv1.pdf)
 - [BAM](http://www.broadinstitute.org/igv/bam)
-- VCF Variant Call Format: see [1000 Genomes][vcf-format-1000ge] and [Wikipedia][vcf-format-wikipedia] specifications.
+- VCF Variant Call Format: see [1000 Genomes](http://www.1000genomes.org/wiki/analysis/variant-call-format/vcf-variant-call-format-version-42) and [Wikipedia](http://en.wikipedia.org/wiki/Variant_Call_Format) specifications.
+
 
 
 Exercise 2: Variant calling with single-end data

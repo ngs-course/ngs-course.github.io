@@ -1,12 +1,12 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Variant calling__
-% _(updated 08-06-2014)_
+% _(updated 29-09-2014)_
 
 <!-- COMMON LINKS HERE -->
 
 [SAMTools]: http://samtools.sourceforge.net/ "samtools"
 [Picard]: http://picard.sourceforge.net/ "Picard"
-[gatk-site]: http://www.broadinstitute.org/gatk/ "GATK"
+[GATK]: http://www.broadinstitute.org/gatk/ "GATK"
 
 Preliminaries
 ================================================================================
@@ -16,7 +16,7 @@ Software used in this practical:
 
 - [SAMTools] : SAM Tools provide various utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format.
 - [Picard] : Picard comprises Java-based command-line utilities that manipulate SAM files, and a Java API (SAM-JDK) for creating new programs that read and write SAM files.
-- [GATK] : (Genome Analysis Toolkit): A package to analyze next-generation re-sequencing data, primary focused on variant discovery and genotyping.
+- [GATK] : Genome Analysis Toolkit - A package to analyse next-generation re-sequencing data, primary focused on variant discovery and genotyping.
 
 
 File formats explored:
@@ -24,7 +24,7 @@ File formats explored:
 
 - [SAM](http://samtools.sourceforge.net/SAMv1.pdf)
 - [BAM](http://www.broadinstitute.org/igv/bam)
-- VCF Variant Call Format: see [1000 Genomes][vcf-format-1000ge] and [Wikipedia][vcf-format-wikipedia] specifications.
+- VCF Variant Call Format: see [1000 Genomes](http://www.1000genomes.org/wiki/analysis/variant-call-format/vcf-variant-call-format-version-42) and [Wikipedia](http://en.wikipedia.org/wiki/Variant_Call_Format) specifications.
 
 
 Exercise 1: Variant calling with paired-end data
@@ -36,11 +36,14 @@ Copy the necessary data in your working directory:
     cp -r /home/participant/Desktop/Open_Share/calling /home/participant/cambridge_mda14/
     cd /home/participant/cambridge_mda14/calling
 
-These datasets contain reads only for the chromosome 21.
+These datasets contain reads only for the **chromosome 21**.
 
 
 1. Prepare reference genome: generate the fasta file index
 --------------------------------------------------------------------------------
+Enter in the genome directory:
+
+    cd genome
 
 Use ``SAMTools`` to generate the fasta file index:
 
@@ -113,7 +116,7 @@ This creates a file called ``003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam`
 
 Two steps:
 
-**First**, analyze patterns of covariation in the sequence dataset
+**First**, analyse patterns of covariation in the sequence dataset
 
     java -jar ../gatk/GenomeAnalysisTK.jar -T BaseRecalibrator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam -knownSites ../000-dbSNP_chr21.vcf -o 004-recalibration_data.table
 
