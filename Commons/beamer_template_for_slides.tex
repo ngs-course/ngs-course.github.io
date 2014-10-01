@@ -135,12 +135,16 @@
 
 %\usepackage[spanish]{babel} %NOT WORKING
 
-%% \usepackage{longtable}
 
-%% \makeatletter 
-%% \def\fnum@table{\tablename~\thetable} 
-%% \makeatother 
+%% TABLES
+\usepackage{longtable,booktabs}
+\usepackage{caption}
+\makeatletter                          % These lines are needed 
+\def\fnum@table{\tablename~\thetable}  % to make table captions 
+\makeatother                           % work with longtable.
 
+
+%%% BEAMER THEME
 
 %% INNER theme
 \useinnertheme{rounded}         %bullets as balls, round borders
@@ -175,11 +179,8 @@
 
 \setbeamertemplate{navigation symbols}{}           %%suppresses all navigation symbols
 
-
 \setbeamertemplate{caption}{\insertcaption}     % suppresses the 'Figure' tagging in images
 \setbeamertemplate{caption label separator}{}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

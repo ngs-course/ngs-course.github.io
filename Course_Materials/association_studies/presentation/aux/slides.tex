@@ -126,3 +126,66 @@ Classic format to represent genomic variants for several individuals
 \end{block}
 
 \end{frame}
+
+\begin{frame}{Association to Disease / Phenotype}
+
+\centerline{\includegraphics[scale=0.3]{images/asoc_table_3.png}}
+
+\begin{longtable}[c]{@{}rccc@{}}
+\toprule
+~ & AA & Aa & aa\tabularnewline
+\midrule
+\endhead
+Affected & 15 & 8 & 4\tabularnewline
+Unaffected & 5 & 3 & 2\tabularnewline
+\bottomrule
+\end{longtable}
+
+30+8 \textbar{} 8+8
+
+10+3 \textbar{} 3+4
+
+\end{frame}
+
+\begin{frame}{Association to Disease / Phenotype}
+
+\centerline{\includegraphics[scale=0.3]{images/asoc_table_2.png}}
+
+\begin{longtable}[c]{@{}rcc@{}}
+\toprule
+~ & A & a\tabularnewline
+\midrule
+\endhead
+Affected & 38 & 16\tabularnewline
+Unaffected & 13 & 7\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{frame}
+
+\begin{frame}{Statistical tests}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \href{http://en.wikipedia.org/wiki/Chi-squared_test}{Chi-squared test}
+  (\(\chi^2\))
+\item
+  \href{http://en.wikipedia.org/wiki/Fisher's_exact_test}{Fisher's
+  exact}
+\item
+  \href{http://en.wikipedia.org/wiki/Logistic_regression}{Logistic
+  regression models}
+\item
+  \ldots{}
+\end{itemize}
+
+\href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2907892/}{Multiple-test
+correction} is generally needed.
+
+Many software available \href{http://cran.es.r-project.org/}{R},
+\href{http://pngu.mgh.harvard.edu/~purcell/plink/}{PLINK} \ldots{}
+
+\url{http://pngu.mgh.harvard.edu/~purcell/plink/anal.shtml}
+
+\end{frame}

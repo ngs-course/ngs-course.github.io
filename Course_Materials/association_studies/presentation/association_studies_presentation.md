@@ -105,3 +105,55 @@ MAP file
 2. rs... or SNP identifier
 3. Genetic distance (Morgans)
 4. Base-pair position (bp units)
+
+
+Association to Disease / Phenotype
+================================================================================
+
+<!--
+images from:
+http://www.mailund.dk/index.php/2008/02/27/association-mapping-and-local-genealogies/
+
+tables form:
+http://www.tablesgenerator.com/markdown_tables
+-->
+
+\centerline{\includegraphics[scale=0.3]{images/asoc_table_3.png}}
+
+
+
+|   \        | AA | Aa | aa |
+|-----------:|:--:|:--:|:--:|
+|   Affected | 15 |  8 |  4 |
+| Unaffected |  5 |  3 |  2 |
+
+30+8  |  8+8
+
+10+3 |  3+4
+
+
+Association to Disease / Phenotype
+================================================================================
+
+\centerline{\includegraphics[scale=0.3]{images/asoc_table_2.png}}
+
+|   \        |  A |  a |
+|-----------:|:--:|:--:|
+|   Affected | 38 | 16 |
+| Unaffected | 13 |  7 |
+
+
+
+Statistical tests
+================================================================================
+
+- [Chi-squared test](http://en.wikipedia.org/wiki/Chi-squared_test) ($\chi^2$)
+- [Fisher's exact](http://en.wikipedia.org/wiki/Fisher's_exact_test)
+- [Logistic regression models](http://en.wikipedia.org/wiki/Logistic_regression)
+- ...
+
+[Multiple-test correction](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2907892/) is generally needed.
+
+Many software available [R](http://cran.es.r-project.org/), [PLINK](http://pngu.mgh.harvard.edu/~purcell/plink/) ... 
+
+<http://pngu.mgh.harvard.edu/~purcell/plink/anal.shtml>
