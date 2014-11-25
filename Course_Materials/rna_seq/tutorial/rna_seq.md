@@ -42,7 +42,7 @@ Exercise
 
 
 Create an empty directory to work in the exercise and copy or download the raw data to it.
-You will need to copy the __reference genome__ the __GTF annotation file__ and the paired en fastq files of the 3 samples (6 files in total).
+You will need to copy the __reference genome__ the __GTF annotation file__ and the _paired end_ fastq files of the 3 samples (6 files in total).
 
     cd rna_seq_data
 
