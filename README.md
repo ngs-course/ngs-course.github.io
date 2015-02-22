@@ -50,7 +50,7 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 
 ### Day 3
 
-In the last day we will focus on RNA-seq data analysis and fuunctional interpretation.
+In the last day we will focus on RNA-seq data analysis and functional interpretation.
 
 ##### Association studies
 
