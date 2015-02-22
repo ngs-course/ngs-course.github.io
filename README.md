@@ -18,7 +18,7 @@ During this first day we will start with an _introduction to NGS technology_ and
 Very brief overview about NGS technologies and some concepts.
 - [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda14.pdf)
 
-##### Course Presentation and Introduction to NGS data analysis and GNU/Linux
+##### Course Presentation and Introduction to NGS data analysis & GNU/Linux shell
 - Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda14.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda14.odp)]
 
 ##### Quality control for NGS raw data (FASTQ)
@@ -29,7 +29,7 @@ Very brief overview about NGS technologies and some concepts.
 
 
 ### Day 2
-During the second day we will focus on _Variant Calling_ and _Data Visualization_ of DNA and RNA-seq alignments together with VCF files. 
+During the second day we will focus on _Data Visualization_ of DNA and RNA-seq alignments and _Variant Calling_ together with the visualization of VCF files. 
 
 ##### NGS data Visualization
 
@@ -50,7 +50,7 @@ During the second day we will focus on _Variant Calling_ and _Data Visualization
 
 ### Day 3
 
-In the last day we will work on RNA-seq data analysis
+In the last day we will focus on RNA-seq data analysis and fuunctional interpretation.
 
 ##### Association studies
 
