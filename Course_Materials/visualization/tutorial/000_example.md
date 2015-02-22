@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Visualization of mapped reads__
-% _(updated 29-09-2014)_
+% _(updated 22-02-2015)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -30,9 +30,9 @@ Guided exercise: IGV introduction
 
 Copy the data for the tutorials:
 
-    mkdir -p /home/participant/cambridge_mda14/
-    cp -r /home/participant/Desktop/Open_Share/visualization /home/participant/cambridge_mda14/
-    cd /home/participant/cambridge_mda14/visualization
+    mkdir -p /home/participant/cambridge_mda15/
+    cp -r /home/participant/Desktop/Open_Share/visualization /home/participant/cambridge_mda15/
+    cd /home/participant/cambridge_mda15/visualization
 
 Enter in the example folder:
 
