@@ -21,7 +21,7 @@ Very brief overview about NGS technologies and some concepts.
 ##### Course Presentation and Introduction to NGS data analysis and GNU/Linux
 - Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda14.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda14.odp)]
 
-### Quality control for NGS raw data (FASTQ)
+##### Quality control for NGS raw data (FASTQ)
 - [Presentation](Course_Materials/quality_control/presentation/quality_control_presentation.pdf) - [Tutorial](Course_Materials/quality_control/tutorial/quality_control.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/quality_control)
 
 ##### DNA and RNA-seq NGS read alignment
