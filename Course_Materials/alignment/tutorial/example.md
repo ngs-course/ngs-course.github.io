@@ -10,7 +10,7 @@
 [TopHat]: http://ccb.jhu.edu/software/tophat/index.shtml "TopHat2"
 [STAR]: https://code.google.com/p/rna-star/ "STAR"
 [MapSplice2]: http://www.netlab.uky.edu/p/bioinfo/MapSplice2 "MapSplice2"
-[SAMTools]: http://samtools.sourceforge.net/ "SAMtools"
+[SAMTools]: http://www.htslib.org/ "SAMtools"
 [dwgsim]: http://sourceforge.net/apps/mediawiki/dnaa/index.php?title=Whole_Genome_Simulation "dwgsim"
 [BEERS]: http://www.cbil.upenn.edu/BEERS/ "BEERS"
 [Ensembl]: http://www.ensembl.org/index.html "Ensembl"
