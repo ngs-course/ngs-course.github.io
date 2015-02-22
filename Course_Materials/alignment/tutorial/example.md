@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngs-course.github.io/)
 % __DNA and RNA-seq NGS alignment__
-% _(updated 28-09-2014)_
+% _(updated 22-02-2015)_
 
 <!-- COMMON LINKS HERE -->
 
