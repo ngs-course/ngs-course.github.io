@@ -59,7 +59,7 @@ You should see a species table with a Human (*Homo sapiens*) row and a *DNA (FAS
 
     mv Homo_sapiens.GRCh37.75.dna.chromosome.21.fa.gz path_to_local_data
 
-**NOTE:** For working with the whole reference genome the file to be downloaded is *Homo_sapiens.GRCh37.75.dna.toplevel.fa.gz*
+**NOTE:** For working with the whole reference genome the file to be downloaded is *Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz*
 
 
 ##### Copy simulated datasets
