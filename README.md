@@ -75,3 +75,10 @@ In the last day we will work on RNA-seq data analysis
 # About
 
 This course is usually carried out by experienced researchers from CIPF, EMBL-EBI and University of Cambridge. You can ask any question to David Montaner (dmontaner@cipf.es), Marta Bleda (mb2033@cam.ac.uk) and Ignacio Medina (imedina@ebi.ac.uk).
+
+
+----
+
+<center>
+[www.ngscourse.com](http://www.ngscourse.org/)
+</center>
