@@ -24,7 +24,7 @@
 <li><a href="http://bio-bwa.sourceforge.net/" title="BWA">BWA</a> : BWA is a software package for mapping <strong>DNA</strong> low-divergent sequences against a large reference genome, such as the human genome. The new project repository is available at <a href="https://github.com/lh3/bwa">GitHub BWA</a></li>
 <li><a href="https://github.com/opencb/hpg-aligner/wiki/" title="HPG Aligner">HPG Aligner</a> : HPG Aligner is a new NGS aligner for mapping both <strong>DNA Genomic</strong> and <strong>RNA-seq</strong> data against a large reference genome. It’s has been designed for having a high sensitivity and performance.</li>
 <li><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml" title="Bowtie2">Bowtie2</a> : <em>Bowtie 2</em> is an ultrafast and memory-efficient tool for aligning <strong>DNA</strong> sequencing reads to long reference sequences.</li>
-<li><a href="#tophat2">TopHat2</a> : <em>TopHat</em> is a fast splice junction mapper for RNA-Seq reads. It aligns <strong>RNA-Seq</strong> reads to mammalian-sized genomes using the ultra high-throughput short read aligner Bowtie, and then analyzes the mapping results to identify splice junctions between exons.</li>
+<li><a href="http://ccb.jhu.edu/software/tophat/index.shtml" title="TopHat2">TopHat2</a> : <em>TopHat</em> is a fast splice junction mapper for RNA-Seq reads. It aligns <strong>RNA-Seq</strong> reads to mammalian-sized genomes using the ultra high-throughput short read aligner Bowtie, and then analyzes the mapping results to identify splice junctions between exons.</li>
 <li><a href="https://code.google.com/p/rna-star/" title="STAR">STAR</a> : <em>STAR</em> aligns <strong>RNA-seq</strong> reads to a reference genome using uncompressed suffix arrays.</li>
 </ul>
 <h3 id="other-software-used-in-this-hands-on">Other software used in this hands-on:</h3>
@@ -39,8 +39,8 @@
 <li><a href="http://www.broadinstitute.org/igv/bam">BAM</a>: Binary and compressed version of SAM</li>
 </ul>
 <h3 id="data-used-in-this-practical">Data used in this practical</h3>
-<p>Create a <code>data</code> folder in your <strong>working directory</strong> and download the <strong>reference genome sequence</strong> to be used (human chromosome 21) and <em>simulated datasets</em> from <strong>Dropbox</strong> <a href="https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a">data</a>. For the rest of this tutorial the <strong>working directory</strong> will be <strong>cambridge_mda14</strong> and all the <strong>paths</strong> will be relative to that working directory:</p>
-<pre><code>cd cambridge_mda14
+<p>Create a <code>data</code> folder in your <strong>working directory</strong> and download the <strong>reference genome sequence</strong> to be used (human chromosome 21) and <em>simulated datasets</em> from <strong>Dropbox</strong> <a href="https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a">data</a>. For the rest of this tutorial the <strong>working directory</strong> will be <strong>cambridge_mda15</strong> and all the <strong>paths</strong> will be relative to that working directory:</p>
+<pre><code>cd cambridge_mda15
 mkdir data</code></pre>
 <h5 id="download-reference-genome-from-ensembl">Download reference genome from <a href="http://www.ensembl.org/index.html" title="Ensembl">Ensembl</a></h5>
 <p>Working with NGS data requires a high-end workstations and time for building the reference genome indexes and alignment. During this tutorial we will work only with chromosome 21 to speed up the runtimes. You can download it from <strong>Dropbox</strong> <a href="https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a">data</a> or from the <em>Download</em> link at the top of <a href="http://www.ensembl.org/index.html" title="Ensembl">Ensembl</a> website and then to <em>Download data via FTP</em>, you get it in only one step by going to:</p>
@@ -60,10 +60,10 @@ mkdir data</code></pre>
 <pre><code>samtools</code></pre>
 <p>A list of commands should be printed. If not then proceed with the installation.</p>
 <p>Download <a href="http://www.htslib.org/" title="SAMtools">SAMtools</a> from <em>SF Download Page</em> link and move to the working directory, then uncompress it.</p>
-<pre><code>mv samtools-0.1.19.tar.bz2 working_directory
+<pre><code>mv samtools-1.2.tar.bz2 working_directory
 cd working_directory
-tar -jxvf samtools-0.1.19.tar.bz2 
-cd samtools-0.1.19
+tar -jxvf samtools-1.2.tar.bz2 
+cd samtools-1.2
 make</code></pre>
 <p>Check that is correct by executing it with no arguments, the different commands available should be printed. You can also copy it to your <code>bin</code> folder in your home directory, if bin folder exist, to make it available to the PATH:</p>
 <pre><code>samtools
@@ -111,9 +111,9 @@ mkdir bwa hpg-aligner bowtie</code></pre>
 <p>You can click on <code>SF download page</code> link in the <a href="http://bio-bwa.sourceforge.net/" title="BWA">BWA</a> page or click directly to:</p>
 <p><a href="http://sourceforge.net/projects/bio-bwa/files">http://sourceforge.net/projects/bio-bwa/files</a></p>
 <p>Click in the last version of BWA and wait for a few seconds, as the time of this tutorial last version is <strong>bwa-0.7.10.tar.bz2</strong>, the download will start. When downloaded go to your browser download folder and move it to aligners folder, uncompress it and compile it:</p>
-<pre><code>mv bwa-0.7.10.tar.bz2 working_directory/aligners/bwa
-tar -jxvf bwa-0.7.10.tar.bz2
-cd bwa-0.7.10
+<pre><code>mv bwa-0.7.12.tar.gz working_directory/aligners/bwa
+tar -jxvf bwa-0.7.12.tar.gz
+cd bwa-0.7.12
 make
 cp bwa ~/bin</code></pre>
 <p>You can check that everything is allright by executing:</p>
@@ -132,12 +132,12 @@ cp  data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa  aligners/bwa/index/   (thi
 <pre><code>bwa mem</code></pre>
 <p>To align <strong>SE</strong> with BWA-MEM execute:</p>
 <pre><code>bwa mem -t 4 -R &quot;@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1&quot; aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq &gt; alignments/bwa/dna_chr21_100_hq_se.sam</code></pre>
-<p>Now you can use SAMtools to create the BAM file from the <em>alignment/bwa</em> folder: cd alignments/bwa samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam</p>
+<p>Now you can use SAMtools to create the BAM file from the <em>alignment/bwa</em> folder: cd alignments/bwa samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam</p>
 <p>To align <strong>PE</strong> with BWA-MEM just execute the same command line with the two FASTQ files:</p>
 <pre><code>bwa mem -t 4 -R &quot;@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1&quot; aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq &gt; alignments/bwa/dna_chr21_100_hq_pe.sam</code></pre>
 <p>Now you can use SAMtools to create the BAM file from the <em>alignment/bwa</em> folder:</p>
 <pre><code>cd alignments/bwa
-samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam</code></pre>
+samtools view -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam</code></pre>
 <p>Now you can do the same for the <strong>low</strong> quality datasets.</p>
 <h5 id="aligning-with-old-bwa-algorithm-two-command-lines-aln-and-samsesampe-in-se-and-pe-modes-optional-exercise">Aligning with old BWA algorithm, two command lines: ALN and SAMSE/SAMPE in SE and PE modes (Optional exercise)</h5>
 <p>Now we are going to align SE and PE the <strong>high</strong> quality dataset. Single-end alignment with BWA requires 2 executions. The first uses <code>aln</code> command and takes the <code>fastq</code> file and creates a <code>sai</code> file; the second execution uses <code>samse</code> and the <code>sai</code> file and create the <code>sam</code> file. Results are stored in <code>alignments</code> folder:</p>
@@ -149,8 +149,8 @@ bwa aln aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 data
 bwa sampe aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa alignments/bwa/dna_chr21_100_hq_pe1.sai alignments/bwa/dna_chr21_100_hq_pe2.sai data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq -f alignments/bwa/dna_chr21_100_hq_pe.sam</code></pre>
 <p>Now you can use SAMtools to create the BAM file from the <em>alignment/bwa</em> folder:</p>
 <pre><code>cd alignments/bwa
-samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
-samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam</code></pre>
+samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
+samtools view -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam</code></pre>
 <p>Now you can do the same for the <strong>low</strong> quality datasets.</p>
 <h3 id="hpg-aligner">HPG Aligner</h3>
 <p><a href="https://github.com/opencb/hpg-aligner/wiki/" title="HPG Aligner">HPG Aligner</a> is an ultrafast and high sensitivity tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of any size. HPG Aligner 2.0 indexes the genome using a Suffix Arrays. HPG Aligner 2 supports gapped, local, and paired-end alignment modes, together with INDEL realignment and recalibration.</p>
@@ -168,12 +168,12 @@ cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bwa/index/</code></
 <pre><code>hpg-aligner dna --cpu-threads 4 -i aligners/hpg-aligner/index/ -f data/dna_chr21_100_hq_read1.fastq -o alignments/hpg-aligner/ --prefix dna_chr21_100_hq_se</code></pre>
 <p>And create the BAM file using SAMtools, you could create the BAM file adding <em>–bam-format</em> to the previous command line:</p>
 <pre><code>cd alignments/hpg-aligner
-samtools view -S -b dna_chr21_100_hq_se_out.sam -o dna_chr21_100_hq_se.bam</code></pre>
+samtools view -b dna_chr21_100_hq_se_out.sam -o dna_chr21_100_hq_se.bam</code></pre>
 <p>Mapping in <strong>PE</strong> also requires only one execution:</p>
 <pre><code>hpg-aligner dna --cpu-threads 4 -i aligners/hpg-aligner/index/ -f data/dna_chr21_100_hq_read1.fastq -j data/dna_chr21_100_hq_read2.fastq -o alignments/hpg-aligner --prefix dna_chr21_100_hq_pe</code></pre>
 <p>And create the BAM file using SAMtools:</p>
 <pre><code>cd alignments/hpg-aligner
-samtools view -S -b dna_chr21_100_hq_pe_out.sam -o dna_chr21_100_hq_pe.bam</code></pre>
+samtools view -b dna_chr21_100_hq_pe_out.sam -o dna_chr21_100_hq_pe.bam</code></pre>
 <p>Repeat the same steps for the <strong>low</strong> quality dataset.</p>
 <h3 id="bowtie2">Bowtie2</h3>
 <p><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml" title="Bowtie2">Bowtie2</a> as documentation states is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of about 50 up to few 100s. Bowtie 2 indexes the genome with an FM Index to keep its memory footprint small: for the human genome, its memory footprint is typically around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes.</p>
@@ -204,12 +204,12 @@ cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bowtie/index/</code
 <pre><code>bowtie2 -q -p 4 -x aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -U data/dna_chr21_100_hq_read1.fastq -S alignments/bowtie/dna_chr21_100_hq_se.sam</code></pre>
 <p>And create the BAM file using SAMtools;</p>
 <pre><code>cd alignments/bowtie
-samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam</code></pre>
+samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam</code></pre>
 <p>Mapping in <strong>PE</strong> also requires only one execution:</p>
 <pre><code>bowtie2 -q -p 4 -x aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -1 data/dna_chr21_100_hq_read1.fastq -2 data/dna_chr21_100_hq_read2.fastq -S alignments/bowtie/dna_chr21_100_hq_pe.sam</code></pre>
 <p>And create the BAM file using SAMtools;</p>
 <pre><code>cd alignments/bowtie
-samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam</code></pre>
+samtools view -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam</code></pre>
 <p>Repeat the same steps for the <strong>low</strong> quality dataset.</p>
 <h3 id="more-exercises">More exercises</h3>
 <ul>
@@ -225,12 +225,12 @@ samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam</code></p
 mkdir tophat</code></pre>
 <p><strong>NOTE:</strong> No index is needed for TopHat as it uses Bowtie2 for alignment.</p>
 <h3 id="tophat2">TopHat2</h3>
-<p><a href="#tophat2">TopHat2</a> states to be a <em>fast</em> splice junction mapper for RNA-Seq reads, which is not always completrly true. It aligns RNA-Seq reads to mammalian-sized genomes using the ultra high-throughput short read aligner Bowtie, and then analyzes the mapping results to identify splice junctions between exons.</p>
+<p><a href="http://ccb.jhu.edu/software/tophat/index.shtml" title="TopHat2">TopHat2</a> states to be a <em>fast</em> splice junction mapper for RNA-Seq reads, which is not always completrly true. It aligns RNA-Seq reads to mammalian-sized genomes using the ultra high-throughput short read aligner Bowtie, and then analyzes the mapping results to identify splice junctions between exons.</p>
 <h5 id="download-and-install-optional-already-installed-2">Download and install (Optional, already installed)</h5>
 <p>First check that bwa is not currently installed by executing:</p>
 <pre><code>tophat2</code></pre>
 <p>A list of commands will be printed if already installed. If not you can continue with the installation.</p>
-<p>From <a href="#tophat2">TopHat2</a> go to <code>Releases</code> and download the Linux program by clicking in <em>Linux x86_64 binary</em> link.</p>
+<p>From <a href="http://ccb.jhu.edu/software/tophat/index.shtml" title="TopHat2">TopHat2</a> go to <code>Releases</code> and download the Linux program by clicking in <em>Linux x86_64 binary</em> link.</p>
 <p>As the time of this tutorial last version is <strong>tophat-2.0.10.Linux_x86_64.tar.gz</strong>, the download will start. When downloaded go to your browser download folder and move it to aligners folder and uncompress it. No need to compile if you downloaded the Linux version:</p>
 <pre><code>mv tophat-2.0.10.Linux_x86_64.tar.gz working_directory/aligners/tophat
 tar -zxvf tophat-2.0.10.Linux_x86_64.tar.gz
