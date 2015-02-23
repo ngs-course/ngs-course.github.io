@@ -1,7 +1,7 @@
 ---
 title: NGS Data Analysis Course
 subtitle: Quality Control and Data Preprocessing
-author: Marta Bleda, Ignacio Medina, David Montaner
+author: Marta Bleda, Javier Lopez, Ignacio Medina, David Montaner
 date: 2015-02-23
 footer-left: Quality Control and Data Preprocessing
 footer-right: NGS Data Analysis Course
