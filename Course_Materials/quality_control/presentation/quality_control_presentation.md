@@ -1,6 +1,12 @@
-% Quality Control and Data Preprocessing
-% [NGS Data Analysis Course](http://ngs-course.github.io/)
-% (updated 09-06-2014)
+---
+title: NGS Data Analysis Course
+subtitle: Quality Control and Data Preprocessing
+author: Marta Bleda, Ignacio Medina, David Montaner
+date: 2015-02-23
+footer-left: Quality Control and Data Preprocessing
+footer-right: NGS Data Analysis Course
+url: 'http://www.ngscourse.org'
+...
 
 
 FastQ Format
@@ -36,7 +42,7 @@ $$P = 10^{\frac{-Q}{10}}$$
 
 \  
 
-<http://en.wikipedia.org/wiki/Phred_quality_score#Definition>
+[http://en.wikipedia.org/wiki/Phred_quality_score](http://en.wikipedia.org/wiki/Phred_quality_score#Definition)
 
 
 

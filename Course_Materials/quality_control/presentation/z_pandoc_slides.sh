@@ -4,23 +4,32 @@
 
 ## PARAMETERS you may want to change
 outfile="quality_control_presentation"   #name for the final PDF file (without extension)
+infile="quality_control_presentation"
 
 ################################################################################
 
 ## RUN PANDOC
 
-infile="quality_control_presentation"
-beamer_template="../../../Commons/beamer_template_for_slides"
+beamer_template="../../../Commons/beamer_template.tex"
 
+rm -r aux
 mkdir aux
 
 rm $outfile.pdf
 
-pandoc -S -f markdown -t beamer -o aux/slides.tex $infile.md
+##pandoc using template
+pandoc -S -f markdown -t beamer --template=$beamer_template -o aux/slides.tex $infile.md
 
 ##properly scale images
 sed -i 's/\includegraphics{/\includegraphics[width=\\textwidth,height=0.8\\textheight,keepaspectratio]{/g' aux/slides.tex
 
-pdflatex -output-directory=aux $beamer_template.tex
+##remove empty captions
+sed -i 's/\\caption{}//g' aux/slides.tex
 
-mv aux/`basename $beamer_template`.pdf $outfile.pdf
+##pdf
+pdflatex -output-directory=aux aux/slides.tex
+pdflatex -output-directory=aux aux/slides.tex  ## needs to be compiled two times for the total number of frames to be properly estimated.
+## it may need one more for the citations
+
+##reallocate files
+mv aux/slides.pdf $outfile.pdf
