@@ -35,6 +35,7 @@ mkdir -p /home/participant/cambridge_mda15/
 cp -r /home/participant/Desktop/Open_Share/visualization /home/participant/cambridge_mda15/
 cd /home/participant/cambridge_mda15/visualization
 -->
+
     cd /home/participant/Desktop/Course_Materials/visualization
 
 Enter in the example folder:
