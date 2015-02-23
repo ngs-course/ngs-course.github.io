@@ -36,7 +36,7 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 
 ##### NGS data Visualization
 
-- [Presentation](Course_Materials/visualization/presentation/2014-Cambridge_visualisation.pdf) || [Guided example](Course_Materials/visualization/tutorial/000_example.html) || [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) || [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
+- [Presentation](Course_Materials/visualization/presentation/2015-Cambridge_visualisation.pdf) || [Guided example](Course_Materials/visualization/tutorial/000_example.html) || [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) || [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
 
 ##### Variant calling analysis
 

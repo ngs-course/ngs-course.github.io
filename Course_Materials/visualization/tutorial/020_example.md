@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Visualization of mapped reads__
-% _(updated 29-09-2014)_
+% _(updated 23-02-2015)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -31,7 +31,7 @@ Exercise 2: Visualising RNA-Seq data
 
 In the following **folder** you will find mapped RNA-Seq data from Illumina’s Human BodyMap 2.0 project. This two datasets in particular contain reads from brain and heart tissues.
 
-    cd /home/participant/cambridge_mda14/visualization/example_2
+    cd /home/participant/Desktop/Course_Materials/visualization/example_2
 
 
 Steps
@@ -67,7 +67,7 @@ So, reads will be around ``12:98000000-100000000``.
  **TIP:** Right-click on the Features panel --> Select ``Expanded``
 <input class="spoilerbutton" type="button" value="Show answer" onclick="this.value=this.value=='Show answer'?'Hide answer':'Show answer';">
 <div class="spoiler"><div>
-The gene __IKBIP__ contains 4 exons that generate **3 different isoforms**:<br>- Isoform 1: exon 1 + exon 4<br>- Isoform 2: exon 1 + exon 3 + exon 4<br>- Isoform 3: exon 2 + exon 3 + exon 4
+The gene __IKBIP__ contains 4 exons that generate **3 different isoforms** (note that the gene is located in the reverse strand):<br>- Isoform 1: exon 1 + exon 4<br>- Isoform 2: exon 1 + exon 2 + exon 4<br>- Isoform 3: exon 1 + exon 2 + exon 3
 </div></div>
 
  - Is __IKBIP__ gene expressed in heart and brain tissues? 
