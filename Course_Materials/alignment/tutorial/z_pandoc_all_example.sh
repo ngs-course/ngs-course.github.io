@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # z_pandoc_example.sh
 # 2014-02-14 dmontaner@cipf.es
 # Run Pandoc for examples
@@ -23,5 +25,5 @@ pandoc -S -f markdown -t html -c $cssfile -o $outfile.html $infile.md
 sed 's/^\t/    /g' $infile.md  > $shfile.0.sh   # replace starting tabs by 4 spaces
 grep  "^    " > $shfile.sh $shfile.0.sh         # fin the verbatim lines: those starting with 4 spaces
 rm $shfile.0.sh
-sed -ie 's/^    //g'                $shfile.sh  # remove spaces
+sed -i 's/^    //g'                $shfile.sh  # remove spaces
 chmod +x                            $shfile.sh  # executable

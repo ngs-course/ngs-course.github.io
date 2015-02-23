@@ -1,16 +1,16 @@
 % [NGS data analysis course](http://ngs-course.github.io/)
 % __DNA and RNA-seq NGS alignment__
-% _(updated 28-09-2014)_
+% _(updated 22-02-2015)_
 
 <!-- COMMON LINKS HERE -->
 
 [BWA]: http://bio-bwa.sourceforge.net/ "BWA"
 [HPG Aligner]: https://github.com/opencb/hpg-aligner/wiki/ "HPG Aligner"
 [Bowtie2]: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml "Bowtie2"
-[TopHat]: http://ccb.jhu.edu/software/tophat/index.shtml "TopHat2"
+[TopHat2]: http://ccb.jhu.edu/software/tophat/index.shtml "TopHat2"
 [STAR]: https://code.google.com/p/rna-star/ "STAR"
 [MapSplice2]: http://www.netlab.uky.edu/p/bioinfo/MapSplice2 "MapSplice2"
-[SAMTools]: http://samtools.sourceforge.net/ "SAMtools"
+[SAMTools]: http://www.htslib.org/ "SAMtools"
 [dwgsim]: http://sourceforge.net/apps/mediawiki/dnaa/index.php?title=Whole_Genome_Simulation "dwgsim"
 [BEERS]: http://www.cbil.upenn.edu/BEERS/ "BEERS"
 [Ensembl]: http://www.ensembl.org/index.html "Ensembl"
@@ -22,7 +22,7 @@ In this hands-on will learn how to align DNA and RNA-seq data with most widely u
 
 ### NGS aligners used:
 
-- [BWA] : BWA is a software package for mapping **DNA** low-divergent sequences against a large reference genome, such as the human genome.
+- [BWA] : BWA is a software package for mapping **DNA** low-divergent sequences against a large reference genome, such as the human genome. The new project repository is available at [GitHub BWA](https://github.com/lh3/bwa)
 - [HPG Aligner] : HPG Aligner is a new NGS aligner for mapping both **DNA Genomic** and **RNA-seq** data against a large reference genome. It's has been designed for having a high sensitivity and performance.
 - [Bowtie2] : *Bowtie 2* is an ultrafast and memory-efficient tool for aligning **DNA** sequencing reads to long reference sequences.
 - [TopHat2] : *TopHat* is a fast splice junction mapper for RNA-Seq reads. It aligns **RNA-Seq** reads to mammalian-sized genomes using the ultra high-throughput short read aligner Bowtie, and then analyzes the mapping results to identify splice junctions between exons.
@@ -42,22 +42,24 @@ In this hands-on will learn how to align DNA and RNA-seq data with most widely u
 ### Data used in this practical
 
 Create a ```data``` folder in your **working directory** and download the **reference genome sequence** to be used (human chromosome 21) and *simulated datasets* from **Dropbox** [data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a).
-For the rest of this tutorial the **working directory** will be **cambridge_mda14** and all the **paths** will be relative to that working directory:
+For the rest of this tutorial the **working directory** will be **cambridge_mda15** and all the **paths** will be relative to that working directory:
     
-    cd cambridge_mda14
+    cd cambridge_mda15
     mkdir data
 
 ##### Download reference genome from [Ensembl]
 
 Working with NGS data requires a high-end workstations and time for building the reference genome indexes and alignment. During this tutorial we will work only with chromosome 21 to speed up the runtimes. You can download it from **Dropbox** [data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a) or from the *Download* link at the top of [Ensembl] website and then to *Download data via FTP*, you get it in only one step by going to:
 
-[http://www.ensembl.org/info/data/ftp/index.html](http://www.ensembl.org/info/data/ftp/index.html)
+[Ensembl GRCh37 http://grch37.ensembl.org/info/data/ftp/index.html](http://grch37.ensembl.org/info/data/ftp/index.html)
+
+[Ensembl GRCh38 http://www.ensembl.org/info/data/ftp/index.html](http://www.ensembl.org/info/data/ftp/index.html)
 
 You should see a species table with a Human (*Homo sapiens*) row and a *DNA (FASTA)* column or click at [ftp://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/](ftp://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/), download the chromosome 21 file (*Homo_sapiens.GRCh37.75.dna.chromosome.21.fa.gz*) and move it from your browser download folder to your ```data``` folder:
 
     mv Homo_sapiens.GRCh37.75.dna.chromosome.21.fa.gz path_to_local_data
 
-**NOTE:** For working with the whole reference genome the file to be downloaded is *Homo_sapiens.GRCh37.75.dna.toplevel.fa.gz*
+**NOTE:** For working with the whole reference genome the file to be downloaded is *Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz*
 
 
 ##### Copy simulated datasets
@@ -88,10 +90,10 @@ A list of commands should be printed. If not then proceed with the installation.
 
 Download [SAMtools] from *SF Download Page* link and move to the working directory, then uncompress it.
 
-    mv samtools-0.1.19.tar.bz2 working_directory
+    mv samtools-1.2.tar.bz2 working_directory
     cd working_directory
-    tar -jxvf samtools-0.1.19.tar.bz2 
-    cd samtools-0.1.19
+    tar -jxvf samtools-1.2.tar.bz2 
+    cd samtools-1.2
     make
 
 Check that is correct by executing it with no arguments, the different commands available should be printed. You can also copy it to your ```bin``` folder in your home directory, if bin folder exist, to make it available to the PATH:
@@ -164,9 +166,9 @@ You can click on ```SF download page``` link in the [BWA] page or click directly
 
 Click in the last version of BWA and wait for a few seconds, as the time of this tutorial last version is **bwa-0.7.10.tar.bz2**, the download will start. When downloaded go to your browser download folder and move it to aligners folder, uncompress it and compile it:
 
-    mv bwa-0.7.10.tar.bz2 working_directory/aligners/bwa
-    tar -jxvf bwa-0.7.10.tar.bz2
-    cd bwa-0.7.10
+    mv bwa-0.7.12.tar.gz working_directory/aligners/bwa
+    tar -jxvf bwa-0.7.12.tar.gz
+    cd bwa-0.7.12
     make
     cp bwa ~/bin
 
@@ -205,7 +207,7 @@ To align **SE** with BWA-MEM execute:
 
 Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
     cd alignments/bwa
-    samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
+    samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 
 
 To align **PE** with BWA-MEM just execute the same command line with the two FASTQ files:
@@ -215,7 +217,7 @@ To align **PE** with BWA-MEM just execute the same command line with the two FAS
 Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
 
     cd alignments/bwa
-    samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
+    samtools view -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
 
 
 Now you can do the same for the **low** quality datasets.
@@ -238,8 +240,8 @@ For paired-end alignments with BWA 3 executions are needed: 2 for ```aln``` comm
 Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
 
     cd alignments/bwa
-    samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
-    samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
+    samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
+    samtools view -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
 
 Now you can do the same for the **low** quality datasets.
 
@@ -274,7 +276,7 @@ Mapping **SE** with HPG Aligner requires only 1 execution, for aligning the **hi
 And create the BAM file using SAMtools, you could create the BAM file adding _--bam-format_ to the previous command line:
 
     cd alignments/hpg-aligner
-    samtools view -S -b dna_chr21_100_hq_se_out.sam -o dna_chr21_100_hq_se.bam
+    samtools view -b dna_chr21_100_hq_se_out.sam -o dna_chr21_100_hq_se.bam
 
 
 Mapping in **PE** also requires only one execution:
@@ -284,7 +286,7 @@ Mapping in **PE** also requires only one execution:
 And create the BAM file using SAMtools:
 
     cd alignments/hpg-aligner
-    samtools view -S -b dna_chr21_100_hq_pe_out.sam -o dna_chr21_100_hq_pe.bam
+    samtools view -b dna_chr21_100_hq_pe_out.sam -o dna_chr21_100_hq_pe.bam
     
 Repeat the same steps for the **low** quality dataset.
 
@@ -344,7 +346,7 @@ Mapping **SE** with Bowtie2 requires only 1 execution, for aligning the **high**
 And create the BAM file using SAMtools;
 
     cd alignments/bowtie
-    samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
+    samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 
 
 Mapping in **PE** also requires only one execution:
@@ -354,7 +356,7 @@ Mapping in **PE** also requires only one execution:
 And create the BAM file using SAMtools;
 
     cd alignments/bowtie
-    samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
+    samtools view -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
     
 Repeat the same steps for the **low** quality dataset.
 

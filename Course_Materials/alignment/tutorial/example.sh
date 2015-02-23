@@ -1,13 +1,13 @@
 
-cd cambridge_mda14
+cd cambridge_mda15
 mkdir data
 mv Homo_sapiens.GRCh37.75.dna.chromosome.21.fa.gz path_to_local_data
 cp path_to_course_materials/alignment/* your_local_data/
 samtools
-mv samtools-0.1.19.tar.bz2 working_directory
+mv samtools-1.2.tar.bz2 working_directory
 cd working_directory
-tar -jxvf samtools-0.1.19.tar.bz2 
-cd samtools-0.1.19
+tar -jxvf samtools-1.2.tar.bz2 
+cd samtools-1.2
 make
 samtools
 cp samtools ~/bin
@@ -19,9 +19,9 @@ cd alignments
 mkdir bwa hpg-aligner bowtie
 
 bwa
-mv bwa-0.7.10.tar.bz2 working_directory/aligners/bwa
-tar -jxvf bwa-0.7.10.tar.bz2
-cd bwa-0.7.10
+mv bwa-0.7.12.tar.gz working_directory/aligners/bwa
+tar -jxvf bwa-0.7.12.tar.gz
+cd bwa-0.7.12
 make
 cp bwa ~/bin
 bwa
@@ -33,19 +33,19 @@ bwa index aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa
 bwa mem
 bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq > alignments/bwa/dna_chr21_100_hq_se.sam
 cd alignments/bwa
-samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
+samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq > alignments/bwa/dna_chr21_100_hq_pe.sam
 
 cd alignments/bwa
-samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
+samtools view -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
 bwa aln aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 data/dna_chr21_100_hq_read1.fastq -f alignments/bwa/dna_chr21_100_hq_se.sai
 bwa samse aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa alignments/bwa/dna_chr21_100_hq_se.sai data/dna_chr21_100_hq_read1.fastq -f alignments/bwa/dna_chr21_100_hq_se.sam
 bwa aln aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 data/dna_chr21_100_hq_read1.fastq -f alignments/bwa/dna_chr21_100_hq_pe1.sai
 bwa aln aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -t 4 data/dna_chr21_100_hq_read2.fastq -f alignments/bwa/dna_chr21_100_hq_pe2.sai
 bwa sampe aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa alignments/bwa/dna_chr21_100_hq_pe1.sai alignments/bwa/dna_chr21_100_hq_pe2.sai data/dna_chr21_100_hq_read1.fastq data/dna_chr21_100_hq_read2.fastq -f alignments/bwa/dna_chr21_100_hq_pe.sam
 cd alignments/bwa
-samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
-samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
+samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
+samtools view -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
 
 cd hpg-aligner   (_inside aligners folder_)
 mkdir index
@@ -54,10 +54,10 @@ cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bwa/index/
 hpg-aligner build-sa-index -g aligners/hpg-aligner/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -i aligners/hpg-aligner/index/
 hpg-aligner dna --cpu-threads 4 -i aligners/hpg-aligner/index/ -f data/dna_chr21_100_hq_read1.fastq -o alignments/hpg-aligner/ --prefix dna_chr21_100_hq_se
 cd alignments/hpg-aligner
-samtools view -S -b dna_chr21_100_hq_se_out.sam -o dna_chr21_100_hq_se.bam
+samtools view -b dna_chr21_100_hq_se_out.sam -o dna_chr21_100_hq_se.bam
 hpg-aligner dna --cpu-threads 4 -i aligners/hpg-aligner/index/ -f data/dna_chr21_100_hq_read1.fastq -j data/dna_chr21_100_hq_read2.fastq -o alignments/hpg-aligner --prefix dna_chr21_100_hq_pe
 cd alignments/hpg-aligner
-samtools view -S -b dna_chr21_100_hq_pe_out.sam -o dna_chr21_100_hq_pe.bam
+samtools view -b dna_chr21_100_hq_pe_out.sam -o dna_chr21_100_hq_pe.bam
 
 bowtie2
 mv bowtie2-2.2.3-linux-x86_64.zip working_directory/aligners/bowtie
@@ -72,10 +72,10 @@ cp data/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bowtie/index/
 bowtie2-build aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa
 bowtie2 -q -p 4 -x aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -U data/dna_chr21_100_hq_read1.fastq -S alignments/bowtie/dna_chr21_100_hq_se.sam
 cd alignments/bowtie
-samtools view -S -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
+samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 bowtie2 -q -p 4 -x aligners/bowtie/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa -1 data/dna_chr21_100_hq_read1.fastq -2 data/dna_chr21_100_hq_read2.fastq -S alignments/bowtie/dna_chr21_100_hq_pe.sam
 cd alignments/bowtie
-samtools view -S -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
+samtools view -b dna_chr21_100_hq_pe.sam -o dna_chr21_100_hq_pe.bam
 
 cd alignments
 mkdir tophat

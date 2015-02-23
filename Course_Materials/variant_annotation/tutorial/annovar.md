@@ -11,9 +11,9 @@ Variant annotation with Annovar
 
 Copy the necessary data in your working directory:
 
-    mkdir -p /home/participant/cambridge_mda14/
-    cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda14/
-    cd /home/participant/cambridge_mda14/annotation/annovar
+    mkdir -p /home/participant/cambridge_mda/
+    cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda/
+    cd /home/participant/cambridge_mda/annotation/annovar
 
 
 1. VCF to Annovar format

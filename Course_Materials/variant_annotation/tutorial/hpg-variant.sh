@@ -1,6 +1,6 @@
-mkdir -p /home/participant/cambridge_mda14/
-cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda14/
-cd /home/participant/cambridge_mda14/annotation/hpg-variant
+mkdir -p /home/participant/cambridge_mda/
+cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda/
+cd /home/participant/cambridge_mda/annotation/hpg-variant
 ./hpg-var-effect -v examples/CHB.exon.2010_03.sites.vcf --outdir hpg-variant_results
 ./hpg-var-vcf split -v examples/CEU.exon.2010_03.genotypes.vcf --criterion chromosome --outdir filter
 ./hpg-var-vcf filter -v examples/CEU.exon.2010_03.genotypes.vcf --coverage 9000 --save-rejected --outdir filter_coverage
