@@ -1,6 +1,12 @@
-% Association Analysis using PLINK
-% [NGS Data Analysis Course](http://ngscourse.github.io/)
-% (updated 04-03-2014)
+---
+title: NGS Data Analysis Course
+subtitle: Association Analysis using PLINK
+author: Marta Bleda, Javier Lopez, Ignacio Medina, David Montaner
+date: 2015-02-22 
+footer-left: Association Analysis
+footer-right: NGS Data Analysis Course
+url: 'http://www.ngscourse.org'
+...
 
 
 File formats: VCF

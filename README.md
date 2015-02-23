@@ -11,15 +11,18 @@ This is course is scheduled for a 3 days and assumes a very basic knowledge of N
 
 During this first day we will start with an _introduction to NGS technology_ and in the data preparation for their analysis. You will also learn the basics of the _GNU/Linux shell introduction_. At this point we are ready to start preparing and working with the data: _Quality Control_ (QC) and _NGS data alignment_.
 
-##### Presentation
-- Presentation [[PDF](Course_Materials/presentation/presentation_mda14.pdf) | [OpenOffice](Course_Materials/presentation/presentation_mda14.odp)]
+##### Genomic Data Analysis Overview
+- Presentation [PDF](Course_Materials/course_overview/Dopazo_Intro_Cambridge.pdf)
+
+##### Course Presentation
+- Presentation [[PDF](Course_Materials/presentation/presentation_mda15.pdf) | [OpenOffice](Course_Materials/presentation/presentation_mda15.odp)]
 
 ##### Introduction to NGS technologies
 Very brief overview about NGS technologies and some concepts.
-- [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda14.pdf)
+- [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda15.pdf)
 
-##### Course Presentation and Introduction to NGS data analysis & GNU/Linux shell
-- Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda14.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda14.odp)]
+##### Introduction GNU/Linux shell
+- Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda15.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda15.odp)]
 
 ##### Quality control for NGS raw data (FASTQ)
 - [Presentation](Course_Materials/quality_control/presentation/quality_control_presentation.pdf) - [Tutorial](Course_Materials/quality_control/tutorial/quality_control.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/quality_control)
@@ -58,7 +61,8 @@ In the last day we will focus on RNA-seq data analysis and functional interpreta
 
 ##### RNA-Seq data analysis
 
-- [Presentation](Course_Materials/rna_seq/presentation/rna_seq.pdf) - [Tutorial](Course_Materials/rna_seq/tutorial/rna_seq.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAB77HfUPkiXBj1MmshjyKtYa/rna_seq) - you will also need the [reference genome](https://www.dropbox.com/s/3ci9yuh2hh9ck8g/f000_chr21_ref_genome_sequence.fa?dl=0) and the [GTF file with the annotation](https://www.dropbox.com/s/4r3tjwu840i1iio/f005_chr21_genome_annotation.gtf?dl=0)
+- [Presentation](Course_Materials/rna_seq/presentation/rna_seq_presentation.pdf) - [Tutorial](Course_Materials/rna_seq/tutorial/rna_seq.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAB77HfUPkiXBj1MmshjyKtYa/rna_seq)  
+  You will also need the [reference genome](https://www.dropbox.com/s/3ci9yuh2hh9ck8g/f000_chr21_ref_genome_sequence.fa?dl=0) and the [GTF file with the annotation](https://www.dropbox.com/s/4r3tjwu840i1iio/f005_chr21_genome_annotation.gtf?dl=0)
 
 ##### Functional analysis
 
