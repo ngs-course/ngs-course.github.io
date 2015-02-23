@@ -28,7 +28,7 @@ Very brief overview about NGS technologies and some concepts.
 - [Presentation](Course_Materials/quality_control/presentation/quality_control_presentation.pdf) - [Tutorial](Course_Materials/quality_control/tutorial/quality_control.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/quality_control)
 
 ##### DNA and RNA-seq NGS read alignment
-- Presentation [[PDF](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda14.pdf) | [OpenOffice](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda14.odp)] - [Tutorial](Course_Materials/alignment/tutorial/example.html)
+- Presentation [[PDF](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda15.pdf) | [OpenOffice](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda15.odp)] - [Tutorial](Course_Materials/alignment/tutorial/example.html)
 
 
 ### Day 2
