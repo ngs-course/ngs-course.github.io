@@ -28,7 +28,7 @@ Very brief overview about NGS technologies and some concepts.
 - [Presentation](Course_Materials/quality_control/presentation/quality_control_presentation.pdf) - [Tutorial](Course_Materials/quality_control/tutorial/quality_control.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/quality_control)
 
 ##### DNA and RNA-seq NGS read alignment
-- Presentation [[PDF](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda14.pdf) | [OpenOffice](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda14.odp)] - [Tutorial](Course_Materials/alignment/tutorial/example.html)
+- Presentation [[PDF](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda15.pdf) | [OpenOffice](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda15.odp)] - [Tutorial](Course_Materials/alignment/tutorial/example.html)
 
 
 ### Day 2
@@ -36,7 +36,7 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 
 ##### NGS data Visualization
 
-- [Presentation](Course_Materials/visualization/presentation/2014-Cambridge_visualisation.pdf) || [Guided example](Course_Materials/visualization/tutorial/000_example.html) || [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) || [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
+- [Presentation](Course_Materials/visualization/presentation/2015-Cambridge_visualisation.pdf) || [Guided example](Course_Materials/visualization/tutorial/000_example.html) || [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) || [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
 
 ##### Variant calling analysis
 
@@ -44,7 +44,7 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 
 ##### Variant annotation
 
-- [Presentation](Course_Materials/variant_annotation/presentation/2014-Cambridge_variant_annotation.pdf) || [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) || [HPG-Variant](Course_Materials/variant_annotation/tutorial/hpg-variant.html)
+- [Presentation](Course_Materials/variant_annotation/presentation/2015-Cambridge_variant_annotation.pdf) || [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) || [HPG-Variant](Course_Materials/variant_annotation/tutorial/hpg-variant.html)
 
 ##### Variant prioritization
 
