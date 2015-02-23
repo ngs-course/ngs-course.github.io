@@ -40,7 +40,7 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 
 ##### Variant calling analysis
 
-- [Presentation](Course_Materials/variant_calling/presentation/2014-Cambridge_variant_calling.pdf) || [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) || [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html) || [Tutorial 3](Course_Materials/variant_calling/tutorial/030_example.html)
+- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) || [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) || [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html) || [Tutorial 3](Course_Materials/variant_calling/tutorial/030_example.html)
 
 ##### Variant annotation
 
@@ -52,7 +52,7 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 [Presentation](Course_Materials/variant_prioritization/presentation/2014-Cambridge_variant_prioritization.pdf)
 -->
 
-[Presentation](Course_Materials/variant_prioritization/presentation/Dopazo-Prioritization_Cambridge.pdf) || [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AADPzrs9NGg0PjVqnwQocUJUa/annotation/hpg-variant/examples)
+- [Presentation](Course_Materials/variant_prioritization/presentation/Dopazo-Prioritization_Cambridge.pdf) || [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AADPzrs9NGg0PjVqnwQocUJUa/annotation/hpg-variant/examples)
 
 
 ### Day 3
