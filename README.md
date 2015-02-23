@@ -58,7 +58,7 @@ In the last day we will focus on RNA-seq data analysis and functional interpreta
 
 ##### RNA-Seq data analysis
 
-- [Presentation](Course_Materials/rna_seq/presentation/rna_seq.pdf) - [Tutorial](Course_Materials/rna_seq/tutorial/rna_seq.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAB77HfUPkiXBj1MmshjyKtYa/rna_seq)  
+- [Presentation](Course_Materials/rna_seq/presentation/rna_seq_presentation.pdf) - [Tutorial](Course_Materials/rna_seq/tutorial/rna_seq.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAB77HfUPkiXBj1MmshjyKtYa/rna_seq)  
   You will also need the [reference genome](https://www.dropbox.com/s/3ci9yuh2hh9ck8g/f000_chr21_ref_genome_sequence.fa?dl=0) and the [GTF file with the annotation](https://www.dropbox.com/s/4r3tjwu840i1iio/f005_chr21_genome_annotation.gtf?dl=0)
 
 ##### Functional analysis
