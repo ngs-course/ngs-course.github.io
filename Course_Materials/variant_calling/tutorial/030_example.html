@@ -13,7 +13,7 @@
 <div id="header">
 <h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>Variant calling</strong></h2>
-<h3 class="date"><em>(updated 29-09-2014)</em></h3>
+<h3 class="date"><em>(updated 23-02-2015)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
 
@@ -33,7 +33,7 @@
 <h1 id="exercise-3-somatic-calling">Exercise 3: Somatic calling</h1>
 <h2 id="prepare-bam-file">1. Prepare BAM file</h2>
 <p>Go to the example3 folder:</p>
-<pre><code>cd /home/participant/cambridge_mda14/calling/example3</code></pre>
+<pre><code>cd /home/participant/Desktop/Course_Materials/calling/example3</code></pre>
 <p>Sort:</p>
 <pre><code>samtools sort 000-normal.bam 001-normal_sorted
 samtools sort 000-tumor.bam 001-tumor_sorted</code></pre>
@@ -42,6 +42,8 @@ samtools sort 000-tumor.bam 001-tumor_sorted</code></pre>
 samtools index 001-tumor_sorted.bam</code></pre>
 <h2 id="somatic-calling">2. Somatic calling</h2>
 <p>For brevity, we are not including BAM preprocessing steps. However, in real analysis it is recommended to include them.</p>
-<pre><code>../java-7/bin/java -jar ../mutect/muTect-1.1.4.jar --analysis_type MuTect --reference_sequence ../genome/f000_chr21_ref_genome_sequence.fa --dbsnp 000-dbsnp_132_b37.leftAligned.vcf.gz --cosmic 000-b37_cosmic_v54_120711.vcf.gz --input_file:normal 001-normal_sorted.bam --input_file:tumor 001-tumor_sorted.bam --out 002-call_stats.out --coverage_file 002-coverage.wig --vcf 003-somatic_variants.vcf</code></pre>
+<pre><code>../java-6/bin/java -jar ../mutect/muTect-1.1.4.jar --analysis_type MuTect --reference_sequence TP53.hg19.fa --dbsnp 000-dbsnp_132_b37.leftAligned.vcf.gz --cosmic 000-b37_cosmic_v54_120711.vcf.gz --input_file:normal 001-normal_sorted.bam --input_file:tumor 001-tumor_sorted.bam --out 002-call_stats.out --coverage_file 002-coverage.wig --vcf 003-somatic_variants.vcf
+
+grep -v REJECT 003-somatic_variants.vcf</code></pre>
 </body>
 </html>
