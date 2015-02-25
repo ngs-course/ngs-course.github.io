@@ -1,6 +1,6 @@
-% [NGS data analysis course](http://ngscourse.github.io/)
-% __RNA-Seq data analysis__
-% _(updated 2014-09-29)_
+% [NGS data analysis course](http://www.ngscourse.org)
+% __RNA-Seq data analysis with Cufflinks and Cuffdiff__
+% _(updated 2015-02-25)_
 
 <!-- COMMON LINKS HERE -->
 

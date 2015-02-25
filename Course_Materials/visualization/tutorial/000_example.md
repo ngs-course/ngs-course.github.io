@@ -28,11 +28,15 @@ File formats explored:
 Guided exercise: IGV introduction
 ================================================================================
 
-Copy the data for the tutorials:
+Directory used for the tutorials:
 
-    mkdir -p /home/participant/cambridge_mda15/
-    cp -r /home/participant/Desktop/Open_Share/visualization /home/participant/cambridge_mda15/
-    cd /home/participant/cambridge_mda15/visualization
+<!--
+mkdir -p /home/participant/cambridge_mda15/
+cp -r /home/participant/Desktop/Open_Share/visualization /home/participant/cambridge_mda15/
+cd /home/participant/cambridge_mda15/visualization
+-->
+
+    cd /home/participant/Desktop/Course_Materials/visualization
 
 Enter in the example folder:
 
@@ -63,7 +67,7 @@ Download a reference genome
 By default, IGV loads Human hg18 and hg19 assemblies. Bear in mind that we must work with the **same assembly used to mapped our reads**, in this case Human hg19.  
 Genome assemblies for several species can be downloaded using IGV. To explore the list of available genomes:
 
-- Go to ``Genomes`` --> ``Load Genome From Server...``  
+- Go to ``Genomes`` --> ``Load Genome From Server...``
 
 In this practical we are using **Human hg19**
 
@@ -71,7 +75,7 @@ In this practical we are using **Human hg19**
 Loading and browsing files
 --------------------------------------------------------------------------------
 
-- Go to ``File`` --> ``Load from file...``  
+- Go to ``File`` --> ``Load from file...``
 Select ``igv1.bam``
 
 **Steps:**

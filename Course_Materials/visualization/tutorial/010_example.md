@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Visualization of mapped reads__
-% _(updated 29-09-2014)_
+% _(updated 23-02-2015)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -31,7 +31,7 @@ Exercise 1: Visualising sequencing data
 
 In the following **folder** you will find mapped sequencing data from a CEU trio (father, mother and child) from the 1000 Genomes Project:
 
-    cd /home/participant/cambridge_mda14/visualization/example_1
+    cd /home/participant/Desktop/Course_Materials/visualization/example_1
 
 These datasets contain reads only for the [GABBR1](http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000204681;r=6:29523406-29601753) gene.
 

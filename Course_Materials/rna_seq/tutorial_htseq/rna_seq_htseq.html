@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="RNA-Seq data analysis with HTSeq and Bioconductor/edgeR" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://www.ngscourse.org">NGS data analysis course</a></h1>
+<h2 class="author"><strong>RNA-Seq data analysis with HTSeq and Bioconductor/edgeR</strong></h2>
+<h3 class="date"><em>(updated 2015-02-25)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml" title="Bowtie2 home page">Bowtie2</a> and <a href="http://ccb.jhu.edu/software/tophat/index.shtml" title="TopHat home page">TopHat</a> alignment tools.</li>
+<li><a href="http://www-huber.embl.de/users/anders/HTSeq/doc/count.html#count" title="htseq-count manual">htseq-count</a> script based on <a href="http://www-huber.embl.de/users/anders/HTSeq/doc/overview.html" title="HTSeq home page">HTSeq</a> devised to compute the number of counts mapped to each genomic feature.</li>
+<li><a href="http://bioconductor.org/packages/release/bioc/html/edgeR.html" title="edgeR at Bioconductor">edgeR</a> a <a href="http://bioconductor.org/" title="Bioconductor home page">Bioconductor</a></li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li><a href="http://samtools.sourceforge.net/SAMv1.pdf" title="SAM/BAM formats">SAM/BAM</a></li>
+<li><a href="http://www.ensembl.org/info/website/upload/gff.html" title="General Feature Format">GTF</a> : General Feature Format.</li>
+</ul>
+<h1 id="overview">Overview</h1>
+<ol style="list-style-type: decimal">
+<li>We use <a href="http://ccb.jhu.edu/software/tophat/index.shtml" title="TopHat home page">tophat</a> to align RNA-Seq reads to the reference genome.</li>
+<li>We use <a href="http://www-huber.embl.de/users/anders/HTSeq/doc/count.html#count" title="htseq-count manual">htseq-count</a> to compute read counts for each gene.</li>
+<li>We use <a href="http://www.broadinstitute.org/igv/" title="Integrative Genomics Viewer">IGV</a> to visualize the alignments and to understand how the counts are computed.</li>
+<li>We use <a href="http://bioconductor.org/packages/release/bioc/html/edgeR.html" title="edgeR at Bioconductor">edgeR</a> to perform a differential expression analysis.</li>
+</ol>
+<h1 id="exercise">Exercise</h1>
+<p>Create an empty directory to work in the exercise and copy or download the raw data to it. You will need to copy the <strong>reference genome</strong> the <strong>GTF annotation file</strong> and the <em>paired end</em> fastq files of the 3 samples (6 files in total).</p>
+<!-- new and clean data directory in the sandbox
+    rm -r                                           ../../../../sandbox/rna_seq_htseq/
+    cp -r ../../../../ngs_course_materials/rna_seq/ ../../../../sandbox/rna_seq_htseq/
+    cp    ../../../../ngs_course_materials/f000_chr21_ref_genome_sequence.fa ../../../../sandbox/rna_seq_htseq/
+    cp    ../../../../ngs_course_materials/f005_chr21_genome_annotation.gtf  ../../../../sandbox/rna_seq_htseq/
+    
+    cp edgeR_example.r ../../../../sandbox/rna_seq_htseq/
+    
+    cd    ../../../../sandbox/rna_seq_htseq/
+-->
+<pre><code>cd data</code></pre>
+<h2 id="map-against-the-reference-genome-using-bowtie2">Map against the reference genome using bowtie2</h2>
+<p>Fist we need to <strong>build an index</strong> for bowtie:</p>
+<pre><code>bowtie2-build f000_chr21_ref_genome_sequence.fa f001_bowtie_index</code></pre>
+<p>And now we can run the <strong>alignments</strong> for the <strong>paired end</strong> files:</p>
+<pre><code>tophat2 -r 300 -o f021_case_tophat_out   f001_bowtie_index   f011_case_read1.fastq f011_case_read2.fastq
+tophat2 -r 300 -o f022_case_tophat_out   f001_bowtie_index   f012_case_read1.fastq f012_case_read2.fastq
+tophat2 -r 300 -o f023_case_tophat_out   f001_bowtie_index   f013_case_read1.fastq f013_case_read2.fastq
+
+tophat2 -r 300 -o f024_cont_tophat_out   f001_bowtie_index   f014_cont_read1.fastq f014_cont_read2.fastq
+tophat2 -r 300 -o f025_cont_tophat_out   f001_bowtie_index   f015_cont_read1.fastq f015_cont_read2.fastq
+tophat2 -r 300 -o f026_cont_tophat_out   f001_bowtie_index   f016_cont_read1.fastq f016_cont_read2.fastq</code></pre>
+<p><strong>REMARK:</strong> For <strong>paired end</strong> samples the left and the right files have to be separated using an <strong>space</strong>.<br />If separated by a <strong>coma</strong>, tophat understands the two files contain reads form the same sample sequenced in a <strong>single end</strong> protocol.</p>
+<h2 id="sort-bam-files">Sort BAM files</h2>
+<p>Use [SAMtools] to sort the BAM files <strong>by read names</strong></p>
+<pre><code>samtools sort -n f021_case_tophat_out/accepted_hits.bam g031_case_sorted_n
+samtools sort -n f022_case_tophat_out/accepted_hits.bam g032_case_sorted_n
+samtools sort -n f023_case_tophat_out/accepted_hits.bam g033_case_sorted_n
+
+samtools sort -n f024_cont_tophat_out/accepted_hits.bam g034_cont_sorted_n
+samtools sort -n f025_cont_tophat_out/accepted_hits.bam g035_cont_sorted_n
+samtools sort -n f026_cont_tophat_out/accepted_hits.bam g036_cont_sorted_n</code></pre>
+<p>This arrangement mode is required by <a href="http://www-huber.embl.de/users/anders/HTSeq/doc/count.html#count" title="htseq-count manual">htseq-count</a>.</p>
+<p>You can see how the reads are sorted by name (ie. by pairs) in the BAM file.</p>
+<pre><code>samtools view g031_case_sorted_n.bam | head </code></pre>
+<p>an find the original reads in the fastq file</p>
+<pre><code>grep -A 1 ENST00000270112_43591_43135_1_0_0_0_2:0:0_1:0:0_10 f011_case_read1.fastq
+grep -A 1 ENST00000270112_43591_43135_1_0_0_0_2:0:0_1:0:0_10 f011_case_read2.fastq</code></pre>
+<ul>
+<li>What does the <code>-A 1</code> option does?</li>
+<li>Where the two reads named exactly the same in the original files?</li>
+</ul>
+<p>This arrangement of the BAM files by names is needed to use <a href="http://www-huber.embl.de/users/anders/HTSeq/doc/count.html#count" title="htseq-count manual">htseq-count</a> but is not suitable to use other tools like <a href="http://www.broadinstitute.org/igv/" title="Integrative Genomics Viewer">IGV</a> for instance. Thus sometimes we will need to use two different BAM files per sample, with a different arrangement each.</p>
+<p>Use [SAMtools] to sort the BAM files <strong>by chromosome position</strong> (standard/default sorting)</p>
+<pre><code>samtools sort f021_case_tophat_out/accepted_hits.bam g031_case_sorted
+samtools sort f022_case_tophat_out/accepted_hits.bam g032_case_sorted
+samtools sort f023_case_tophat_out/accepted_hits.bam g033_case_sorted
+
+samtools sort f024_cont_tophat_out/accepted_hits.bam g034_cont_sorted
+samtools sort f025_cont_tophat_out/accepted_hits.bam g035_cont_sorted
+samtools sort f026_cont_tophat_out/accepted_hits.bam g036_cont_sorted</code></pre>
+<p>And index them (this step is needed by the IGV)</p>
+<pre><code>samtools index g031_case_sorted.bam
+samtools index g032_case_sorted.bam
+samtools index g033_case_sorted.bam
+
+samtools index g034_cont_sorted.bam
+samtools index g035_cont_sorted.bam
+samtools index g036_cont_sorted.bam</code></pre>
+<p>Now we can use <a href="http://www-huber.embl.de/users/anders/HTSeq/doc/count.html#count" title="htseq-count manual">htseq-count</a> to compute read counts for each sample at __gene_ level</p>
+<pre><code>htseq-count --format=bam --stranded=no --type=gene g031_case_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; h041_case.count
+htseq-count --format=bam --stranded=no --type=gene g032_case_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; h042_case.count
+htseq-count --format=bam --stranded=no --type=gene g033_case_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; h043_case.count
+
+htseq-count --format=bam --stranded=no --type=gene g034_cont_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; h044_cont.count
+htseq-count --format=bam --stranded=no --type=gene g035_cont_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; h045_cont.count
+htseq-count --format=bam --stranded=no --type=gene g036_cont_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; h046_cont.count</code></pre>
+<p>or at <strong>exon</strong> level (the default setting)</p>
+<pre><code>htseq-count --format=bam --stranded=no --type=exon g031_case_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; g041_case.count
+htseq-count --format=bam --stranded=no --type=exon g032_case_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; g042_case.count
+htseq-count --format=bam --stranded=no --type=exon g033_case_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; g043_case.count
+
+htseq-count --format=bam --stranded=no --type=exon g034_cont_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; g044_cont.count
+htseq-count --format=bam --stranded=no --type=exon g035_cont_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; g045_cont.count
+htseq-count --format=bam --stranded=no --type=exon g036_cont_sorted_n.bam f005_chr21_genome_annotation.gtf &gt; g046_cont.count</code></pre>
+<p>Observe the structure of the “count” files.</p>
+<pre><code>head h041_case.count 
+tail h041_case.count </code></pre>
+<p>Compare the <strong>gene</strong> and the <strong>exon</strong> level computations.</p>
+<pre><code>head h041_case.count
+head g041_case.count </code></pre>
+<p>Use <a href="http://www.broadinstitute.org/igv/" title="Integrative Genomics Viewer">IGV</a> to visualize the alignments and explore how the the number of counts is computed. (remember to load the BAM files sorted by chromosome position in the IGV)</p>
+<p>Explore the gene “ENSG00000141959” in sample “1_case” for instance.</p>
+<ul>
+<li>Which is the count number assigned to this gene by <code>htseq-count</code> at a <em>gene</em> level?</li>
+<li>And at a <em>exon</em> level?</li>
+<li>Why are there this differences? (expand the GTF track to see the different transcripts and exons)</li>
+<li>How are paired reads accounted for?</li>
+<li>in both cases, <em>gene</em> or <em>exon</em> level, counts are reported at <strong>gene</strong> level. Can you find a way to report counts at <em>exon</em> level? (read the help of <code>htseq-count</code>) <!-- htseq-count --format=bam --stranded=no --type=exon --idattr=exon_id g031_case_sorted_n.bam f005_chr21_genome_annotation.gtf | head --></li>
+</ul>
+<h2 id="differential-expression-using-bioconductor-edger">Differential expression using Bioconductor edgeR</h2>
+<p>Now that the alignments are done and counts are computed we can use The <a href="http://bioconductor.org/" title="Bioconductor home page">Bioconductor</a> library <a href="http://bioconductor.org/packages/release/bioc/html/edgeR.html" title="edgeR at Bioconductor">edgeR</a> to perform a differential expression analysis.</p>
+<p>General steps of the analysis are described in the <a href="edgeR_example.r" class="uri">edgeR_example.r</a> example.</p>
+<!-- execute R
+    R CMD BATCH --no-save --no-restore edgeR_example.r 
+-->
+</body>
+</html>

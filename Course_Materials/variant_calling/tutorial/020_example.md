@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Variant calling__
-% _(updated 29-09-2014)_
+% _(updated 23-02-2015)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -31,9 +31,9 @@ File formats explored:
 Exercise 2: Variant calling with single-end data
 ================================================================================
 
-Go to the exercise2 folder in your course directory: 
+Go to the example 2 folder in your course directory: 
 
-    cd /home/participant/cambridge_mda14/calling/example2
+    cd /home/participant/Desktop/Course_Materials/calling/example2
 
 
 1. Prepare reference genome: generate the fasta file index
@@ -93,8 +93,13 @@ Apply the recalibration to your sequence data
     java -jar ../gatk/GenomeAnalysisTK.jar -T PrintReads -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_se_sorted_noDup_realigned.bam -BQSR 004-recalibration_data.table -o 004-dna_chr21_100_hq_se_sorted_noDup_realigned_recalibrated.bam
 
 
-6. Variant calling (using GATK - **UnifiedGenotyper**)
+6. Variant calling (using GATK - **HaplotypeCaller**)
 --------------------------------------------------------------------------------
+
+    java -jar ../gatk/GenomeAnalysisTK.jar -T HaplotypeCaller -R ../genome/f000_chr21_ref_genome_sequence.fa -I 004-dna_chr21_100_hq_se_sorted_noDup_realigned_recalibrated.bam -o 005-dna_chr21_100_he_se.vcf
+   
+<!--
+Example with UnifiedGenotyper
 
 **SNP calling**
 
@@ -103,12 +108,12 @@ Apply the recalibration to your sequence data
 **INDEL calling**
 
     java -jar ../gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ../genome/f000_chr21_ref_genome_sequence.fa -I 004-dna_chr21_100_hq_se_sorted_noDup_realigned_recalibrated.bam -glm INDEL -o 005-dna_chr21_100_hq_se_indel.vcf
+-->
 
-
-7. Compare paired-end VCF against single-end VCF
+7. Compare VCF and BAM files
 --------------------------------------------------------------------------------
 
-Open IGV and load a the paired-end VCF we have generated in the previous tutorial (``005-dna_chr21_100_he_pe_snps.vcf``), its corresponding original BAM file (``001-dna_chr21_100_hq_pe_sorted.bam``) and the processed BAM (``004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam``).
+Open IGV and load a the paired-end VCF we have generated in the previous tutorial (``005-dna_chr21_100_he_se.vcf``), its corresponding original BAM file (``001-dna_chr21_100_hq_se_sorted.bam``) and the processed BAM (``004-dna_chr21_100_hq_se_sorted_noDup_realigned_recalibrated.bam``).
 
 
 

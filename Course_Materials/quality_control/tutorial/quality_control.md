@@ -1,6 +1,6 @@
-% [NGS data analysis course](http://ngs-course.github.io/)
+% [NGS data analysis course](http://www.ngscourse.org)
 % __Quality control & Adapter trimming__
-% _(updated 2014-09-29)_
+% _(updated 2015-02-25)_
 
 
 <!-- Common URLs: Tools -->

@@ -4,16 +4,16 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="RNA-Seq data analysis" />
+  <meta name="author" content="RNA-Seq data analysis with Cufflinks and Cuffdiff" />
   <title>NGS data analysis course</title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
 </head>
 <body>
 <div id="header">
-<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
-<h2 class="author"><strong>RNA-Seq data analysis</strong></h2>
-<h3 class="date"><em>(updated 2014-09-29)</em></h3>
+<h1 class="title"><a href="http://www.ngscourse.org">NGS data analysis course</a></h1>
+<h2 class="author"><strong>RNA-Seq data analysis with Cufflinks and Cuffdiff</strong></h2>
+<h3 class="date"><em>(updated 2015-02-25)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
 <h1 id="preliminaries">Preliminaries</h1>
@@ -36,7 +36,7 @@
     cp    ../../../../ngs_course_materials/f005_chr21_genome_annotation.gtf  ../../../../sandbox/rna_seq/
     cd    ../../../../sandbox/rna_seq/
 -->
-<p>Create an empty directory to work in the exercise and copy or download the raw data to it. You will need to copy the <strong>reference genome</strong> the <strong>GTF annotation file</strong> and the paired en fastq files of the 3 samples (6 files in total).</p>
+<p>Create an empty directory to work in the exercise and copy or download the raw data to it. You will need to copy the <strong>reference genome</strong> the <strong>GTF annotation file</strong> and the <em>paired end</em> fastq files of the 3 samples (6 files in total).</p>
 <pre><code>cd rna_seq_data</code></pre>
 <h2 id="map-against-the-reference-genome-using-bowtie2">Map against the reference genome using bowtie2</h2>
 <p>Fist we need to <strong>build an index</strong> for bowtie:</p>
