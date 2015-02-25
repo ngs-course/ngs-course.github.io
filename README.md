@@ -72,7 +72,7 @@ In the last day we will focus on RNA-seq data analysis and functional interpreta
 
 ##### Big Data analysis and visualization
 
-- [Presentation](Course_Materials/variant_prioritization/presentation/2015-Cambridge_variant_prioritization.pdf)
+- [Presentation](Course_Materials/big_data/big_data_presentation.pdf)
 
 
 ----
