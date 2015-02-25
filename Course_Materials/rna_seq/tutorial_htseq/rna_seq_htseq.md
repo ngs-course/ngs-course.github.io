@@ -58,6 +58,8 @@ You will need to copy the __reference genome__ the __GTF annotation file__ and t
     cp    ../../../../ngs_course_materials/f000_chr21_ref_genome_sequence.fa ../../../../sandbox/rna_seq_htseq/
 	cp    ../../../../ngs_course_materials/f005_chr21_genome_annotation.gtf  ../../../../sandbox/rna_seq_htseq/
     cd    ../../../../sandbox/rna_seq_htseq/
+
+    cp edgeR_example.r ../../../../sandbox/rna_seq_htseq/
 -->
 
     cd data
@@ -191,3 +193,6 @@ Now that the alignments are done and counts are computed we can use The [Biocond
 
 General steps of the analysis are described in the [edgeR_example.r](edgeR_example.r) example.
 
+<!-- execute R
+    R CMD BATCH --no-save --no-restore edgeR_example.r 
+-->
