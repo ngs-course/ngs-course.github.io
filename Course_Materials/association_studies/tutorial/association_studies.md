@@ -1,6 +1,6 @@
-% [NGS data analysis course](http://ngscourse.github.io/)
+% [NGS data analysis course](http://www.ngscourse.org)
 % __Association Analysis using PLINK__
-% _(updated 2014-09-17)_
+% _(updated 2015-02-25)_
 
 <!-- COMMON LINKS HERE -->
 
