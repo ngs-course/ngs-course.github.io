@@ -2,8 +2,10 @@ rm -r                                           ../../../../sandbox/rna_seq_htse
 cp -r ../../../../ngs_course_materials/rna_seq/ ../../../../sandbox/rna_seq_htseq/
 cp    ../../../../ngs_course_materials/f000_chr21_ref_genome_sequence.fa ../../../../sandbox/rna_seq_htseq/
 cp    ../../../../ngs_course_materials/f005_chr21_genome_annotation.gtf  ../../../../sandbox/rna_seq_htseq/
-cd    ../../../../sandbox/rna_seq_htseq/
+
 cp edgeR_example.r ../../../../sandbox/rna_seq_htseq/
+
+cd    ../../../../sandbox/rna_seq_htseq/
 cd data
 bowtie2-build f000_chr21_ref_genome_sequence.fa f001_bowtie_index
 tophat2 -r 300 -o f021_case_tophat_out   f001_bowtie_index   f011_case_read1.fastq f011_case_read2.fastq
