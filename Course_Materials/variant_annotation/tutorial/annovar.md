@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Variant annotation__
-% _(updated 29-09-2014)_
+% _(updated 15-06-2015)_
 
 <!-- COMMON LINKS HERE -->
 
