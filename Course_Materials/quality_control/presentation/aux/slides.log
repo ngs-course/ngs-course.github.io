@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.3)  23 FEB 2015 11:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.3)  16 JUN 2015 19:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1446,7 +1446,7 @@ share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm
 /lmtt10.pfb>
-Output written on aux/slides.pdf (18 pages, 454216 bytes).
+Output written on aux/slides.pdf (18 pages, 454367 bytes).
 PDF statistics:
  214 PDF objects out of 1000 (max. 8388607)
  155 compressed objects within 2 object streams

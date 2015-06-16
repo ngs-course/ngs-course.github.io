@@ -2,7 +2,7 @@
 title: NGS Data Analysis Course
 subtitle: Quality Control and Data Preprocessing
 author: Marta Bleda, Javier Lopez, Ignacio Medina, David Montaner
-date: 2015-02-23
+date: 2015-06-17
 footer-left: Quality Control and Data Preprocessing
 footer-right: NGS Data Analysis Course
 url: 'http://www.ngscourse.org'
@@ -117,7 +117,7 @@ Duplicate Sequences Distribution
 ================================================================================
 ![](images/duplication_levels)
 
-Overrepresenteda Kmers
+Over-represented Kmers
 ================================================================================
 ![](images/kmer_profiles)
 
