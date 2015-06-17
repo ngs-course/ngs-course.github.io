@@ -25,7 +25,7 @@ Copy the necessary data in your working directory:
 The above command takes example1.vcf as input file, and generate the example1.annovar as output file. The 3 extra columns are zygosity status, genotype quality and read depth.
 
 
-1. Download gene annotation database (for hg18 build) and save to humandb/ directory
+1. Download gene annotation database (for hg19 build) and save to humandb/ directory
 --------------------------------------------------------------------------------
 
     perl annotate_variation.pl -buildver hg19 -downdb refGene humandb/
@@ -34,15 +34,13 @@ The above command takes example1.vcf as input file, and generate the example1.an
 
     perl annotate_variation.pl -buildver hg19 -downdb 1000g2012apr humandb/
 
-    perl annotate_variation.pl -buildver hg19 -downdb snp135 humandb/
+    perl annotate_variation.pl -buildver hg19 -downdb snp142 humandb/
 
 Other possible downloads for hg19 (more can be found at http://www.openbioinformatics.org/annovar/annovar_download.html):
 
 
     perl annotate_variation.pl -buildver hg19 -downdb phastConsElements46way humandb/
     perl annotate_variation.pl -buildver hg19 -downdb genomicSuperDups humandb/
-    perl annotate_variation.pl -buildver hg19 -downdb ljb2_all humandb/
-    perl annotate_variation.pl -buildver hg19 -downdb esp6500si_all humandb/
 
 
 2. Gene-based annotation of variants in the varlist file (by default --geneanno is ON)
@@ -62,6 +60,6 @@ Other possible downloads for hg19 (more can be found at http://www.openbioinform
 
     perl annotate_variation.pl -filter -dbtype 1000g2012apr_all -maf 0.01 example/example1.annovar humandb/ -build hg19 --outfile results/2-filter
 
-    perl annotate_variation.pl -filter -dbtype snp135 example/example1.annovar humandb/ -build hg19 --outfile results/2-filter
+    perl annotate_variation.pl -filter -dbtype snp142 example/example1.annovar humandb/ -build hg19 --outfile results/2-filter
 
 

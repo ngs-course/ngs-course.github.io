@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Visualization of mapped reads__
-% _(updated 23-02-2015)_
+% _(updated 16-06-2015)_
 
 <!-- COMMON LINKS HERE -->
 

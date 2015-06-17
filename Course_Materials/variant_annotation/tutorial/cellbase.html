@@ -20,7 +20,7 @@
 <h1 id="preliminaries">Preliminaries</h1>
 <h2 id="software-used-in-this-practical">Software used in this practical:</h2>
 <ul>
-<li><a href="https://github.com/opencb/cellbase" title="CellBase">CellBase</a> : a complete suite of tools to work with genomic variation data, from VCF tools to variant profiling or genomic statistics.</li>
+<li><a href="https://github.com/opencb/cellbase" title="CellBase">CellBase</a> : is a database that integrates the most relevant biological information. A command line is provided which enables efficient access to all these data for variant annotation purposes.</li>
 </ul>
 <h2 id="file-formats-explored">File formats explored:</h2>
 <ul>
@@ -30,24 +30,25 @@
 <p>Copy the necessary data in your working directory:</p>
 <pre><code>mkdir -p /home/participant/cambridge_mda/
 cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda/
-cd /home/participant/cambridge_mda/annotation/cellbase</code></pre>
+cd /home/participant/cambridge_mda/annotation/cellbase
+export PATH=$PATH:/home/participant/cambridge_mda/annotation/cellbase/cellbasedevelop/bin</code></pre>
 <h1 id="exercise-1-working-with-cellbase-annotator">Exercise 1: Working with CellBase annotator</h1>
 <h2 id="showing-cellbase-options">Showing CellBase options</h2>
-<pre><code>./cellbase.sh -h</code></pre>
+<pre><code>cellbase.sh -h</code></pre>
 <h2 id="getting-the-annotation-of-variants">Getting the annotation of variants</h2>
 <p>Have a look at variant-annotation parameters:</p>
-<pre><code>./cellbase.sh variant-annotation -h</code></pre>
+<pre><code>cellbase.sh variant-annotation -h</code></pre>
 <p>You only have to execute this command line to fetch annotations:</p>
-<pre><code>mkdir cellbase_results    
-./cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf -o /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.vep -s hsapiens</code></pre>
+<pre><code>mkdir results    
+cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf -o /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.vep -s hsapiens -u bioinfodev.hpc.cam.ac.uk</code></pre>
 <p>There are almost 4K variants in the input file, it may take few seconds to finish. A new file <code>/home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.vep</code> will be created containing the list of annotations in VEP format.</p>
 <p>Have a look at the results:</p>
 <pre><code>less /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.vep</code></pre>
 <p>Run now almost the same command, just changing the suffix of the output file:</p>
-<pre><code>./cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf -o /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.json -s hsapiens</code></pre>
+<pre><code>cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf -o /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json -s hsapiens -u bioinfodev.hpc.cam.ac.uk</code></pre>
 <p>A new file <code>/home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.json</code> will be created. This file has JSON format, which is a quite popular format in Bioinformatics. Have a look at the file:</p>
 <pre><code>less /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.json</code></pre>
-<p>Quite an ugly text. Nevertheless, it is a really useful format for bioinformaticians since parsing this file format is trivial from a programming point of view. Python, R, Java provide programming which make this files to be extremely easy to use.</p>
+<p>Quite an ugly text. Nevertheless, it is a really useful format for bioinformaticians since parsing this file format is trivial from a programming point of view. Python, R, Java provide programming libraries which make this files to be extremely easy to use.</p>
 <p>Get variants with clinical information:</p>
 <pre><code>grep -v &quot;Clinvar\&quot;\:null&quot; /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.json   </code></pre>
 <p>Select and copy (right mouse button-&gt;Copy) one line from the above result. Go to http://jsoneditoronline.org/, paste into the left text-box and click on the “&gt;” arrow. Parsed text should appear on the right box.</p>
