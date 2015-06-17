@@ -46,14 +46,14 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 
 - [Presentation](Course_Materials/variant_annotation/presentation/2015-Cambridge_variant_annotation.pdf) || [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) || [HPG-Variant](Course_Materials/variant_annotation/tutorial/hpg-variant.html)
 
+##### Some considerations on candidate gene prioritization
+
+- [Presentation](Course_Materials/variant_prioritization/presentation/Dopazo-Prioritization_Cambridge.pdf)
+
+
 ##### Variant prioritization
 
 - [Presentation](Course_Materials/variant_prioritization/presentation/2015-Cambridge_variant_prioritization.pdf) || [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AADPzrs9NGg0PjVqnwQocUJUa/annotation/hpg-variant/examples)
-
-
-##### Tutorial on candidate gene prioritization
-
-- [Presentation](Course_Materials/variant_prioritization/presentation/Dopazo-Prioritization_Cambridge.pdf)
 
 
 ### Day 3
