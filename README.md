@@ -11,18 +11,18 @@ This is course is scheduled for a 3 days and assumes a very basic knowledge of N
 
 During this first day we will start with an _introduction to NGS technology_ and in the data preparation for their analysis. You will also learn the basics of the _GNU/Linux shell introduction_. At this point we are ready to start preparing and working with the data: _Quality Control_ (QC) and _NGS data alignment_.
 
-##### Genomic Data Analysis Overview
-- Presentation [PDF](Course_Materials/course_overview/Dopazo_Intro_Cambridge.pdf)
-
 ##### Course Presentation
 - Presentation [[PDF](Course_Materials/presentation/presentation_mda15.pdf) | [OpenOffice](Course_Materials/presentation/presentation_mda15.odp)]
+
+##### Genomic Data Analysis Overview
+- Presentation [PDF](Course_Materials/course_overview/Dopazo_Intro_Cambridge.pdf)
 
 ##### Introduction to NGS technologies
 Very brief overview about NGS technologies and some concepts.
 - [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda15.pdf)
 
 ##### Introduction GNU/Linux shell
-- Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda15.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda15.odp)]
+- Presentation [PDF](Course_Materials/intro-linux/intro_Linux_mda15.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda15.odp)]
 
 ##### Quality control for NGS raw data (FASTQ)
 - [Presentation](Course_Materials/quality_control/presentation/quality_control_presentation.pdf) - [Tutorial](Course_Materials/quality_control/tutorial/quality_control.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/quality_control)
@@ -32,7 +32,7 @@ Very brief overview about NGS technologies and some concepts.
 
 
 ### Day 2
-During the second day we will focus on _Data Visualization_ of DNA and RNA-seq alignments and _Variant Calling_ together with the visualization of VCF files. 
+During the second day we will focus on _Data Visualization_ of DNA and RNA-seq alignments and _Variant Calling and prioritization_ together with the visualization of VCF files. 
 
 ##### NGS data Visualization
 
