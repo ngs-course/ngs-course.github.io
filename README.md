@@ -82,7 +82,7 @@ In the last day we will focus on RNA-seq data analysis and functional interpreta
 
 # About
 
-This course is usually carried out by experienced researchers from CIPF, EMBL-EBI and University of Cambridge. You can ask any question to David Montaner (dmontaner@cipf.es), Marta Bleda (mb2033@cam.ac.uk), Ignacio Medina (im411@cam.ac.uk, imedina@ebi.ac.uk) and Javier Lopez (fjlopez@ebi.ac.uk).
+This course is usually carried out by experienced researchers from CIPF, EMBL-EBI and University of Cambridge. You can ask any question to David Montaner (dmontaner@cipf.es), Marta Bleda (mb2033@cam.ac.uk), Ignacio Medina (im411@cam.ac.uk, imedina@ebi.ac.uk), Javier Lopez (fjlopez@ebi.ac.uk) and Joaquin Dopazo (jdopazo@cip.es).
 
 
 ----
