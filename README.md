@@ -22,7 +22,7 @@ Very brief overview about NGS technologies and some concepts.
 - [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda15.pdf)
 
 ##### Introduction GNU/Linux shell
-- Presentation [PDF](Course_Materials/intro-linux/intro_Linux_mda15.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda15.odp)]
+- Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda15.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda15.odp)]
 
 ##### Quality control for NGS raw data (FASTQ)
 - [Presentation](Course_Materials/quality_control/presentation/quality_control_presentation.pdf) - [Tutorial](Course_Materials/quality_control/tutorial/quality_control.html) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAAqebBSC6JgDGq4emwNORCaa/quality_control)
@@ -36,15 +36,15 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 
 ##### NGS data Visualization
 
-- [Presentation](Course_Materials/visualization/presentation/2015-Cambridge_visualisation.pdf) || [Guided example](Course_Materials/visualization/tutorial/000_example.html) || [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) || [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
+- [Presentation](Course_Materials/visualization/presentation/2015-Cambridge_visualisation.pdf) - [Guided example](Course_Materials/visualization/tutorial/000_example.html) - [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) - [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
 
 ##### Variant calling analysis
 
-- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) || [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) || [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html) || [Tutorial 3](Course_Materials/variant_calling/tutorial/030_example.html)
+- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) - [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html) - [Tutorial 3](Course_Materials/variant_calling/tutorial/030_example.html)
 
 ##### Variant annotation
 
-- [Presentation](Course_Materials/variant_annotation/presentation/2015-Cambridge_variant_annotation.pdf) || [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) || [HPG-Variant](Course_Materials/variant_annotation/tutorial/hpg-variant.html)
+- [Presentation](Course_Materials/variant_annotation/presentation/2015-Cambridge_variant_annotation.pdf) - [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) - [HPG-Variant](Course_Materials/variant_annotation/tutorial/hpg-variant.html)
 
 ##### Some considerations on candidate variant prioritization
 
@@ -53,7 +53,7 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 
 ##### Variant prioritization
 
-- [Presentation](Course_Materials/variant_prioritization/presentation/2015-Cambridge_variant_prioritization.pdf) || [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AADPzrs9NGg0PjVqnwQocUJUa/annotation/hpg-variant/examples)
+- [Presentation](Course_Materials/variant_prioritization/presentation/2015-Cambridge_variant_prioritization.pdf) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AADPzrs9NGg0PjVqnwQocUJUa/annotation/hpg-variant/examples)
 
 
 ### Day 3
