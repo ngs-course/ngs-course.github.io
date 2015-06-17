@@ -40,18 +40,20 @@ export PATH=$PATH:/home/participant/cambridge_mda/annotation/cellbase/cellbasede
 <pre><code>cellbase.sh variant-annotation -h</code></pre>
 <p>You only have to execute this command line to fetch annotations:</p>
 <pre><code>mkdir results    
-cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf -o /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.vep -s hsapiens -u bioinfodev.hpc.cam.ac.uk</code></pre>
-<p>There are almost 4K variants in the input file, it may take few seconds to finish. A new file <code>/home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.vep</code> will be created containing the list of annotations in VEP format.</p>
+cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf \
+-o /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.vep -s hsapiens -u bioinfodev.hpc.cam.ac.uk -L debug</code></pre>
+<p>There are almost 4K variants in the input file, it may take few seconds to finish. A new file <code>/home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.vep</code> will be created containing the list of annotations in VEP format.</p>
 <p>Have a look at the results:</p>
-<pre><code>less /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.vep</code></pre>
+<pre><code>less /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.vep</code></pre>
 <p>Run now almost the same command, just changing the suffix of the output file:</p>
-<pre><code>cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf -o /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json -s hsapiens -u bioinfodev.hpc.cam.ac.uk</code></pre>
-<p>A new file <code>/home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.json</code> will be created. This file has JSON format, which is a quite popular format in Bioinformatics. Have a look at the file:</p>
-<pre><code>less /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.json</code></pre>
+<pre><code>cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf \
+-o /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json -s hsapiens -u bioinfodev.hpc.cam.ac.uk -L debug</code></pre>
+<p>A new file <code>/home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json</code> will be created. This file has JSON format, which is a quite popular format in Bioinformatics. Have a look at the file:</p>
+<pre><code>less /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json</code></pre>
 <p>Quite an ugly text. Nevertheless, it is a really useful format for bioinformaticians since parsing this file format is trivial from a programming point of view. Python, R, Java provide programming libraries which make this files to be extremely easy to use.</p>
 <p>Get variants with clinical information:</p>
-<pre><code>grep -v &quot;Clinvar\&quot;\:null&quot; /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.json   </code></pre>
+<pre><code>grep -v &quot;Clinvar\&quot;\:null&quot; /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json | head</code></pre>
 <p>Select and copy (right mouse button-&gt;Copy) one line from the above result. Go to http://jsoneditoronline.org/, paste into the left text-box and click on the “&gt;” arrow. Parsed text should appear on the right box.</p>
-<p>Try to annotate the file <code>/home/participant/cambridge_mda/annotation/cellbase_results/CHB.exon.2010_03.sites.vcf</code>.</p>
+<p>Try to annotate the file <code>/home/participant/cambridge_mda/annotation/cellbase/results/CHB.exon.2010_03.sites.vcf</code>.</p>
 </body>
 </html>

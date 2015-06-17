@@ -7,12 +7,14 @@ cellbase.sh -h
 cellbase.sh variant-annotation -h
 
 mkdir results    
-cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf -o /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.vep -s hsapiens -u bioinfodev.hpc.cam.ac.uk
-less /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.vep
+cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf \
+-o /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.vep -s hsapiens -u bioinfodev.hpc.cam.ac.uk -L debug
+less /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.vep
 
-cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf -o /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json -s hsapiens -u bioinfodev.hpc.cam.ac.uk
+cellbase.sh variant-annotation -i /home/participant/cambridge_mda/annotation/cellbase/examples/CEU.exon.2010_03.genotypes.vcf \
+-o /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json -s hsapiens -u bioinfodev.hpc.cam.ac.uk -L debug
 
-less /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.json
+less /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json
 
-grep -v "Clinvar\"\:null" /home/participant/cambridge_mda/annotation/cellbase_results/CEU.exon.2010_03.annotated.json   
+grep -v "Clinvar\"\:null" /home/participant/cambridge_mda/annotation/cellbase/results/CEU.exon.2010_03.annotated.json | head
 
