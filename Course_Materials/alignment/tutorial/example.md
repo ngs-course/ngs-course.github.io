@@ -104,19 +104,19 @@ Check that is correct by executing it with no arguments, the different commands 
 
 # Exercise 1: NGS Genomic DNA aligment
 
-In this exercise we'll learn how to download, install, build the reference genome index and align in single-end and paired-end mode with the two most widely DNA aligners: *BWA* and *Bowtie2*. But first, create an ```aligners``` folder to store the software, and an ```alignments``` folder to store the results, create those folders in your *working directory* next to ```data```, you can create both folders by executing:
+In this exercise we'll learn how to download, install, build the reference genome index and align in single-end and paired-end mode with the two most widely DNA aligners: *BWA* and *Bowtie2*. But first, create an ```aligners``` folder to store the software, and an ```results``` folder to store the results, create those folders in your *working directory* next to ```data```, you can create both folders by executing:
 
     mkdir aligners
-    mkdir alignments
+    mkdir results
 
-Now go to ```aligners``` and  ```alignments``` folders and create subfolders for *bwa* and *bowtie* to store the indexes and alignments results:
+Now go to ```aligners``` and  ```results``` folders and create subfolders for *bwa* and *bowtie* to store the indexes and alignments results:
 
     cd aligners
     mkdir bwa hpg-aligner bowtie
 
 and
 
-    cd alignments
+    cd results
     mkdir bwa hpg-aligner bowtie
     
 **NOTE:** Now your working directory must contain 3 folders: data (with the reference genome of chrom. 21 and simulated datasets), aligners and alignments. Your working directory should be similar to this (notice that aligners have not been downloaded):
@@ -127,7 +127,7 @@ and
 │   ├── bowtie
 │   ├── bwa
 │   ├── hpg-aligner
-├── alignments
+├── results
 │   ├── bowtie
 │   ├── bwa
 │   ├── hpg-aligner
@@ -206,6 +206,7 @@ To align **SE** with BWA-MEM execute:
     bwa mem -t 4 -R "@RG\tID:foo\tSM:bar\tPL:Illumina\tPU:unit1\tLB:lib1" aligners/bwa/index/Homo_sapiens.GRCh37.75.dna.chromosome.21.fa data/dna_chr21_100_hq_read1.fastq > alignments/bwa/dna_chr21_100_hq_se.sam
 
 Now you can use SAMtools to create the BAM file from the *alignment/bwa* folder:
+
     cd alignments/bwa
     samtools view -b dna_chr21_100_hq_se.sam -o dna_chr21_100_hq_se.bam
 
