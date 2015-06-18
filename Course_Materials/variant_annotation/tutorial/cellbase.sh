@@ -1,5 +1,5 @@
 mkdir -p /home/participant/cambridge_mda/
-cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda/
+cp -r /home/participant/Course_Materials/annotation /home/participant/cambridge_mda/
 cd /home/participant/cambridge_mda/annotation/cellbase
 export PATH=$PATH:/home/participant/cambridge_mda/annotation/cellbase/cellbasedevelop/bin
 cellbase.sh -h

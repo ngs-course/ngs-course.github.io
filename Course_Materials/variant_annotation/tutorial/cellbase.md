@@ -22,13 +22,13 @@ File formats explored:
 
 - VCF Variant Call Format
 
-Variant annotation with HPG-Variant
+Variant annotation with CellBase
 ================================================================================
 
 Copy the necessary data in your working directory:
 
     mkdir -p /home/participant/cambridge_mda/
-    cp -r /home/participant/Desktop/Open_Share/annotation /home/participant/cambridge_mda/
+    cp -r /home/participant/Course_Materials/annotation /home/participant/cambridge_mda/
     cd /home/participant/cambridge_mda/annotation/cellbase
     export PATH=$PATH:/home/participant/cambridge_mda/annotation/cellbase/cellbasedevelop/bin
 
