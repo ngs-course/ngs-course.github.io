@@ -50,7 +50,7 @@ This creates a file called samtools faidx f000_chr21_ref_genome_sequence.fa.fai,
 
 Generate the sequence dictionary using ``Picard``:
 
-    java -jar ../picard/CreateSequenceDictionary.jar REFERENCE=f000_chr21_ref_genome_sequence.fa OUTPUT=f000_chr21_ref_genome_sequence.dict
+    java -jar $PICARD CreateSequenceDictionary REFERENCE=f000_chr21_ref_genome_sequence.fa OUTPUT=f000_chr21_ref_genome_sequence.dict
 
 
 2. Prepare BAM file
@@ -80,7 +80,7 @@ Index the BAM file:
 
 Run the following **Picard** command to mark duplicates:
 
-    java -jar ../picard/MarkDuplicates.jar INPUT=001-dna_chr21_100_hq_pe_sorted.bam OUTPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam METRICS_FILE=002-metrics.txt
+    java -jar $PICARD MarkDuplicates INPUT=001-dna_chr21_100_hq_pe_sorted.bam OUTPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam METRICS_FILE=002-metrics.txt
 
 This creates a sorted BAM file called ``002-dna_chr21_100_hq_pe_sorted_noDup.bam`` with the same content as the input file, except that any duplicate reads are marked as such. It also produces a metrics file called ``metrics.txt``.
 
@@ -88,7 +88,7 @@ This creates a sorted BAM file called ``002-dna_chr21_100_hq_pe_sorted_noDup.bam
 
 Run the following **Picard** command to index the new BAM file:
 
-    java -jar ../picard/BuildBamIndex.jar INPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam
+    java -jar $PICARD BuildBamIndex INPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam
 
 
 4. Local realignment around INDELS (using GATK)
@@ -98,11 +98,11 @@ There are 2 steps to the realignment process:
 
 **First**, create a target list of intervals which need to be realigned
   
-    java -jar ../gatk/GenomeAnalysisTK.jar -T RealignerTargetCreator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_pe_sorted_noDup.bam -o 003-indelRealigner.intervals
+    java -jar $GATK -T RealignerTargetCreator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_pe_sorted_noDup.bam -o 003-indelRealigner.intervals
 
 **Second**, perform realignment of the target intervals
 
-    java -jar ../gatk/GenomeAnalysisTK.jar -T IndelRealigner -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_pe_sorted_noDup.bam -targetIntervals 003-indelRealigner.intervals -o 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam
+    java -jar $GATK -T IndelRealigner -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_pe_sorted_noDup.bam -targetIntervals 003-indelRealigner.intervals -o 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam
 
 This creates a file called ``003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam`` containing all the original reads, but with better local alignments in the regions that were realigned.
 
@@ -114,7 +114,7 @@ Two steps:
 
 **First**, analyse patterns of covariation in the sequence dataset
 
-    java -jar ../gatk/GenomeAnalysisTK.jar -T BaseRecalibrator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam -knownSites ../000-dbSNP_chr21.vcf -o 004-recalibration_data.table
+    java -jar $GATK -T BaseRecalibrator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam -knownSites ../000-dbSNP_chr21.vcf -o 004-recalibration_data.table
 
 This creates a GATKReport file called ``004-recalibration_data.table`` containing several tables. These tables contain the covariation data that will be used in a later step to recalibrate the base qualities of your sequence data.
 
@@ -122,7 +122,7 @@ It is imperative that you provide the program with a set of **known sites**, oth
 
 **Second**, apply the recalibration to your sequence data
 
-    java -jar ../gatk/GenomeAnalysisTK.jar -T PrintReads -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam -BQSR 004-recalibration_data.table -o 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam
+    java -jar $GATK -T PrintReads -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam -BQSR 004-recalibration_data.table -o 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam
 
 This creates a file called ``004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam`` containing all the original reads, but now with exquisitely accurate base substitution, insertion and deletion quality scores. By default, the original quality scores are discarded in order to keep the file size down. However, you have the option to retain them by adding the flag ``–emit_original_quals`` to the ``PrintReads`` command, in which case the original qualities will also be written in the file, tagged OQ.
 
@@ -132,7 +132,7 @@ This creates a file called ``004-dna_chr21_100_hq_pe_sorted_noDup_realigned_reca
 
 SNPs and INDELS are called using separate instructions.
 
-    java -jar ../gatk/GenomeAnalysisTK.jar -T HaplotypeCaller -R ../genome/f000_chr21_ref_genome_sequence.fa -I 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam -o 005-dna_chr21_100_he_pe.vcf
+    java -jar $GATK -T HaplotypeCaller -R ../genome/f000_chr21_ref_genome_sequence.fa -I 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam -o 005-dna_chr21_100_he_pe.vcf
 
 <!--
 Code using UnifiedGenotyper
@@ -150,7 +150,7 @@ Code using UnifiedGenotyper
 
 Example: filter SNPs with low confidence calling (QD < 12.0) and flag them as "LowConf".
 
-    java -jar ../gatk/GenomeAnalysisTK.jar -T VariantFiltration -R ../genome/f000_chr21_ref_genome_sequence.fa -V 005-dna_chr21_100_he_pe.vcf --filterExpression "QD < 12.0" --filterName "LowConf" -o 006-dna_chr21_100_he_pe_filtered.vcf
+    java -jar $GATK -T VariantFiltration -R ../genome/f000_chr21_ref_genome_sequence.fa -V 005-dna_chr21_100_he_pe.vcf --filterExpression "QD < 12.0" --filterName "LowConf" -o 006-dna_chr21_100_he_pe_filtered.vcf
 
 The command ``--filterExpression`` will read the INFO field and check whether variants satisfy the requirement. If a variant does not satisfy your filter expression, the field FILTER will be filled with the indicated ``--filterName``. These commands can be called several times indicating different filtering expression (i.e: --filterName One --filterExpression "X < 1" --filterName Two --filterExpression "X > 2").
 
