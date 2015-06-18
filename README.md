@@ -44,7 +44,7 @@ During the second day we will focus on _Data Visualization_ of DNA and RNA-seq a
 
 ##### Variant annotation
 
-- [Presentation](Course_Materials/variant_annotation/presentation/2015-Cambridge_variant_annotation.pdf) - [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) - [HPG-Variant](Course_Materials/variant_annotation/tutorial/hpg-variant.html)
+- [Presentation](Course_Materials/variant_annotation/presentation/2015-Cambridge_variant_annotation.pdf) - [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) - [CellBase](Course_Materials/variant_annotation/tutorial/cellbase.html)
 
 ##### Some considerations on candidate variant prioritization
 
