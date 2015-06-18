@@ -12,10 +12,10 @@ make
 samtools
 cp samtools ~/bin
 mkdir aligners
-mkdir alignments
+mkdir results
 cd aligners
 mkdir bwa hpg-aligner bowtie
-cd alignments
+cd results
 mkdir bwa hpg-aligner bowtie
 
 bwa
