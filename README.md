@@ -1,8 +1,8 @@
 # Overview
 
-Welcome to this introductory course about _NGS data analysis and visualization_. During this course you will learn the basics of NGS data analysis and visualization in a Linux environment, current used software and best practices will be explained. This course is focused in NGS data alignment for both DNA and RNA (RNA-seq), variant calling, differential expression analysis and data visualization.
+Welcome to this introductory course about _NGS data analysis_. During this course you will learn the basics of NGS data analysis and visualization in a Linux environment, current used software and best practices will be explained. This course is focused in NGS data alignment for DNA, variant calling, annotation, association and data visualization.
 
-This is course is scheduled for a 3 days and assumes a very basic knowledge of NGS data analysis and Linux. All materials in this is course are free and open, feel free to reuse them as you want. All the data for the tutorials are available in our [DropBox folder](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a).
+This is course is scheduled for a 2 days and assumes a very basic knowledge of NGS data analysis and Linux. All materials in this is course are free and open, feel free to reuse them as you want. All the data for the tutorials are available in our [DropBox folder](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a).
 
 
 # Schedule
@@ -30,48 +30,29 @@ Very brief overview about NGS technologies and some concepts.
 ##### DNA and RNA-seq NGS read alignment
 - Presentation [[PDF](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda15.pdf) | [OpenOffice](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda15.odp)] - [Tutorial](Course_Materials/alignment/tutorial/example.html)
 
+##### Visualization of mapped reads
+- [Presentation](Course_Materials/visualization/presentation/2015-10-visualization_igv) - [Guided example](Course_Materials/visualization/tutorial/000_example.html) - [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) - [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
 
 ### Day 2
-During the second day we will focus on _Data Visualization_ of DNA and RNA-seq alignments and _Variant Calling and prioritization_ together with the visualization of VCF files. 
+During the second day we will focus on _Variant Calling_, _annotation_ and _prioritization_ together with the visualization of VCF files. 
 
-##### NGS data Visualization
-
-- [Presentation](Course_Materials/visualization/presentation/2015-Cambridge_visualisation.pdf) - [Guided example](Course_Materials/visualization/tutorial/000_example.html) - [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) - [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
-
-##### Variant calling analysis
+##### Germline variant calling
 
 - [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) - [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html) - [Tutorial 3](Course_Materials/variant_calling/tutorial/030_example.html)
 
-##### Variant annotation
+##### Somatic variant calling
+
+- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) - [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html) - [Tutorial 3](Course_Materials/variant_calling/tutorial/030_example.html)
+
+##### Variant filtering and annotation
 
 - [Presentation](Course_Materials/variant_annotation/presentation/2015-Cambridge_variant_annotation.pdf) - [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) - [CellBase](Course_Materials/variant_annotation/tutorial/cellbase.html)
 
-##### Some considerations on candidate variant prioritization
-
-- [Presentation](Course_Materials/variant_prioritization/presentation/Dopazo-Prioritization_Cambridge.pdf)
-
-
-##### Variant prioritization
+##### Variant association and prioritization
 
 - [Presentation](Course_Materials/variant_prioritization/presentation/2015-Cambridge_variant_prioritization.pdf) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AADPzrs9NGg0PjVqnwQocUJUa/annotation/hpg-variant/examples)
 
-
-### Day 3
-
-In the last day we will focus on RNA-seq data analysis and functional interpretation.
-
-##### Association studies
-
-- [Presentation](Course_Materials/association_studies/presentation/association_studies_presentation.pdf) - [Tutorial](Course_Materials/association_studies/tutorial/association_studies.html)
-
-##### RNA-Seq data analysis
-
-- [Presentation](Course_Materials/rna_seq/presentation/rna_seq_presentation.pdf) - [Tutorial 1](Course_Materials/rna_seq/tutorial/rna_seq.html "Cufflinks") - [Tutorial 2](Course_Materials/rna_seq/tutorial_htseq/rna_seq_htseq.html "HTSeq") - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AAB77HfUPkiXBj1MmshjyKtYa/rna_seq)  
-  You will also need the [reference genome](https://www.dropbox.com/s/3ci9yuh2hh9ck8g/f000_chr21_ref_genome_sequence.fa?dl=0) and the [GTF file with the annotation](https://www.dropbox.com/s/4r3tjwu840i1iio/f005_chr21_genome_annotation.gtf?dl=0)
-
-##### Functional analysis
-
-- [Presentation](Course_Materials/functional/presentation/babelomics_data_analysis.pdf) - [Tutorial](http://bioinfo.cipf.es/babelomicstutorial/)
+----
 
 ##### Big Data analysis and visualization
 
@@ -82,7 +63,7 @@ In the last day we will focus on RNA-seq data analysis and functional interpreta
 
 # About
 
-This course is usually carried out by experienced researchers from CIPF, EMBL-EBI and University of Cambridge. You can ask any question to David Montaner (dmontaner@cipf.es), Marta Bleda (mb2033@cam.ac.uk), Ignacio Medina (im411@cam.ac.uk, imedina@ebi.ac.uk), Javier Lopez (fjlopez@ebi.ac.uk) and Joaquin Dopazo (jdopazo@cip.es).
+You can ask any question to Marta Bleda (mb2033@cam.ac.uk) and Ignacio Medina (im411@cam.ac.uk).
 
 
 ----
