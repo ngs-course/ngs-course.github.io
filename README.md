@@ -2,7 +2,7 @@
 
 Welcome to this introductory course about _NGS data analysis_. During this course you will learn the basics of NGS data analysis and visualization in a Linux environment, current used software and best practices will be explained. This course is focused in NGS data alignment for DNA, variant calling, annotation, association and data visualization.
 
-This is course is scheduled for a 2 days and assumes a very basic knowledge of NGS data analysis and Linux. All materials in this is course are free and open, feel free to reuse them as you want. All the data for the tutorials are available in our [DropBox folder](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a).
+This is course is scheduled for 2 days and assumes a very basic knowledge of NGS data analysis and Linux. All materials in this is course are free and open, feel free to reuse them as you want. All the data for the tutorials are available in our [DropBox folder](https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a).
 
 
 # Schedule
