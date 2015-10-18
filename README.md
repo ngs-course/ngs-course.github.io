@@ -31,7 +31,7 @@ Very brief overview about NGS technologies and some concepts.
 - Presentation [[PDF](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda15.pdf) | [OpenOffice](Course_Materials/alignment/presentation/ngs-read-mapping-imedina-mda15.odp)] - [Tutorial](Course_Materials/alignment/tutorial/example.html)
 
 ##### Visualization of mapped reads
-- [Presentation](Course_Materials/visualization/presentation/2015-10-visualization_igv) - [Guided example](Course_Materials/visualization/tutorial/000_example.html) - [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) - [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
+- [Presentation](Course_Materials/visualization/presentation/2015-10-visualization_igv.pdf) - [Guided example](Course_Materials/visualization/tutorial/000_example.html) - [Tutorial 1](Course_Materials/visualization/tutorial/010_example.html) - [Tutorial 2](Course_Materials/visualization/tutorial/020_example.html)
 
 ### Day 2
 During the second day we will focus on _Variant Calling_, _annotation_ and _prioritization_ together with the visualization of VCF files. 
