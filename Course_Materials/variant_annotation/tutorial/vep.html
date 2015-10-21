@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Variant annotation" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Variant annotation</strong></h2>
+<h3 class="date"><em>(updated 21-10-2015)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="variant-annotation-with-vep">Variant annotation with VEP</h1>
+<p>In this part of the course we will focus on filtering, annotating and prioritisation of the variants we have called with GATK.</p>
+<h2 id="compressing-and-indexing-vcf-files">1. Compressing and indexing VCF files</h2>
+<p>In order to further process the variants in the VCF file we created with GATK we first need to compress and index it.</p>
+<p>The with bgzip compressed files end with .vcf.gz and the corresponding tabix index files have the extension .vcf.gz.tbi.</p>
+<h2 id="quality-control-of-variants">2. Quality control of variants</h2>
+<p>Summary statistics can be generated with bcftools stats. Run the command below to generate the summary statistics and the corresponding report and take a look the results.</p>
+<h2 id="variant-effect-prediction-and-filtering">3. Variant effect prediction and filtering</h2>
+<p>In order to predict the functional consequences of the variants on genes and to gain additional useful annotation/information about their deleteriousness we can run Ensembl’s Variant Effect Predictor (VEP). The consequence types that are predicted by VEP are illustrated here. VEP can be run on the command line (see below) or directly via [Ensembl’s web page] (http://www.ensembl.org/info/docs/tools/vep/index.html).</p>
+<h2 id="vep-command-line-tool">VEP command line tool</h2>
+<p>There is a limit to the size of the files that can be uploaded to the web page. If the files are getting very big it is advised to use VEP Perl scrip variant_effect_predictor.pl from the command line.</p>
+<p>Let’s predict the effect of the variants detected in our VCF.</p>
+<pre><code>variant_effect_predictor.pl --offline --fork 8 \
+    --input_file $inprefix.vcf.gz \
+    --output_file STDOUT --vcf --no_escape \
+    --stats_file ${outprefix}_summary.html \
+    --assembly GRCh37 --fasta GRCh37_chr19.fa \
+    --everything --force_overwrite \
+    | bgzip -c &gt; $outprefix.vcf.gz</code></pre>
+<p>While VEP is annotating the variants (it will take a couple of minutes), take a look at the documentation and make yourself familiar with the command line parameters we are using here.</p>
+<pre><code>variant_effect_predictor.pl</code></pre>
+<p>When it finishes, take a look at the output files.</p>
+<p>The overall results are summarised in a neat HTML file ending with <code>_summary.html</code> that can be viewed in your browser.</p>
+<h3 id="exercise">Exercise:</h3>
+<p>Work out what command line options are needed to filter out rare coding variants with a MAF&lt;0.01 in central european (CEU) population and run the command. Show how to filter with <code>filter_vep.pl</code> and <code>bcftools</code>.</p>
+</body>
+</html>
