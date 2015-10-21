@@ -38,11 +38,11 @@ During the second day we will focus on _Variant Calling_, _annotation_ and _prio
 
 ##### Germline variant calling
 
-- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) - [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html) - [Tutorial 3](Course_Materials/variant_calling/tutorial/030_example.html)
+- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) - [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html)
 
 ##### Somatic variant calling
 
-- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) - [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html) - [Tutorial 3](Course_Materials/variant_calling/tutorial/030_example.html)
+- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Somatic calling](Course_Materials/variant_calling/tutorial/020_example.html) - [_De novo_ mutations](Course_Materials/variant_calling/tutorial/030_example.html)
 
 ##### Variant filtering and annotation
 
