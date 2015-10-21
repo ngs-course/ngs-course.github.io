@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Visualization of mapped reads__
-% _(updated 16-06-2015)_
+% _(updated 21-10-2015)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -36,7 +36,9 @@ cp -r /home/participant/Desktop/Open_Share/visualization /home/participant/cambr
 cd /home/participant/cambridge_mda15/visualization
 -->
 
-    cd /home/participant/Desktop/Course_Materials/visualization
+<!--    cd /home/participant/Desktop/Course_Materials/visualization -->
+
+    cd /home/training/ngs_course/visualization
 
 Enter in the example folder:
 
@@ -55,16 +57,17 @@ Use ``samtools`` to index the bam files:
 Run IGV
 --------------------------------------------------------------------------------
 
-You can run this command from the terminal:
-    igv
+You can run IGV using this command from the terminal:
 
-or you can also use the link in your Desktop.
+    igv.sh &
+
+<!--or you can also use the link in your Desktop.-->
 
 
 Download a reference genome
 --------------------------------------------------------------------------------
 
-By default, IGV loads Human hg18 and hg19 assemblies. Bear in mind that we must work with the **same assembly used to mapped our reads**, in this case Human hg19.  
+By default, IGV loads Human hg18. Bear in mind that we must work with the **same assembly used to mapped our reads**, in this case Human hg19.  
 Genome assemblies for several species can be downloaded using IGV. To explore the list of available genomes:
 
 - Go to ``Genomes`` --> ``Load Genome From Server...``

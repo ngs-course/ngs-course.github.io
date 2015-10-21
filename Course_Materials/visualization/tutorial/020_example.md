@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Visualization of mapped reads__
-% _(updated 16-06-2015)_
+% _(updated 21-10-2015)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -31,8 +31,9 @@ Exercise 2: Visualising RNA-Seq data
 
 In the following **folder** you will find mapped RNA-Seq data from Illumina’s Human BodyMap 2.0 project. This two datasets in particular contain reads from brain and heart tissues.
 
-    cd /home/participant/Desktop/Course_Materials/visualization/example_2
+<!--    cd /home/participant/Desktop/Course_Materials/visualization/example_2 -->
 
+    cd /home/training/ngs_course/visualization/example_2
 
 Steps
 --------------------------------------------------------------------------------

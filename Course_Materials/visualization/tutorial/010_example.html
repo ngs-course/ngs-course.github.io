@@ -30,7 +30,9 @@
 </ul>
 <h1 id="exercise-1-visualising-sequencing-data">Exercise 1: Visualising sequencing data</h1>
 <p>In the following <strong>folder</strong> you will find mapped sequencing data from a CEU trio (father, mother and child) from the 1000 Genomes Project:</p>
-<pre><code>cd /home/participant/Desktop/Course_Materials/visualization/example_1</code></pre>
+<!--    cd /home/participant/Desktop/Course_Materials/visualization/example_1 -->
+
+<pre><code>    cd /home/training/ngs_course/visualization/example_1</code></pre>
 <p>These datasets contain reads only for the <a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000204681;r=6:29523406-29601753">GABBR1</a> gene.</p>
 <h2 id="creating-indexed-files">Creating indexed files</h2>
 <p>Use <code>samtools</code> to index the bam files:</p>
@@ -38,8 +40,11 @@
 samtools index NA12891_dad.bam
 samtools index NA12892_mom.bam</code></pre>
 <h2 id="run-igv">Run IGV</h2>
-<p>You can run this command from the terminal: igv</p>
-<p>or you can also use the link in your Desktop.</p>
+<p>You can run IGV using this command from the terminal:</p>
+<pre><code>igv.sh</code></pre>
+<!-- or you can also use the link in your Desktop. -->
+
+
 <h2 id="download-a-reference-genome">Download a reference genome</h2>
 <p>Run just in the case you do not have downloaded Human hg19 genome before:</p>
 <ul>

@@ -13,7 +13,7 @@
 <div id="header">
 <h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>Visualization of mapped reads</strong></h2>
-<h3 class="date"><em>(updated 16-06-2015)</em></h3>
+<h3 class="date"><em>(updated 21-10-2015)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
 
@@ -36,7 +36,9 @@ cp -r /home/participant/Desktop/Open_Share/visualization /home/participant/cambr
 cd /home/participant/cambridge_mda15/visualization
 -->
 
-<pre><code>cd /home/participant/Desktop/Course_Materials/visualization</code></pre>
+<!--    cd /home/participant/Desktop/Course_Materials/visualization -->
+
+<pre><code>cd /home/training/ngs_course/visualization</code></pre>
 <p>Enter in the example folder:</p>
 <pre><code>cd example_0</code></pre>
 <p>This BAM file contains reads only for <strong>chromosome 11</strong>.</p>
@@ -44,10 +46,13 @@ cd /home/participant/cambridge_mda15/visualization
 <p>Use <code>samtools</code> to index the bam files:</p>
 <pre><code>samtools index igv1.bam</code></pre>
 <h2 id="run-igv">Run IGV</h2>
-<p>You can run this command from the terminal: igv</p>
-<p>or you can also use the link in your Desktop.</p>
+<p>You can run IGV using this command from the terminal:</p>
+<pre><code>igv.sh &amp;</code></pre>
+<!--or you can also use the link in your Desktop.-->
+
+
 <h2 id="download-a-reference-genome">Download a reference genome</h2>
-<p>By default, IGV loads Human hg18 and hg19 assemblies. Bear in mind that we must work with the <strong>same assembly used to mapped our reads</strong>, in this case Human hg19.<br />Genome assemblies for several species can be downloaded using IGV. To explore the list of available genomes:</p>
+<p>By default, IGV loads Human hg18. Bear in mind that we must work with the <strong>same assembly used to mapped our reads</strong>, in this case Human hg19.<br />Genome assemblies for several species can be downloaded using IGV. To explore the list of available genomes:</p>
 <ul>
 <li>Go to <code>Genomes</code> –&gt; <code>Load Genome From Server...</code></li>
 </ul>

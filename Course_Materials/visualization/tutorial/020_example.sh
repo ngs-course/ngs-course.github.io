@@ -1,4 +1,4 @@
-cd /home/participant/Desktop/Course_Materials/visualization/example_2
+cd /home/training/ngs_course/visualization/example_2
 samtools index heart.bodyMap.bam
 samtools index brain.bodyMap.bam
 igv
