@@ -12,13 +12,10 @@ This is course is scheduled for 2 days and assumes a very basic knowledge of NGS
 During this first day we will start with an _introduction to NGS technology_ and in the data preparation for their analysis. You will also learn the basics of the _GNU/Linux shell introduction_. At this point we are ready to start preparing and working with the data: _Quality Control_ (QC) and _NGS data alignment_.
 
 ##### Course Presentation
-- Presentation [[PDF](Course_Materials/presentation/presentation_mda15.pdf) | [OpenOffice](Course_Materials/presentation/presentation_mda15.odp)]
-
-##### Genomic Data Analysis Overview
-- Presentation [PDF](Course_Materials/course_overview/Dopazo_Intro_Cambridge.pdf)
+- Presentation [[PDF](Course_Materials/presentation/presentation_edinburgh15.pdf) | [OpenOffice](Course_Materials/presentation/presentation_edinburgh15.odp)]
 
 ##### Introduction to NGS technologies
-Very brief overview about NGS technologies and some concepts.
+Javier Santoyo, an overview about NGS technologies and some concepts.
 - [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda15.pdf)
 
 ##### Introduction GNU/Linux shell
