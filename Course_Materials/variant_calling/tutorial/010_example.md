@@ -212,8 +212,12 @@ The command ``--filterExpression`` will read the INFO field and check whether va
 8. Visualization
 --------------------------------------------------------------------------------
 
-- Exercise 1:
-  1. Open the BAMs before and after INDEL Realignment (``002-dna_chr21_100_hq_pe_sorted_noDup.bam`` and ``003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam``)
+### Exercise 1:
+  1. Open in IGV the BAMs before and after INDEL Realignment (``002-dna_chr21_100_hq_pe_sorted_noDup.bam`` and ``003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam``)
   2. Select a region that has been selected for realignment from ``003-indelRealigner.intervals`` and locate IGV in this region
   3. Observe the changes applied by GATK after INDEL realignment
 
+### Exercise 2:
+  1. Open in IGV the preprocessed BAM file (``004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam``) and the generated VCF (``005-dna_chr21_100_he_pe.vcf``)
+  3. Observe how read mismatches have been called into variants
+  

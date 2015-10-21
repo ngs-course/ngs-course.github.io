@@ -148,13 +148,16 @@ The command ``--filterExpression`` will read the INFO field and check whether va
 
 
 <h2 id="visualization">8. Visualization</h2>
-<ul>
-<li>Exercise 1:</li>
-</ul>
+<h3 id="exercise-1">Exercise 1:</h3>
 <ol style="list-style-type: decimal">
-<li>Open the BAMs before and after INDEL Realignment (<code>002-dna_chr21_100_hq_pe_sorted_noDup.bam</code> and <code>003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam</code>)</li>
+<li>Open in IGV the BAMs before and after INDEL Realignment (<code>002-dna_chr21_100_hq_pe_sorted_noDup.bam</code> and <code>003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam</code>)</li>
 <li>Select a region that has been selected for realignment from <code>003-indelRealigner.intervals</code> and locate IGV in this region</li>
 <li>Observe the changes applied by GATK after INDEL realignment</li>
+</ol>
+<h3 id="exercise-2">Exercise 2:</h3>
+<ol style="list-style-type: decimal">
+<li>Open in IGV the preprocessed BAM file (<code>004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam</code>) and the generated VCF (<code>005-dna_chr21_100_he_pe.vcf</code>)</li>
+<li>Observe how read mismatches have been called into variants</li>
 </ol>
 </body>
 </html>
