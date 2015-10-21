@@ -13,7 +13,7 @@
 <div id="header">
 <h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
 <h2 class="author"><strong>Variant calling</strong></h2>
-<h3 class="date"><em>(updated 17-06-2015)</em></h3>
+<h3 class="date"><em>(updated 21-10-2015)</em></h3>
 </div>
 <!-- COMMON LINKS HERE -->
 
@@ -32,15 +32,21 @@
 </ul>
 <h1 id="exercise-1-variant-calling-with-paired-end-data">Exercise 1: Variant calling with paired-end data</h1>
 <p>Directory used for the tutorials:</p>
-<pre><code>cd /home/participant/Desktop/Course_Materials/calling</code></pre>
+<!--    cd /home/participant/Desktop/Course_Materials/calling -->
+
+<pre><code>cd /home/training/ngs_course/calling</code></pre>
 <h2 id="prepare-reference-genome-generate-the-fasta-file-index">1. Prepare reference genome: generate the fasta file index</h2>
 <p>Enter in the genome directory:</p>
-<pre><code>cd genome</code></pre>
+<pre><code>cd /home/training/ngs_course/reference_genome</code></pre>
 <p>Use <code>SAMTools</code> to generate the fasta file index:</p>
 <pre><code>samtools faidx f000_chr21_ref_genome_sequence.fa</code></pre>
 <p>This creates a file called samtools faidx f000_chr21_ref_genome_sequence.fa.fai, with one record per line for each of the contigs in the FASTA reference file.</p>
 <p>Generate the sequence dictionary using <code>Picard</code>:</p>
-<pre><code>java -jar $PICARD CreateSequenceDictionary REFERENCE=f000_chr21_ref_genome_sequence.fa OUTPUT=f000_chr21_ref_genome_sequence.dict</code></pre>
+<!--    java -jar $PICARD CreateSequenceDictionary REFERENCE=f000_chr21_ref_genome_sequence.fa OUTPUT=f000_chr21_ref_genome_sequence.dict -->
+
+<pre><code>java -jar ~/soft/picard-tools/picard.jar CreateSequenceDictionary \
+            REFERENCE=f000_chr21_ref_genome_sequence.fa \
+            OUTPUT=f000_chr21_ref_genome_sequence.dict</code></pre>
 <h2 id="prepare-bam-file">2. Prepare BAM file</h2>
 <p>Go to the example1 folder:</p>
 <pre><code>cd /home/participant/Desktop/Course_Materials/calling/example1</code></pre>

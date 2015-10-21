@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Variant calling__
-% _(updated 17-06-2015)_
+% _(updated 21-10-2015)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -32,14 +32,16 @@ Exercise 1: Variant calling with paired-end data
 
 Directory used for the tutorials:
 
-    cd /home/participant/Desktop/Course_Materials/calling
+<!--    cd /home/participant/Desktop/Course_Materials/calling -->
+
+    cd /home/training/ngs_course/calling
 
 
 1. Prepare reference genome: generate the fasta file index
 --------------------------------------------------------------------------------
 Enter in the genome directory:
 
-    cd genome
+    cd /home/training/ngs_course/reference_genome
 
 Use ``SAMTools`` to generate the fasta file index:
 
@@ -50,7 +52,11 @@ This creates a file called samtools faidx f000_chr21_ref_genome_sequence.fa.fai,
 
 Generate the sequence dictionary using ``Picard``:
 
-    java -jar $PICARD CreateSequenceDictionary REFERENCE=f000_chr21_ref_genome_sequence.fa OUTPUT=f000_chr21_ref_genome_sequence.dict
+<!--    java -jar $PICARD CreateSequenceDictionary REFERENCE=f000_chr21_ref_genome_sequence.fa OUTPUT=f000_chr21_ref_genome_sequence.dict -->
+
+    java -jar ~/soft/picard-tools/picard.jar CreateSequenceDictionary \
+				REFERENCE=f000_chr21_ref_genome_sequence.fa \
+				OUTPUT=f000_chr21_ref_genome_sequence.dict
 
 
 2. Prepare BAM file
