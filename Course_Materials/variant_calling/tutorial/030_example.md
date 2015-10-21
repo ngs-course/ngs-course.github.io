@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Variant calling__
-% _(updated 17-06-2015)_
+% _(updated 21-10-2015)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -29,13 +29,25 @@ File formats explored:
 Exercise 3: Somatic calling
 ================================================================================
 
-1. Prepare BAM file
+1. Prepare reference genome
+--------------------------------------------------------------------------------
+Use ``SAMTools`` to generate the fasta file index:
+
+    samtools faidx TP53.hg19.fa
+
+Generate the sequence dictionary using ``Picard``:
+
+    java -jar ~/soft/picard-tools/picard.jar CreateSequenceDictionary \
+				REFERENCE=TP53.hg19.fa \
+				OUTPUT=TP53.hg19.dict
+
+2. Prepare BAM file
 --------------------------------------------------------------------------------
 
-Go to the example3 folder:
+Go to the somatic calling example folder:
 
-    cd /home/participant/Desktop/Course_Materials/calling/example3
-    
+    cd /home/training/ngs_course/calling/example_3/somatic_calling
+
 Sort:
 
     samtools sort 000-normal.bam 001-normal_sorted
@@ -52,6 +64,17 @@ Index the BAM file:
 
 For brevity, we are not including BAM preprocessing steps. However, in real analysis it is recommended to include them.
 
-    ../java-6/bin/java -jar ../mutect/muTect-1.1.4.jar --analysis_type MuTect --reference_sequence TP53.hg19.fa --dbsnp 000-dbsnp_132_b37.leftAligned.vcf.gz --cosmic 000-b37_cosmic_v54_120711.vcf.gz --input_file:normal 001-normal_sorted.bam --input_file:tumor 001-tumor_sorted.bam --out 002-call_stats.out --coverage_file 002-coverage.wig --vcf 003-somatic_variants.vcf
+    ~/soft/java7/bin/java -jar ~/soft/muTect/muTect-1.1.5.jar \
+		--analysis_type MuTect \
+		--reference_sequence TP53.hg19.fa \
+		--dbsnp 000-dbsnp_132_b37.leftAligned.vcf.gz \
+		--cosmic 000-b37_cosmic_v54_120711.vcf.gz \
+		--input_file:normal 001-normal_sorted.bam \
+		--input_file:tumor 001-tumor_sorted.bam \
+		--out 002-call_stats.out \
+		--coverage_file 002-coverage.wig \
+		--vcf 003-somatic_variants.vcf
 
-    grep -v REJECT 003-somatic_variants.vcf
+Extract high quality somatic variants.
+
+	grep -v REJECT 003-somatic_variants.vcf
