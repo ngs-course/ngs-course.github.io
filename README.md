@@ -46,7 +46,7 @@ During the second day we will focus on _Variant Calling_, _annotation_ and _prio
 
 ##### Variant filtering and annotation
 
-- [Presentation](Course_Materials/variant_annotation/presentation/2015-Cambridge_variant_annotation.pdf) - [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html) - [CellBase](Course_Materials/variant_annotation/tutorial/cellbase.html)
+- [Presentation](Course_Materials/variant_annotation/presentation/2015-Cambridge_variant_annotation.pdf) - [VEP](Course_Materials/variant_annotation/tutorial/vep.html) - [CellBase](Course_Materials/variant_annotation/tutorial/cellbase.html) - [Annovar](Course_Materials/variant_annotation/tutorial/annovar.html)
 
 ##### Variant association and prioritization
 
