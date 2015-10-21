@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="De novo mutations" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>De novo mutations</strong></h2>
+<h3 class="date"><em>(updated 21-10-2015)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://denovogear.sourceforge.net/" title="DeNovoGear">DeNovoGear</a> : A program to detect de novo variants using next-generation sequencing data.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li>VCF Variant Call Format: see <a href="http://www.1000genomes.org/wiki/analysis/variant-call-format/vcf-variant-call-format-version-42">1000 Genomes</a> and <a href="http://en.wikipedia.org/wiki/Variant_Call_Format">Wikipedia</a> specifications.</li>
+</ul>
+<h1 id="exercise-4-identification-of-de-novo-mutations">Exercise 4: Identification of <em>de novo</em> mutations</h1>
+<h2 id="discovery-of-de-novo-mutations">1. Discovery of <em>de novo</em> mutations</h2>
+<p>When working with families we might be interested in identifying variants that appeared for the first time in one family member as a result of a mutation in a germ cell (egg or sperm) of one of the parents or in the fertilised egg itself.</p>
+<p>For this analysis we need to specify the family structure in a pedigree. The requested pedigree must be in [PED format] (http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml#ped).</p>
+<pre><code>less trio.ped</code></pre>
+<p>Run DeNovoGear:</p>
+<pre><code>~/soft/denovogear/bin/denovogear dnm auto \
+    --vcf trio.vcf \
+    --ped trio.ped \
+    --output_vcf trio_denovo.vcf</code></pre>
+<h2 id="exercise">2. Exercise</h2>
+<p>Open the BAM files corresponding to the 3 related individuals in IGV. Include also the original VCF and the VCF containing the <em>de novo</em> mutations.</p>
+</body>
+</html>

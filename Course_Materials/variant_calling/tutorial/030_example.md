@@ -1,5 +1,5 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
-% __Variant calling__
+% __Somatic Variant calling__
 % _(updated 21-10-2015)_
 
 <!-- COMMON LINKS HERE -->
