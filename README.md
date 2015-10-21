@@ -42,7 +42,7 @@ During the second day we will focus on _Variant Calling_, _annotation_ and _prio
 
 ##### Somatic variant calling
 
-- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Somatic calling](Course_Materials/variant_calling/tutorial/020_example.html) - [_De novo_ mutations](Course_Materials/variant_calling/tutorial/030_example.html)
+- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Somatic calling](Course_Materials/variant_calling/tutorial/030_example.html) - [_De novo_ mutations](Course_Materials/variant_calling/tutorial/040_example.html)
 
 ##### Variant filtering and annotation
 
