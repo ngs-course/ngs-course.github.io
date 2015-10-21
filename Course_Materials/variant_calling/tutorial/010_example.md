@@ -64,7 +64,7 @@ Generate the sequence dictionary using ``Picard``:
 
 Go to the example1 folder:
 
-    cd /home/participant/Desktop/Course_Materials/calling/example1
+    cd /home/training/ngs_course/calling/example_0
 
 <!-- The **read group** information is key for downstream GATK functionality. The GATK will not work without a read group tag. Make sure to enter as much metadata as you know about your data in the read group fields provided. For more information about all the possible fields in the @RG tag, take a look at the SAM specification.
 
@@ -86,7 +86,10 @@ Index the BAM file:
 
 Run the following **Picard** command to mark duplicates:
 
-    java -jar $PICARD MarkDuplicates INPUT=001-dna_chr21_100_hq_pe_sorted.bam OUTPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam METRICS_FILE=002-metrics.txt
+    java -jar ~/soft/picard-tools/picard.jar MarkDuplicates \
+			INPUT=001-dna_chr21_100_hq_pe_sorted.bam \
+			OUTPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam \
+			METRICS_FILE=002-metrics.txt
 
 This creates a sorted BAM file called ``002-dna_chr21_100_hq_pe_sorted_noDup.bam`` with the same content as the input file, except that any duplicate reads are marked as such. It also produces a metrics file called ``metrics.txt``.
 
@@ -94,8 +97,8 @@ This creates a sorted BAM file called ``002-dna_chr21_100_hq_pe_sorted_noDup.bam
 
 Run the following **Picard** command to index the new BAM file:
 
-    java -jar $PICARD BuildBamIndex INPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam
-
+    java -jar ~/soft/picard-tools/picard.jar BuildBamIndex \
+			INPUT=002-dna_chr21_100_hq_pe_sorted_noDup.bam
 
 4. Local realignment around INDELS (using GATK)
 --------------------------------------------------------------------------------
@@ -103,12 +106,21 @@ Run the following **Picard** command to index the new BAM file:
 There are 2 steps to the realignment process:
 
 **First**, create a target list of intervals which need to be realigned
-  
-    java -jar $GATK -T RealignerTargetCreator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_pe_sorted_noDup.bam -o 003-indelRealigner.intervals
+
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T RealignerTargetCreator \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 002-dna_chr21_100_hq_pe_sorted_noDup.bam \
+		-o 003-indelRealigner.intervals
 
 **Second**, perform realignment of the target intervals
 
-    java -jar $GATK -T IndelRealigner -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_pe_sorted_noDup.bam -targetIntervals 003-indelRealigner.intervals -o 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T IndelRealigner \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 002-dna_chr21_100_hq_pe_sorted_noDup.bam \
+		-targetIntervals 003-indelRealigner.intervals \
+		-o 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam
 
 This creates a file called ``003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam`` containing all the original reads, but with better local alignments in the regions that were realigned.
 
@@ -120,15 +132,25 @@ Two steps:
 
 **First**, analyse patterns of covariation in the sequence dataset
 
-    java -jar $GATK -T BaseRecalibrator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam -knownSites ../000-dbSNP_chr21.vcf -o 004-recalibration_data.table
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T BaseRecalibrator \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam \
+		-knownSites ../000-dbSNP_chr21.vcf \
+		-o 004-recalibration_data.table
 
 This creates a GATKReport file called ``004-recalibration_data.table`` containing several tables. These tables contain the covariation data that will be used in a later step to recalibrate the base qualities of your sequence data.
 
-It is imperative that you provide the program with a set of **known sites**, otherwise it will refuse to run. The known sites are used to build the covariation model and estimate empirical base qualities. For details on what to do if there are no known sites available for your organism of study, please see the online GATK documentation.
+It is important that you provide the program with a set of **known sites**, otherwise it will refuse to run. The known sites are used to build the covariation model and estimate empirical base qualities. For details on what to do if there are no known sites available for your organism of study, please see the online GATK documentation.
 
 **Second**, apply the recalibration to your sequence data
 
-    java -jar $GATK -T PrintReads -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam -BQSR 004-recalibration_data.table -o 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T PrintReads \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam \
+		-BQSR 004-recalibration_data.table \
+		-o 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam
 
 This creates a file called ``004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam`` containing all the original reads, but now with exquisitely accurate base substitution, insertion and deletion quality scores. By default, the original quality scores are discarded in order to keep the file size down. However, you have the option to retain them by adding the flag ``–emit_original_quals`` to the ``PrintReads`` command, in which case the original qualities will also be written in the file, tagged OQ.
 
@@ -136,12 +158,19 @@ This creates a file called ``004-dna_chr21_100_hq_pe_sorted_noDup_realigned_reca
 6. Variant calling (using GATK - **HaplotypeCaller**)
 --------------------------------------------------------------------------------
 
-SNPs and INDELS are called using separate instructions.
+SNPs and INDELS are called using a single instruction.
 
-    java -jar $GATK -T HaplotypeCaller -R ../genome/f000_chr21_ref_genome_sequence.fa -I 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam -o 005-dna_chr21_100_he_pe.vcf
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T HaplotypeCaller \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam \
+		-o 005-dna_chr21_100_he_pe.vcf
 
 <!--
 Code using UnifiedGenotyper
+		
+SNPs and INDELS are called using separate instructions.
+
 **SNP calling**
 
     java -jar ../gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ../genome/f000_chr21_ref_genome_sequence.fa -I 004-dna_chr21_100_hq_pe_sorted_noDup_realigned_recalibrated.bam -glm SNP -o 005-dna_chr21_100_he_pe_snps.vcf
@@ -154,7 +183,20 @@ Code using UnifiedGenotyper
 7. Introduce filters in the VCF file
 --------------------------------------------------------------------------------
 
-Example: filter SNPs with low confidence calling (QD < 12.0) and flag them as "LowConf".
+Once we have called the variants, we might be interested in filtering out some according to our confidence in them. Some of the most basic filters consist of identifying variants with low calling quality or a low number of reads supporting the variant.
+There are many programs that can be used to filter VCFs. Here we are going to use bcftools from Samtools to preform a basic filtering.
+
+    bcftools filter -s LowQual -e 'QUAL<20 | DP<3' 005-dna_chr21_100_he_pe.vcf > 006-dna_chr21_100_he_pe_filtered.vcf
+
+Let's see how many variants fail to pass our filters:
+
+    grep LowQual 006-dna_chr21_100_he_pe_filtered.vcf | wc -l
+
+And how many passed:
+
+    grep PASS 006-dna_chr21_100_he_pe_filtered.vcf | wc -l
+
+<!-- Example: filter SNPs with low confidence calling (QD < 12.0) and flag them as "LowConf".
 
     java -jar $GATK -T VariantFiltration -R ../genome/f000_chr21_ref_genome_sequence.fa -V 005-dna_chr21_100_he_pe.vcf --filterExpression "QD < 12.0" --filterName "LowConf" -o 006-dna_chr21_100_he_pe_filtered.vcf
 
@@ -164,3 +206,4 @@ The command ``--filterExpression`` will read the INFO field and check whether va
 
     grep LowConf 006-dna_chr21_100_he_pe_filtered.vcf | wc -l
 
+-->
