@@ -1,6 +1,6 @@
 % [NGS data analysis course](http://ngscourse.github.io/)
 % __Variant calling__
-% _(updated 17-06-2015)_
+% _(updated 21-10-2015)_
 
 <!-- COMMON LINKS HERE -->
 
@@ -31,9 +31,9 @@ File formats explored:
 Exercise 2: Variant calling with single-end data
 ================================================================================
 
-Go to the example 2 folder in your course directory: 
+Go to the example 1 folder in your course directory: 
 
-    cd /home/participant/Desktop/Course_Materials/calling/example2
+    cd /home/training/ngs_course/calling/example_1
 
 
 1. Prepare reference genome: generate the fasta file index
@@ -58,12 +58,15 @@ Index the BAM file:
 
 Mark and remove duplicates:
 
-    java -jar $PICARD MarkDuplicates INPUT=001-dna_chr21_100_hq_se_sorted.bam OUTPUT=002-dna_chr21_100_hq_se_sorted_noDup.bam METRICS_FILE=002-metrics.txt
+    java -jar ~/soft/picard-tools/picard.jar MarkDuplicates \
+			INPUT=001-dna_chr21_100_hq_se_sorted.bam \
+			OUTPUT=002-dna_chr21_100_hq_se_sorted_noDup.bam \
+			METRICS_FILE=002-metrics.txt
 
 Index the new BAM file:
 
-    java -jar $PICARD BuildBamIndex INPUT=002-dna_chr21_100_hq_se_sorted_noDup.bam
-
+    java -jar ~/soft/picard-tools/picard.jar BuildBamIndex \
+			INPUT=002-dna_chr21_100_hq_se_sorted_noDup.bam
 
 4. Local realignment around INDELS (using GATK)
 --------------------------------------------------------------------------------
@@ -72,12 +75,20 @@ There are 2 steps to the realignment process:
 
 Create a target list of intervals which need to be realigned
   
-    java -jar $GATK -T RealignerTargetCreator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_se_sorted_noDup.bam -o 003-indelRealigner.intervals
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T RealignerTargetCreator \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 002-dna_chr21_100_hq_se_sorted_noDup.bam \
+		-o 003-indelRealigner.intervals
 
 Perform realignment of the target intervals:
 
-    java -jar $GATK -T IndelRealigner -R ../genome/f000_chr21_ref_genome_sequence.fa -I 002-dna_chr21_100_hq_se_sorted_noDup.bam -targetIntervals 003-indelRealigner.intervals -o 003-dna_chr21_100_hq_se_sorted_noDup_realigned.bam
-
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T IndelRealigner \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 002-dna_chr21_100_hq_se_sorted_noDup.bam \
+		-targetIntervals 003-indelRealigner.intervals \
+		-o 003-dna_chr21_100_hq_se_sorted_noDup_realigned.bam
 
 5. Base quality score recalibration (using GATK)
 --------------------------------------------------------------------------------
@@ -86,18 +97,30 @@ Two steps:
 
 Analyse patterns of covariation in the sequence dataset
 
-    java -jar $GATK -T BaseRecalibrator -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_se_sorted_noDup_realigned.bam -knownSites ../000-dbSNP_chr21.vcf -o 004-recalibration_data.table
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T BaseRecalibrator \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 003-dna_chr21_100_hq_se_sorted_noDup_realigned.bam \
+		-knownSites ../000-dbSNP_chr21.vcf \
+		-o 004-recalibration_data.table
 
 Apply the recalibration to your sequence data
 
-    java -jar $GATK -T PrintReads -R ../genome/f000_chr21_ref_genome_sequence.fa -I 003-dna_chr21_100_hq_se_sorted_noDup_realigned.bam -BQSR 004-recalibration_data.table -o 004-dna_chr21_100_hq_se_sorted_noDup_realigned_recalibrated.bam
-
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T PrintReads \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 003-dna_chr21_100_hq_se_sorted_noDup_realigned.bam \
+		-BQSR 004-recalibration_data.table \
+		-o 004-dna_chr21_100_hq_se_sorted_noDup_realigned_recalibrated.bam
 
 6. Variant calling (using GATK - **HaplotypeCaller**)
 --------------------------------------------------------------------------------
-
-    java -jar $GATK -T HaplotypeCaller -R ../genome/f000_chr21_ref_genome_sequence.fa -I 004-dna_chr21_100_hq_se_sorted_noDup_realigned_recalibrated.bam -o 005-dna_chr21_100_he_se.vcf
    
+    java -jar ~/soft/GATK/GenomeAnalysisTK.jar \
+		-T HaplotypeCaller \
+		-R ../../reference_genome/f000_chr21_ref_genome_sequence.fa \
+		-I 004-dna_chr21_100_hq_se_sorted_noDup_realigned_recalibrated.bam \
+		-o 005-dna_chr21_100_he_se.vcf
 <!--
 Example with UnifiedGenotyper
 

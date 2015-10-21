@@ -207,3 +207,13 @@ The command ``--filterExpression`` will read the INFO field and check whether va
     grep LowConf 006-dna_chr21_100_he_pe_filtered.vcf | wc -l
 
 -->
+
+
+8. Visualization
+--------------------------------------------------------------------------------
+
+- Exercise 1:
+  1. Open the BAMs before and after INDEL Realignment (``002-dna_chr21_100_hq_pe_sorted_noDup.bam`` and ``003-dna_chr21_100_hq_pe_sorted_noDup_realigned.bam``)
+  2. Select a region that has been selected for realignment from ``003-indelRealigner.intervals`` and locate IGV in this region
+  3. Observe the changes applied by GATK after INDEL realignment
+
