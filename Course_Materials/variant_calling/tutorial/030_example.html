@@ -31,6 +31,9 @@
 <li>VCF Variant Call Format: see <a href="http://www.1000genomes.org/wiki/analysis/variant-call-format/vcf-variant-call-format-version-42">1000 Genomes</a> and <a href="http://en.wikipedia.org/wiki/Variant_Call_Format">Wikipedia</a> specifications.</li>
 </ul>
 <h1 id="exercise-3-somatic-calling">Exercise 3: Somatic calling</h1>
+<p>If you are working with cancer data, you might be interested in the identification of somatic point mutation from matched tumor-normal patient samples. The detection of somatic mutations is still challenging for some reasons: - low-allelic-fraction variants caused by tumor heterogeneity - copy number alteration - sample degradation</p>
+<p>Normal variant callers are not accurate enough to identify somatic variants, so new algorithms and software have been implemented to do so.</p>
+<p>For this example, we are going to compare normal versus tumoral tissue using MuTect.</p>
 <h2 id="prepare-reference-genome">1. Prepare reference genome</h2>
 <p>Use <code>SAMTools</code> to generate the fasta file index:</p>
 <pre><code>samtools faidx TP53.hg19.fa</code></pre>

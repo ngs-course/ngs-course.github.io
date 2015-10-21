@@ -29,6 +29,15 @@ File formats explored:
 Exercise 3: Somatic calling
 ================================================================================
 
+If you are working with cancer data, you might be interested in the identification of somatic point mutation from matched tumor-normal patient samples. The detection of somatic mutations is still challenging for some reasons:
+- low-allelic-fraction variants caused by tumor heterogeneity
+- copy number alteration
+- sample degradation
+
+Normal variant callers are not accurate enough to identify somatic variants, so new algorithms and software have been implemented to do so.
+
+For this example, we are going to compare normal versus tumoral tissue using MuTect.
+
 1. Prepare reference genome
 --------------------------------------------------------------------------------
 Use ``SAMTools`` to generate the fasta file index:
