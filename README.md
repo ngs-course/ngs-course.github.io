@@ -16,7 +16,7 @@ During this first day we will start with an _introduction to NGS technology_ and
 
 ##### Introduction to NGS technologies
 Javier Santoyo, an overview about NGS technologies and some concepts.
-- [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda15.pdf)
+- [Presentation](Course_Materials/intro-ngs/01_Introduction_to_NGS_VariantCalling_221015.pdf)
 
 ##### Introduction GNU/Linux shell
 - Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda15.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda15.odp)]
