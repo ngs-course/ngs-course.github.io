@@ -16,7 +16,7 @@ During this first day we will start with an _introduction to NGS technology_ and
 
 ##### Introduction to NGS technologies
 Javier Santoyo, an overview about NGS technologies and some concepts.
-- [Presentation](Course_Materials/intro-ngs/ngs_introduction_mda15.pdf)
+- [Presentation](Course_Materials/intro-ngs/01_Introduction_to_NGS_VariantCalling_221015.pdf)
 
 ##### Introduction GNU/Linux shell
 - Presentation [[PDF](Course_Materials/intro-linux/intro_Linux_mda15.pdf) | [OpenOffice](Course_Materials/intro-linux/intro_Linux_mda15.odp)]
@@ -35,11 +35,11 @@ During the second day we will focus on _Variant Calling_, _annotation_ and _prio
 
 ##### Germline variant calling
 
-- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) - [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html)
+- [Presentation](Course_Materials/variant_calling/presentation/2015-10-variant_calling.pdf) - [Tutorial 1](Course_Materials/variant_calling/tutorial/010_example.html) - [Tutorial 2](Course_Materials/variant_calling/tutorial/020_example.html)
 
 ##### Somatic variant calling and _de novo_ mutations
 
-- [Presentation](Course_Materials/variant_calling/presentation/2015-Cambridge_variant_calling.pdf) - [Somatic calling](Course_Materials/variant_calling/tutorial/030_example.html) - [_De novo_ mutations](Course_Materials/variant_calling/tutorial/040_example.html)
+- [Presentation](Course_Materials/variant_calling/presentation/2015-10-somatic_variant_calling_and_denovo.pdf) - [Somatic calling](Course_Materials/variant_calling/tutorial/030_example.html) - [_De novo_ mutations](Course_Materials/variant_calling/tutorial/040_example.html)
 
 ##### Variant filtering and annotation
 
