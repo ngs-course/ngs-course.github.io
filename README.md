@@ -53,7 +53,7 @@ During the second day we will focus on _Variant Calling_, _annotation_ and _prio
 
 ##### Big Data analysis and visualization
 
-- [Presentation](Course_Materials/big_data/big_data_presentation.pdf)
+- [Presentation](Course_Materials/big_data/big_data_anlysis_and_visualzation_presentation.pdf)
 
 
 ----
