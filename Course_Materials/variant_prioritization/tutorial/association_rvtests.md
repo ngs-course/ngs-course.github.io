@@ -104,7 +104,7 @@ Groupwise tests includes three major kinds of tests.
 **Burden tests**
 
 | Burden tests | Model | Traits | Covariates | Related / unrelated | Description |
-|:::|:::|:::|:::|:::|:::|
+|---|---|---|---|---|---|
 | CMC | cmc | B, Q | N | U | Collapsing and combine rare variants by Bingshan Li. |
 | Zeggini | zeggini | B, Q | N | U | Aggregate counts of rare variants by Morris Zeggini. |
 | Madsen-Browning | mb | B | N | U | Up-weight rare variant using inverse frequency from controls by Madsen. |

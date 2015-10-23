@@ -78,7 +78,84 @@ head 4Kvariants_147samples.SingleWald.assoc</code></pre>
 <li><strong>Kernel methods</strong>: suitable to tests rare variants having different directions of effects. These includes SKAT test and KBAC test.</li>
 </ul>
 <p><strong>Burden tests</strong></p>
-<p>| Burden tests | Model | Traits | Covariates | Related / unrelated | Description | |:::|:::|:::|:::|:::|:::| | CMC | cmc | B, Q | N | U | Collapsing and combine rare variants by Bingshan Li. | | Zeggini | zeggini | B, Q | N | U | Aggregate counts of rare variants by Morris Zeggini. | | Madsen-Browning | mb | B | N | U | Up-weight rare variant using inverse frequency from controls by Madsen. | | Fp | fp | B | N | U | Up-weight rare variant using inverse frequency from controls by Danyu Lin. | | Exact CMC | exactCMC | B | N | U | Collapsing and combine rare variants, then perform Fisher’s exact test. | | RareCover | rarecover | B | N | U | Find optimal grouping unit for rare variant tests by Thomas Hoffman. | | CMAT | cmat | B | N | U | Test non-coding variants by Matt Z. | | CMC Wald | cmcWald | B, Q | N | U | Collapsing and combine rare variants, then perform Wald test. |</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Burden tests</th>
+<th align="left">Model</th>
+<th align="left">Traits</th>
+<th align="left">Covariates</th>
+<th align="left">Related / unrelated</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CMC</td>
+<td align="left">cmc</td>
+<td align="left">B, Q</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Collapsing and combine rare variants by Bingshan Li.</td>
+</tr>
+<tr class="even">
+<td align="left">Zeggini</td>
+<td align="left">zeggini</td>
+<td align="left">B, Q</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Aggregate counts of rare variants by Morris Zeggini.</td>
+</tr>
+<tr class="odd">
+<td align="left">Madsen-Browning</td>
+<td align="left">mb</td>
+<td align="left">B</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Up-weight rare variant using inverse frequency from controls by Madsen.</td>
+</tr>
+<tr class="even">
+<td align="left">Fp</td>
+<td align="left">fp</td>
+<td align="left">B</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Up-weight rare variant using inverse frequency from controls by Danyu Lin.</td>
+</tr>
+<tr class="odd">
+<td align="left">Exact CMC</td>
+<td align="left">exactCMC</td>
+<td align="left">B</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Collapsing and combine rare variants, then perform Fisher’s exact test.</td>
+</tr>
+<tr class="even">
+<td align="left">RareCover</td>
+<td align="left">rarecover</td>
+<td align="left">B</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Find optimal grouping unit for rare variant tests by Thomas Hoffman.</td>
+</tr>
+<tr class="odd">
+<td align="left">CMAT</td>
+<td align="left">cmat</td>
+<td align="left">B</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Test non-coding variants by Matt Z.</td>
+</tr>
+<tr class="even">
+<td align="left">CMC Wald</td>
+<td align="left">cmcWald</td>
+<td align="left">B, Q</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Collapsing and combine rare variants, then perform Wald test.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Variable threshold models</strong></p>
 <p>| Single variant | Model | Traits | Covariates | Related / unrelated | Description | |:::|:::|:::|:::|:::|:::| | Variable threshold model | vt | B, Q | N | U | Every rare-variant frequency cutoffs are tests by Alkes Price. | | Variable threshold CMC | cmc | B, Q | N | U | This models is native so that it output CMC test statistics under all possible frequency cutoffs. |</p>
 <p><strong>Kernel models</strong></p>
