@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Association" />
+  <title>NGS data analysis course</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../Commons/css_template_for_examples.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://ngscourse.github.io/">NGS data analysis course</a></h1>
+<h2 class="author"><strong>Association</strong></h2>
+<h3 class="date"><em>(updated 21-10-2015)</em></h3>
+</div>
+<!-- COMMON LINKS HERE -->
+
+<h1 id="preliminaries">Preliminaries</h1>
+<h2 id="software-used-in-this-practical">Software used in this practical:</h2>
+<ul>
+<li><a href="http://zhanxw.github.io/rvtests/" title="RvTests">RvTests</a> : package for genetic association studies. It is designed to support unrelated individual or related (family-based) individuals. Both quantitative trait and binary trait are supported.</li>
+</ul>
+<h2 id="file-formats-explored">File formats explored:</h2>
+<ul>
+<li>VCF Variant Call Format: see <a href="http://www.1000genomes.org/wiki/analysis/variant-call-format/vcf-variant-call-format-version-42">1000 Genomes</a> and <a href="http://en.wikipedia.org/wiki/Variant_Call_Format">Wikipedia</a> specifications.</li>
+<li>PED File</li>
+</ul>
+<h1 id="exercise-analysis-of-rare-variant">Exercise: Analysis of rare variant</h1>
+<p>Directory used for the tutorials:</p>
+<!--    cd /home/participant/Desktop/Course_Materials/calling -->
+
+<pre><code>cd /home/training/ngs_course/association</code></pre>
+<p>In this practical we are going to use a tool called RvTests. Let’s see how to run it:</p>
+<pre><code>~/soft/rvtests/rvtest --help</code></pre>
+<h1 id="single-variant-tests">Single Variant tests</h1>
+<p>Test every variant individually for association with the disease/trait. The phenotype can be binary (case/control) or quantitative.</p>
+<p>|Single variant | Model | Traits(*) | Covariates | Related / unrelated | Description | |:::|:::|:::|:::|:::| |Score test | score | B, Q | Y | U | Only null model is used to performed the test | |Wald test | wald | B, Q | Y | U | Only fit alternative model, and effect size will be estimated | |Exact test | exact | B | N | U | Fisher’s test | |Fam LRT | famLRT | Q | Y | R, U | Fast-LMM model | |Fam Score | famScore | Q | Y | R, U | Fast-LMM model style likelihood ratio test | |Grammar-gamma | famGrammarGamma | Q | Y | R, U | Grammar-gamma method | |Firth regression | firth | B | Y | U | Logistic regression with Firth correction by David Firth, discussed by Clement Ma. |</p>
+<p>(*) In trait column, B and Q stand for binary, quantitate trait.</p>
+<h2 id="related-individual-test">Related individual test</h2>
+<p>To test related individuals, you will need to first create a kinship matrix. The tool to do it is called <code>vcf2kinship</code>.</p>
+<pre><code>~/soft/rvtests/vcf2kinship --help</code></pre>
+<p>Let’s compute the kinship matrix:</p>
+<pre><code>~/soft/rvtests/vcf2kinship \
+    --inVcf 4Kvariants_147samples.vcf.gz \
+    --ped 4Kvariants_147samples.ped \
+    --ibs \
+    --out 4Kvariants_147samples
+
+head -n 10 4Kvariants_147samples.kinship | cut -f 1-10</code></pre>
+<p>Then we can use linear mixed model based association tests such as Fast-LMM score test, Fast-LMM LRT test and Grammar-gamma tests. <strong>These models only work when the studied phenotype is quantitative</strong>.</p>
+<pre><code>~/soft/rvtests/rvtest \
+    --inVcf 4Kvariants_147samples.vcf.gz \
+    --pheno 4Kvariants_147samples.ped \
+    --out 4Kvariants_147samples \
+    --kinship 4Kvariants_147samples.kinship \
+    --single famScore,famLRT,famGrammarGamma
+
+head 4Kvariants_147samples.FamScore.assoc</code></pre>
+<h2 id="unrelated-single-variant-test">Unrelated single variant test</h2>
+<pre><code>~/tools/rvtests/rvtest \
+    --inVcf 4Kvariants_147samples.vcf.gz \
+    --pheno 4Kvariants_147samples.ped \
+    --out 4Kvariants_147samples \
+    --single score,wald,exact
+
+head 4Kvariants_147samples.SingleWald.assoc</code></pre>
+<p>Do we have any significant variants?</p>
+<pre><code>awk -F&#39;\t&#39; &#39;{if ($9 &lt;= 0.05) print $0}&#39; 4Kvariants_147samples.SingleWald.assoc | sort -k 9
+
+! awk -F&#39;\t&#39; &#39;{if ($9 &lt;= 0.05) print $0}&#39; 4Kvariants_147samples.SingleScore.assoc | sort -k 9</code></pre>
+<h1 id="groupwise-tests">Groupwise tests</h1>
+<p>Groupwise tests includes three major kinds of tests.</p>
+<ul>
+<li><strong>Burden tests</strong>: group variants, which are usually less than 1% or 5% rare variants, for association tests. The category includes: CMC test, Zeggini test, Madsen-Browning test, CMAT test, and rare-cover test.</li>
+<li><strong>Variable threshold tests</strong>: group variants under different frequency thresholds.</li>
+<li><strong>Kernel methods</strong>: suitable to tests rare variants having different directions of effects. These includes SKAT test and KBAC test.</li>
+</ul>
+<p><strong>Burden tests</strong></p>
+<p>| Burden tests | Model | Traits | Covariates | Related / unrelated | Description | |:::|:::|:::|:::|:::|:::| | CMC | cmc | B, Q | N | U | Collapsing and combine rare variants by Bingshan Li. | | Zeggini | zeggini | B, Q | N | U | Aggregate counts of rare variants by Morris Zeggini. | | Madsen-Browning | mb | B | N | U | Up-weight rare variant using inverse frequency from controls by Madsen. | | Fp | fp | B | N | U | Up-weight rare variant using inverse frequency from controls by Danyu Lin. | | Exact CMC | exactCMC | B | N | U | Collapsing and combine rare variants, then perform Fisher’s exact test. | | RareCover | rarecover | B | N | U | Find optimal grouping unit for rare variant tests by Thomas Hoffman. | | CMAT | cmat | B | N | U | Test non-coding variants by Matt Z. | | CMC Wald | cmcWald | B, Q | N | U | Collapsing and combine rare variants, then perform Wald test. |</p>
+<p><strong>Variable threshold models</strong></p>
+<p>| Single variant | Model | Traits | Covariates | Related / unrelated | Description | |:::|:::|:::|:::|:::|:::| | Variable threshold model | vt | B, Q | N | U | Every rare-variant frequency cutoffs are tests by Alkes Price. | | Variable threshold CMC | cmc | B, Q | N | U | This models is native so that it output CMC test statistics under all possible frequency cutoffs. |</p>
+<p><strong>Kernel models</strong></p>
+<p>| Kernel | Model | Traits | Covariates | Related / unrelated | Description | |:::|:::|:::|:::|:::|:::| | SKAT | skat | B, Q | Y | U | Sequencing kernel association test by Shawn Lee. | | KBAC | kbac | B | N | U | Kernel-based adaptive clustering model by Dajiang Liu. |</p>
+<p>All above tests requires to group variants into a unit. The simplest case is to use gene as grouping unit.</p>
+<p>RvTests expects a <a href="http://genome.ucsc.edu/goldenpath/gbdDescriptionsOld.html#RefFlat">refFlat</a> file when using gene grouping units. These are the fields included in a refFlat format:</p>
+<ul>
+<li>Name of gene as it appears in Genome Browser</li>
+<li>Name of gene</li>
+<li>Chromosome name</li>
+<li>“+” or “-” for strand</li>
+<li>Transcription start position</li>
+<li>Transcription end position</li>
+<li>Coding region start</li>
+<li>Coding region end</li>
+<li>Number of exons</li>
+<li>Exon start positions</li>
+<li><p>Exon end positions</p>
+<p>zcat refFlat_hg19.txt.gz | head</p>
+<p>~/soft/rvtests/rvtest<br /> –inVcf 4Kvariants_147samples.vcf.gz<br /> –pheno 4Kvariants_147samples.ped<br /> –out burden_out<br /> –geneFile refFlat_hg19.txt.gz<br /> –burden cmc<br /></p></li>
+</ul>
+</body>
+</html>
