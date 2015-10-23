@@ -157,9 +157,67 @@ head 4Kvariants_147samples.SingleWald.assoc</code></pre>
 </tbody>
 </table>
 <p><strong>Variable threshold models</strong></p>
-<p>| Single variant | Model | Traits | Covariates | Related / unrelated | Description | |:::|:::|:::|:::|:::|:::| | Variable threshold model | vt | B, Q | N | U | Every rare-variant frequency cutoffs are tests by Alkes Price. | | Variable threshold CMC | cmc | B, Q | N | U | This models is native so that it output CMC test statistics under all possible frequency cutoffs. |</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Single variant</th>
+<th align="left">Model</th>
+<th align="left">Traits</th>
+<th align="left">Covariates</th>
+<th align="left">Related / unrelated</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable threshold model</td>
+<td align="left">vt</td>
+<td align="left">B, Q</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Every rare-variant frequency cutoffs are tests by Alkes Price.</td>
+</tr>
+<tr class="even">
+<td align="left">Variable threshold CMC</td>
+<td align="left">cmc</td>
+<td align="left">B, Q</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">This models is native so that it output CMC test statistics under all possible frequency cutoffs.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Kernel models</strong></p>
-<p>| Kernel | Model | Traits | Covariates | Related / unrelated | Description | |:::|:::|:::|:::|:::|:::| | SKAT | skat | B, Q | Y | U | Sequencing kernel association test by Shawn Lee. | | KBAC | kbac | B | N | U | Kernel-based adaptive clustering model by Dajiang Liu. |</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Kernel</th>
+<th align="left">Model</th>
+<th align="left">Traits</th>
+<th align="left">Covariates</th>
+<th align="left">Related / unrelated</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">SKAT</td>
+<td align="left">skat</td>
+<td align="left">B, Q</td>
+<td align="left">Y</td>
+<td align="left">U</td>
+<td align="left">Sequencing kernel association test by Shawn Lee.</td>
+</tr>
+<tr class="even">
+<td align="left">KBAC</td>
+<td align="left">kbac</td>
+<td align="left">B</td>
+<td align="left">N</td>
+<td align="left">U</td>
+<td align="left">Kernel-based adaptive clustering model by Dajiang Liu.</td>
+</tr>
+</tbody>
+</table>
 <p>All above tests requires to group variants into a unit. The simplest case is to use gene as grouping unit.</p>
 <p>RvTests expects a <a href="http://genome.ucsc.edu/goldenpath/gbdDescriptionsOld.html#RefFlat">refFlat</a> file when using gene grouping units. These are the fields included in a refFlat format:</p>
 <ul>

@@ -118,7 +118,7 @@ Groupwise tests includes three major kinds of tests.
 **Variable threshold models**
 
 | Single variant | Model | Traits | Covariates | Related / unrelated | Description |
-|:::|:::|:::|:::|:::|:::|
+|---|---|---|---|---|---|
 | Variable threshold model | vt | B, Q | N | U | Every rare-variant frequency cutoffs are tests by Alkes Price. |
 | Variable threshold CMC | cmc | B, Q | N | U | This models is native so that it output CMC test statistics under all possible frequency cutoffs. |
 
@@ -126,7 +126,7 @@ Groupwise tests includes three major kinds of tests.
 **Kernel models**
 
 | Kernel | Model | Traits | Covariates | Related / unrelated | Description |
-|:::|:::|:::|:::|:::|:::|
+|---|---|---|---|---|---|
 | SKAT | skat | B, Q | Y | U | Sequencing kernel association test by Shawn Lee. |
 | KBAC | kbac | B | N | U | Kernel-based adaptive clustering model by Dajiang Liu. |
 
