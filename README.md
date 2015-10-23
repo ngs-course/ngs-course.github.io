@@ -47,7 +47,7 @@ During the second day we will focus on _Variant Calling_, _annotation_ and _prio
 
 ##### Variant association and prioritization
 
-- [Presentation](Course_Materials/variant_prioritization/presentation/2015-variant_prioritization.pdf) - [Data](https://www.dropbox.com/sh/4qkqch7gyt888h7/AADPzrs9NGg0PjVqnwQocUJUa/annotation/hpg-variant/examples)
+- [Presentation](Course_Materials/variant_prioritization/presentation/2015-variant_prioritization.pdf) - [RvTests example](Course_Materials/variant_prioritization/tutorial/association_rvtests.html)
 
 ----
 
