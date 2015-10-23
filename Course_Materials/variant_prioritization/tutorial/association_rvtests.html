@@ -33,16 +33,77 @@
 
 <pre><code>cd /home/training/ngs_course/association</code></pre>
 <p>In this practical we are going to use a tool called RvTests. Let’s see how to run it:</p>
-<pre><code>~/soft/rvtests/rvtest --help</code></pre>
+<pre><code>rvtest --help</code></pre>
 <h1 id="single-variant-tests">Single Variant tests</h1>
 <p>Test every variant individually for association with the disease/trait. The phenotype can be binary (case/control) or quantitative.</p>
-<p>|Single variant | Model | Traits(*) | Covariates | Related / unrelated | Description | |:::|:::|:::|:::|:::| |Score test | score | B, Q | Y | U | Only null model is used to performed the test | |Wald test | wald | B, Q | Y | U | Only fit alternative model, and effect size will be estimated | |Exact test | exact | B | N | U | Fisher’s test | |Fam LRT | famLRT | Q | Y | R, U | Fast-LMM model | |Fam Score | famScore | Q | Y | R, U | Fast-LMM model style likelihood ratio test | |Grammar-gamma | famGrammarGamma | Q | Y | R, U | Grammar-gamma method | |Firth regression | firth | B | Y | U | Logistic regression with Firth correction by David Firth, discussed by Clement Ma. |</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Single variant</th>
+<th align="left">Model</th>
+<th align="left">Traits(*)</th>
+<th align="left">Covariates</th>
+<th align="left">Related / unrelated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Score test</td>
+<td align="left">score</td>
+<td align="left">B, Q</td>
+<td align="left">Y</td>
+<td align="left">U</td>
+</tr>
+<tr class="even">
+<td align="left">Wald test</td>
+<td align="left">wald</td>
+<td align="left">B, Q</td>
+<td align="left">Y</td>
+<td align="left">U</td>
+</tr>
+<tr class="odd">
+<td align="left">Exact test</td>
+<td align="left">exact</td>
+<td align="left">B</td>
+<td align="left">N</td>
+<td align="left">U</td>
+</tr>
+<tr class="even">
+<td align="left">Fam LRT</td>
+<td align="left">famLRT</td>
+<td align="left">Q</td>
+<td align="left">Y</td>
+<td align="left">R, U</td>
+</tr>
+<tr class="odd">
+<td align="left">Fam Score</td>
+<td align="left">famScore</td>
+<td align="left">Q</td>
+<td align="left">Y</td>
+<td align="left">R, U</td>
+</tr>
+<tr class="even">
+<td align="left">Grammar-gamma</td>
+<td align="left">famGrammarGamma</td>
+<td align="left">Q</td>
+<td align="left">Y</td>
+<td align="left">R, U</td>
+</tr>
+<tr class="odd">
+<td align="left">Firth regression</td>
+<td align="left">firth</td>
+<td align="left">B</td>
+<td align="left">Y</td>
+<td align="left">U</td>
+</tr>
+</tbody>
+</table>
 <p>(*) In trait column, B and Q stand for binary, quantitate trait.</p>
 <h2 id="related-individual-test">Related individual test</h2>
 <p>To test related individuals, you will need to first create a kinship matrix. The tool to do it is called <code>vcf2kinship</code>.</p>
-<pre><code>~/soft/rvtests/vcf2kinship --help</code></pre>
+<pre><code>vcf2kinship --help</code></pre>
 <p>Let’s compute the kinship matrix:</p>
-<pre><code>~/soft/rvtests/vcf2kinship \
+<pre><code>rvtests \
     --inVcf 4Kvariants_147samples.vcf.gz \
     --ped 4Kvariants_147samples.ped \
     --ibs \
@@ -50,7 +111,7 @@
 
 head -n 10 4Kvariants_147samples.kinship | cut -f 1-10</code></pre>
 <p>Then we can use linear mixed model based association tests such as Fast-LMM score test, Fast-LMM LRT test and Grammar-gamma tests. <strong>These models only work when the studied phenotype is quantitative</strong>.</p>
-<pre><code>~/soft/rvtests/rvtest \
+<pre><code>rvtest \
     --inVcf 4Kvariants_147samples.vcf.gz \
     --pheno 4Kvariants_147samples.ped \
     --out 4Kvariants_147samples \
@@ -59,7 +120,7 @@ head -n 10 4Kvariants_147samples.kinship | cut -f 1-10</code></pre>
 
 head 4Kvariants_147samples.FamScore.assoc</code></pre>
 <h2 id="unrelated-single-variant-test">Unrelated single variant test</h2>
-<pre><code>~/tools/rvtests/rvtest \
+<pre><code>rvtest \
     --inVcf 4Kvariants_147samples.vcf.gz \
     --pheno 4Kvariants_147samples.ped \
     --out 4Kvariants_147samples \
@@ -231,9 +292,17 @@ head 4Kvariants_147samples.SingleWald.assoc</code></pre>
 <li>Coding region end</li>
 <li>Number of exons</li>
 <li>Exon start positions</li>
-<li><p>Exon end positions</p>
-<p>zcat refFlat_hg19.txt.gz | head</p>
-<p>~/soft/rvtests/rvtest<br /> –inVcf 4Kvariants_147samples.vcf.gz<br /> –pheno 4Kvariants_147samples.ped<br /> –out burden_out<br /> –geneFile refFlat_hg19.txt.gz<br /> –burden cmc<br /></p></li>
+<li>Exon end positions</li>
 </ul>
+<p>Let’s take a look at the file:</p>
+<pre><code>zcat refFlat_hg19.txt.gz | head</code></pre>
+<p>Let’s run the Burden test:</p>
+<pre><code>rvtest \
+    --inVcf 4Kvariants_147samples.vcf.gz \
+    --pheno 4Kvariants_147samples.ped \
+    --out burden_out \
+    --geneFile refFlat_hg19.txt.gz \
+    --burden cmc \
+    </code></pre>
 </body>
 </html>

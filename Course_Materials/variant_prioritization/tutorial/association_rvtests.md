@@ -33,14 +33,14 @@ Directory used for the tutorials:
 
 In this practical we are going to use a tool called RvTests. Let's see how to run it:
 
-	~/soft/rvtests/rvtest --help
+	rvtest --help
 
 
 # Single Variant tests
 Test every variant individually for association with the disease/trait. The phenotype can be binary (case/control) or quantitative.
 
 |Single variant | Model | Traits(\*) | Covariates | Related / unrelated | Description |
-|:::|:::|:::|:::|:::|
+| --- | --- | --- | --- | --- |
 |Score test | score | B, Q | Y | U | Only null model is used to performed the test | 
 |Wald test | wald | B, Q | Y | U | Only fit alternative model, and effect size will be estimated | 
 |Exact test | exact | B | N | U | Fisher's test | 
@@ -54,11 +54,11 @@ Test every variant individually for association with the disease/trait. The phen
 ## Related individual test
 To test related individuals, you will need to first create a kinship matrix. The tool to do it is called `vcf2kinship`.
 
-	~/soft/rvtests/vcf2kinship --help
+	vcf2kinship --help
 
 Let's compute the kinship matrix:
 
-	~/soft/rvtests/vcf2kinship \
+	rvtests \
 	    --inVcf 4Kvariants_147samples.vcf.gz \
 	    --ped 4Kvariants_147samples.ped \
 	    --ibs \
@@ -68,7 +68,7 @@ Let's compute the kinship matrix:
 
 Then we can use linear mixed model based association tests such as Fast-LMM score test, Fast-LMM LRT test and Grammar-gamma tests. **These models only work when the studied phenotype is quantitative**.
 
-	~/soft/rvtests/rvtest \
+	rvtest \
     	--inVcf 4Kvariants_147samples.vcf.gz \
     	--pheno 4Kvariants_147samples.ped \
     	--out 4Kvariants_147samples \
@@ -80,7 +80,7 @@ Then we can use linear mixed model based association tests such as Fast-LMM scor
 
 ## Unrelated single variant test
 
-	~/tools/rvtests/rvtest \
+	rvtest \
 	    --inVcf 4Kvariants_147samples.vcf.gz \
 	    --pheno 4Kvariants_147samples.ped \
 	    --out 4Kvariants_147samples \
@@ -104,7 +104,7 @@ Groupwise tests includes three major kinds of tests.
 **Burden tests**
 
 | Burden tests | Model | Traits | Covariates | Related / unrelated | Description |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | CMC | cmc | B, Q | N | U | Collapsing and combine rare variants by Bingshan Li. |
 | Zeggini | zeggini | B, Q | N | U | Aggregate counts of rare variants by Morris Zeggini. |
 | Madsen-Browning | mb | B | N | U | Up-weight rare variant using inverse frequency from controls by Madsen. |
@@ -118,7 +118,7 @@ Groupwise tests includes three major kinds of tests.
 **Variable threshold models**
 
 | Single variant | Model | Traits | Covariates | Related / unrelated | Description |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Variable threshold model | vt | B, Q | N | U | Every rare-variant frequency cutoffs are tests by Alkes Price. |
 | Variable threshold CMC | cmc | B, Q | N | U | This models is native so that it output CMC test statistics under all possible frequency cutoffs. |
 
@@ -126,7 +126,7 @@ Groupwise tests includes three major kinds of tests.
 **Kernel models**
 
 | Kernel | Model | Traits | Covariates | Related / unrelated | Description |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | SKAT | skat | B, Q | Y | U | Sequencing kernel association test by Shawn Lee. |
 | KBAC | kbac | B | N | U | Kernel-based adaptive clustering model by Dajiang Liu. |
 
@@ -146,10 +146,13 @@ RvTests expects a [refFlat](http://genome.ucsc.edu/goldenpath/gbdDescriptionsOld
 * Exon start positions
 * Exon end positions
 
+Let's take a look at the file:
 
     zcat refFlat_hg19.txt.gz | head
-	
-	~/soft/rvtests/rvtest \
+
+Let's run the Burden test:
+
+	rvtest \
 	    --inVcf 4Kvariants_147samples.vcf.gz \
 	    --pheno 4Kvariants_147samples.ped \
 	    --out burden_out \
