@@ -37,7 +37,7 @@ Summary statistics can be generated with bcftools stats. Run the command below t
 3. Variant effect prediction and filtering
 --------------------------------------------------------------------------------
 
-In order to predict the functional consequences of the variants on genes and to gain additional useful annotation/information about their deleteriousness we can run Ensembl's Variant Effect Predictor (VEP). The consequence types that are predicted by VEP are illustrated here. VEP can be run on the command line (see below) or directly via [Ensembl's web page] (http://www.ensembl.org/info/docs/tools/vep/index.html).
+In order to predict the functional consequences of the variants on genes and to gain additional useful annotation/information about their deleteriousness we can run Ensembl's Variant Effect Predictor (VEP). The consequence types that are predicted by VEP are illustrated here. VEP can be run on the command line (see below) or directly via [Ensembl's web page](http://www.ensembl.org/info/docs/tools/vep/index.html).
 
 ## VEP command line tool
 There is a limit to the size of the files that can be uploaded to the web page. If the files are getting very big it is advised to use VEP Perl scrip variant_effect_predictor.pl from the command line.
@@ -66,7 +66,7 @@ Show how to filter with ``filter_vep.pl`` and ``bcftools``.
 
 ## VEP web application
 
-You can try to run the same from their web tool: http://grch37.ensembl.org/Tools/VEP.
+You can try to run the same from their web tool: [http://grch37.ensembl.org/Tools/VEP](http://grch37.ensembl.org/Tools/VEP).
 
 
 

@@ -31,7 +31,7 @@ tabix -p vcf dna_chr21_100_he_pe_filtered.vcf.gz</code></pre>
 <p>Summary statistics can be generated with bcftools stats. Run the command below to generate the summary statistics and the corresponding report and take a look the results.</p>
 <pre><code>bcftools stats dna_chr21_100_he_pe_filtered.vcf.gz &gt; vcfstats.txt</code></pre>
 <h2 id="variant-effect-prediction-and-filtering">3. Variant effect prediction and filtering</h2>
-<p>In order to predict the functional consequences of the variants on genes and to gain additional useful annotation/information about their deleteriousness we can run Ensembl’s Variant Effect Predictor (VEP). The consequence types that are predicted by VEP are illustrated here. VEP can be run on the command line (see below) or directly via [Ensembl’s web page] (http://www.ensembl.org/info/docs/tools/vep/index.html).</p>
+<p>In order to predict the functional consequences of the variants on genes and to gain additional useful annotation/information about their deleteriousness we can run Ensembl’s Variant Effect Predictor (VEP). The consequence types that are predicted by VEP are illustrated here. VEP can be run on the command line (see below) or directly via <a href="http://www.ensembl.org/info/docs/tools/vep/index.html">Ensembl’s web page</a>.</p>
 <h2 id="vep-command-line-tool">VEP command line tool</h2>
 <p>There is a limit to the size of the files that can be uploaded to the web page. If the files are getting very big it is advised to use VEP Perl scrip variant_effect_predictor.pl from the command line.</p>
 <pre><code>~/soft/ensembl-vep-82/scripts/variant_effect_predictor/variant_effect_predictor.pl</code></pre>
@@ -49,6 +49,6 @@ tabix -p vcf dna_chr21_100_he_pe_filtered.vcf.gz</code></pre>
 <h3 id="exercise">Exercise:</h3>
 <p>Work out what command line options are needed to filter out rare coding variants with a MAF&lt;0.01 in central european (CEU) population and run the command. Show how to filter with <code>filter_vep.pl</code> and <code>bcftools</code>.</p>
 <h2 id="vep-web-application">VEP web application</h2>
-<p>You can try to run the same from their web tool: http://grch37.ensembl.org/Tools/VEP.</p>
+<p>You can try to run the same from their web tool: <a href="http://grch37.ensembl.org/Tools/VEP">http://grch37.ensembl.org/Tools/VEP</a>.</p>
 </body>
 </html>
