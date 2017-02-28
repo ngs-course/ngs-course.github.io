@@ -60,7 +60,7 @@ During the second day we will focus on _Variant Calling_, _annotation_ and _prio
 
 # About
 
-You can ask any question to Marta Bleda (mb2033@cam.ac.uk) and Ignacio Medina (im411@cam.ac.uk).
+You can ask any question to Marta Bleda (mb2033@cam.ac.uk), Ignacio Medina (im411@cam.ac.uk) and David Montaner (david.montaner@gmail.com).
 
 
 ----
