@@ -1,0 +1,8 @@
+title: A NGS data analysis course
+description: An introductory course about NGS data analysis and visualization
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-slate
+
+gems:
+  - jekyll-mentions
